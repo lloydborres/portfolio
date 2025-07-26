@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "default": "nickname-portfolio"
+  },
+  "targets": {
+    "nickname-portfolio": {
+      "hosting": {
+        "portfolio": [
+          "nickname-portfolio"
+        ],
+        "storybook": [
+          "nickname-portfolio-storybook"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
