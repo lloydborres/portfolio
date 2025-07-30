@@ -35,7 +35,12 @@ const Component = ({
         <Typography variant="h4">{name}</Typography>
         <Typography variant="h6">{title}</Typography>
         {!!email && (
-          <Link href={`mailto:${email}`} variant="body2">
+          <Link
+            variant="body2"
+            href={`mailto:${email}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {email}
           </Link>
         )}

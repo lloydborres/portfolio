@@ -8,6 +8,8 @@ const StyledAppBar = styled(AppBar)<{ theme?: Theme }>`
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 
   .toolbar-icon {
+    height: 30px;
+    object-fit: contain;
     margin-right: 8px;
   }
 
