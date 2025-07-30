@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Zoom, Fab } from "@mui/material";
+import { KeyboardArrowUp as KeyboardArrowUpIcon } from "@mui/icons-material";
 import { AppBar, Footer } from "../../molecules";
 import { portfolioData } from "../../../constants";
 import { Container, Content } from "./elements";
@@ -13,32 +15,39 @@ const CommonLayout = ({ children }: Props) => {
     urls: { email, github, linkedin },
   } = portfolioData;
 
+  const [fabVisible, setFabVisible] = useState(false);
+
   const handleTitleClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleEmailIconClick = () => {
-    window.open(email);
+  const handleFabClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleGitHubIconClick = () => {
-    window.open(github, "_blank");
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setFabVisible(window.scrollY > 400);
+    };
 
-  const handleLinkedInIconClick = () => {
-    window.open(linkedin, "_blank");
-  };
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup listener on unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <Container>
       <AppBar title="Portfolio" onTitleClick={handleTitleClick} />
       <Content>{children}</Content>
-      <Footer
-        name={name}
-        onEmailIconClick={handleEmailIconClick}
-        onGitHubIconClick={handleGitHubIconClick}
-        onLinkedInIconClick={handleLinkedInIconClick}
-      />
+      <Footer name={name} email={email} github={github} linkedin={linkedin} />
+      <Zoom in={fabVisible} unmountOnExit>
+        <Fab color="primary" onClick={handleFabClick} disableTouchRipple>
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </Zoom>
     </Container>
   );
 };

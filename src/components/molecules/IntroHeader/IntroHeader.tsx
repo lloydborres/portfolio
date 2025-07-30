@@ -1,6 +1,5 @@
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography, Link } from "@mui/material";
 import {
-  Email as EmailIcon,
   GitHub as GitHubIcon,
   LinkedIn as LinkedInIcon,
 } from "@mui/icons-material";
@@ -13,9 +12,9 @@ type Props = {
   title: string;
   description: string;
   profilePicSrc?: string;
-  onEmailIconClick?: () => void;
-  onGitHubIconClick?: () => void;
-  onLinkedInIconClick?: () => void;
+  email?: string;
+  github?: string;
+  linkedin?: string;
 };
 
 const Component = ({
@@ -23,9 +22,9 @@ const Component = ({
   title,
   description,
   profilePicSrc,
-  onEmailIconClick,
-  onGitHubIconClick,
-  onLinkedInIconClick,
+  email,
+  github,
+  linkedin,
 }: Props) => {
   return (
     <Container theme={darkModeTheme}>
@@ -35,25 +34,29 @@ const Component = ({
       <div className="intro-container">
         <Typography variant="h4">{name}</Typography>
         <Typography variant="h6">{title}</Typography>
+        {!!email && (
+          <Link href={`mailto:${email}`} variant="body2">
+            {email}
+          </Link>
+        )}
         <Typography variant="body2" className="intro-description">
           {description}
         </Typography>
       </div>
       <Stack alignItems="center" direction="row" spacing={1}>
-        {onEmailIconClick && (
-          <IconButton color="primary" onClick={onEmailIconClick}>
-            <EmailIcon />
-          </IconButton>
+        {!!github && (
+          <Link href={github} target="_blank" rel="noopener noreferrer">
+            <IconButton color="primary">
+              <GitHubIcon />
+            </IconButton>
+          </Link>
         )}
-        {onGitHubIconClick && (
-          <IconButton color="primary" onClick={onGitHubIconClick}>
-            <GitHubIcon />
-          </IconButton>
-        )}
-        {onLinkedInIconClick && (
-          <IconButton color="primary" onClick={onLinkedInIconClick}>
-            <LinkedInIcon />
-          </IconButton>
+        {!!linkedin && (
+          <Link href={linkedin} target="_blank" rel="noopener noreferrer">
+            <IconButton color="primary">
+              <LinkedInIcon />
+            </IconButton>
+          </Link>
         )}
       </Stack>
     </Container>

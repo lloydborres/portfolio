@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import { CardsContainer, Container } from './elements';
-import { SkillCard, type SkillCardProps } from '../../molecules';
-import { Typography } from '@mui/material';
+import { CardsContainer, Container } from "./elements";
+import { SkillCard, type SkillCardProps } from "../../molecules";
+import { Typography } from "@mui/material";
 
 type Props = {
   title: string;
@@ -9,23 +8,12 @@ type Props = {
 };
 
 const Component = ({ title, skillCards }: Props) => {
-  const [expandedItem, setExpandedItem] = useState(0);
-
-  const handleCardClick = (index: number) => () => {
-    setExpandedItem(index);
-  };
-
   return (
     <Container>
-      <Typography variant='h5'>{title}</Typography>
-      <CardsContainer>
+      <Typography variant="h5">{title}</Typography>
+      <CardsContainer $cols={5}>
         {skillCards?.map((card, index) => (
-          <SkillCard
-            key={index}
-            expanded={expandedItem === index}
-            onCardClick={handleCardClick(index)}
-            {...card}
-          />
+          <SkillCard key={index} {...card} />
         ))}
       </CardsContainer>
     </Container>
