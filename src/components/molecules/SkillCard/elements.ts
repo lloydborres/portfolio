@@ -6,6 +6,7 @@ const StyledCard = styled(Card)<{ theme?: Theme }>`
     height: 50px;
     width: 50px;
     justify-self: center;
+    margin-top: 10px;
     margin-bottom: 10px;
   }
 

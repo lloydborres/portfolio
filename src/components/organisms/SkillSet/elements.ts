@@ -14,7 +14,7 @@ const CardsContainer = styled.div<{ $cols?: number }>`
   padding: 16px 40px;
 
   & .MuiCard-root {
-    padding: 10px 0 0;
+    padding: 0;
     width: calc(
       (100% - (20px * ${({ $cols }) => $cols})) / ${({ $cols }) => $cols}
     );
