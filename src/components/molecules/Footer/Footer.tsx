@@ -12,17 +12,12 @@ import { PAGE_MAX_WIDTH } from "../../../constants";
 
 type Props = {
   name: string;
-  onEmailIconClick?: () => void;
-  onGitHubIconClick?: () => void;
-  onLinkedInIconClick?: () => void;
+  email?: string;
+  github?: string;
+  linkedin?: string;
 };
 
-const Component = ({
-  name,
-  onEmailIconClick,
-  onGitHubIconClick,
-  onLinkedInIconClick,
-}: Props) => {
+const Component = ({ name, email, github, linkedin }: Props) => {
   const currentYear = moment().year();
 
   return (
@@ -48,32 +43,30 @@ const Component = ({
           </Typography>
         </Box>
         <Stack alignItems="center" direction="row" spacing={1}>
-          {onEmailIconClick && (
-            <IconButton
-              variant="outlined"
-              color="primary"
-              onClick={onEmailIconClick}
+          {!!email && (
+            <Link
+              href={`mailto:${email}`}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <EmailIcon />
-            </IconButton>
+              <IconButton variant="outlined" color="primary">
+                <EmailIcon />
+              </IconButton>
+            </Link>
           )}
-          {onGitHubIconClick && (
-            <IconButton
-              variant="outlined"
-              color="primary"
-              onClick={onGitHubIconClick}
-            >
-              <GitHubIcon />
-            </IconButton>
+          {!!github && (
+            <Link href={github} target="_blank" rel="noopener noreferrer">
+              <IconButton variant="outlined" color="primary">
+                <GitHubIcon />
+              </IconButton>
+            </Link>
           )}
-          {onLinkedInIconClick && (
-            <IconButton
-              variant="outlined"
-              color="primary"
-              onClick={onLinkedInIconClick}
-            >
-              <LinkedInIcon />
-            </IconButton>
+          {!!linkedin && (
+            <Link href={linkedin} target="_blank" rel="noopener noreferrer">
+              <IconButton variant="outlined" color="primary">
+                <LinkedInIcon />
+              </IconButton>
+            </Link>
           )}
         </Stack>
       </Stack>

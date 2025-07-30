@@ -6,6 +6,12 @@ const Container = styled(Box)`
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
+
+  & .MuiFab-root {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+  }
 `;
 
 const Content = styled(Box)`

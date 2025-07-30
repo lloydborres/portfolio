@@ -1,5 +1,10 @@
-import { portfolioData } from '../../constants';
-import { CommonLayout, Experience, IntroHeader, SkillSet } from '../../components';
+import { portfolioData } from "../../constants";
+import {
+  CommonLayout,
+  Experience,
+  IntroHeader,
+  SkillSet,
+} from "../../components";
 
 const HomePage = () => {
   const {
@@ -7,18 +12,10 @@ const HomePage = () => {
     title,
     description,
     profilePicSrc,
-    urls: { github, linkedin },
+    urls: { email, github, linkedin },
     skillSets,
     experiences,
   } = portfolioData;
-
-  const handleGitHubIconClick = () => {
-    window.open(github, '_blank');
-  };
-
-  const handleLinkedInIconClick = () => {
-    window.open(linkedin, '_blank');
-  };
 
   return (
     <CommonLayout>
@@ -27,11 +24,16 @@ const HomePage = () => {
         title={title}
         description={description}
         profilePicSrc={profilePicSrc}
-        onGitHubIconClick={handleGitHubIconClick}
-        onLinkedInIconClick={handleLinkedInIconClick}
+        email={email}
+        github={github}
+        linkedin={linkedin}
       />
       {skillSets.map((skillSetItem, index) => (
-        <SkillSet key={index} title={skillSetItem.title} skillCards={skillSetItem.skills} />
+        <SkillSet
+          key={index}
+          title={skillSetItem.title}
+          skillCards={skillSetItem.skills}
+        />
       ))}
       <Experience experiences={experiences} />
     </CommonLayout>
