@@ -6,6 +6,7 @@ import {
   type AppBarProps,
 } from "@mui/material";
 import { Web as WebIcon } from "@mui/icons-material";
+// import portfolioLightIcon from "../../../assets/images/portfolio_icon_light.svg";
 import { StyledAppBar } from "./elements";
 
 type Props = {
@@ -22,6 +23,7 @@ const Component = ({ title, onTitleClick, ...otherProps }: Props) => {
     <StyledAppBar sx={{ background: rgbaPrimary }} {...otherProps}>
       <Toolbar>
         <WebIcon className="toolbar-icon" />
+        {/* <img className="toolbar-icon" alt="Logo" src={portfolioLightIcon} /> */}
         <Typography
           variant="h6"
           component="div"

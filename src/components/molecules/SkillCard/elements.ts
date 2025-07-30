@@ -4,10 +4,9 @@ import { Card, type Theme } from "@mui/material";
 const StyledCard = styled(Card)<{ theme?: Theme }>`
   & .MuiCardMedia-root {
     height: 50px;
-    width: 50px;
-    justify-self: center;
     margin-top: 10px;
     margin-bottom: 10px;
+    background-size: contain;
   }
 
   & .MuiCardContent-root {

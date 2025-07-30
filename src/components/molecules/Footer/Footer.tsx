@@ -31,7 +31,7 @@ const Component = ({ name, email, github, linkedin }: Props) => {
       >
         <Box className="copyright-container">
           <Typography variant="body2">
-            {`Developed by ${name}, built with React TS + Vite + Material UI — `}
+            {`Developed by ${name}, built with React TS + Vite + Material UI - `}
             <Link
               href="https://github.com/lloydborres/portfolio"
               target="_blank"

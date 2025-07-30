@@ -21,10 +21,8 @@ const CardsContainer = styled.div<{ $cols?: number }>`
   }
 
   @media ${DEVICE_MEDIA_QUERIES.phones} {
-    flex-direction: column;
-
     & .MuiCard-root {
-      width: calc(100% - 20px);
+      width: calc((100% - (20px * 2)) / 2);
     }
   }
 `;
