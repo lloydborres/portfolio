@@ -2,6 +2,7 @@ import { portfolioData } from "../../constants";
 import {
   CommonLayout,
   Experience,
+  FeaturedProjects,
   IntroHeader,
   SkillSet,
 } from "../../components";
@@ -15,6 +16,7 @@ const HomePage = () => {
     urls: { email, github, linkedin },
     skillSets,
     experiences,
+    projects,
   } = portfolioData;
 
   return (
@@ -36,6 +38,7 @@ const HomePage = () => {
         />
       ))}
       <Experience experiences={experiences} />
+      <FeaturedProjects projects={projects} />
     </CommonLayout>
   );
 };

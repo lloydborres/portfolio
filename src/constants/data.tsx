@@ -77,6 +77,62 @@ const portfolioData = {
       ],
     },
   ],
+  projects: [
+    {
+      title: "Project A",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      actions: [
+        {
+          label: "Action 1",
+          isExternal: true,
+        },
+        {
+          label: "Action 2",
+        },
+      ],
+    },
+    {
+      title: "Project",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      actions: [
+        {
+          label: "Action 1",
+        },
+      ],
+    },
+    {
+      title: "Project C",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      actions: [
+        {
+          label: "Action 1",
+        },
+      ],
+    },
+    {
+      title: "Project D",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      actions: [
+        {
+          label: "Action 1",
+        },
+      ],
+    },
+    {
+      title: "Project E",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      actions: [
+        {
+          label: "Action 1",
+        },
+      ],
+    },
+  ],
 };
 
 export { portfolioData };
