@@ -1,20 +1,10 @@
 import { Typography } from "@mui/material";
 import moment from "moment";
 import { Container, ExperiencesContainer } from "./elements";
-
-type ExperienceHistory = {
-  companyName: string;
-  positions: {
-    title: string;
-    startDate: Date;
-    endDate?: Date;
-    location: string;
-    description: string;
-  }[];
-};
+import type { Experience } from "../../../domain";
 
 type Props = {
-  experiences?: ExperienceHistory[];
+  experiences?: Experience[];
 };
 
 const Component = ({ experiences }: Props) => {
@@ -28,8 +18,11 @@ const Component = ({ experiences }: Props) => {
               <Typography variant="h6">{exp.companyName}</Typography>
             </div>
             {exp.positions.map((pos, posIdx) => {
-              const endDate = pos.endDate ?? new Date();
-              const totalMonths = moment(endDate).diff(pos.startDate, "months");
+              const endDate = pos.endDate?.toDate() ?? new Date();
+              const totalMonths = moment(endDate).diff(
+                pos.startDate.toDate(),
+                "months"
+              );
               const years = Math.floor(totalMonths / 12);
               const months = totalMonths % 12;
               const yearsText = years ? `${years} yrs` : "";
@@ -46,10 +39,10 @@ const Component = ({ experiences }: Props) => {
                       {pos.title}
                     </Typography>
                     <Typography variant="caption">{`${moment(
-                      pos.startDate
+                      pos.startDate.toDate()
                     ).format("MMM YYYY")} - ${
-                      pos.endDate
-                        ? moment(pos.endDate).format("MMM YYYY")
+                      pos.endDate?.toDate()
+                        ? moment(pos.endDate.toDate()).format("MMM YYYY")
                         : "Present"
                     } • ${yearsText} ${monthsText}`}</Typography>
                     <br />

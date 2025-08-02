@@ -6,7 +6,7 @@ import {
   type AppBarProps,
 } from "@mui/material";
 import { Web as WebIcon } from "@mui/icons-material";
-// import portfolioLightIcon from "../../../assets/images/portfolio_icon_light.svg";
+// import portfolioLogoLightImg from "../../../assets/images/portfolio_logo_light.svg";
 import { StyledAppBar } from "./elements";
 
 type Props = {
@@ -17,13 +17,14 @@ type Props = {
 const Component = ({ title, onTitleClick, ...otherProps }: Props) => {
   const theme = useTheme();
 
-  const rgbaPrimary = alpha(theme.palette.primary.main, 0.5);
+  const rgbaBackground = alpha(theme.palette.primary.main, 0.5);
+  // const rgbaBackground = alpha(theme.palette.grey["900"], 0.5);
 
   return (
-    <StyledAppBar sx={{ background: rgbaPrimary }} {...otherProps}>
+    <StyledAppBar sx={{ background: rgbaBackground }} {...otherProps}>
       <Toolbar>
         <WebIcon className="toolbar-icon" />
-        {/* <img className="toolbar-icon" alt="Logo" src={portfolioLightIcon} /> */}
+        {/* <img className="toolbar-icon" alt="Logo" src={portfolioLogoLightImg} /> */}
         <Typography
           variant="h6"
           component="div"

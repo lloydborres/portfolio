@@ -19,6 +19,10 @@ Welcome to the souce code of my simple portfolio website!
 **Storybook:** https://portfolio-sb.lloydborres.com \
 **Figma:** https://www.figma.com/design/RQCYf7U8FfqjJGFWUtd2IS/Portfolio?node-id=7603-7193&t=rfPgFeRNNeaUoJou-1
 
+## Version Notes
+
+`releases/v1.2` and below uses `data.tsx` file to display data
+
 ## Tech Stack/Libraries
 
 - [React + TypeScript + Vite](https://vite.dev/guide)

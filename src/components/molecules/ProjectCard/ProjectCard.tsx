@@ -3,20 +3,9 @@ import { OpenInNew as OpenInNewIcon } from "@mui/icons-material";
 import { StyledCard, CardMediaPlaceholder } from "./ProjectCard.styles";
 import { Button } from "../../atoms";
 import { darkModeTheme } from "../../../configs";
+import type { Project } from "../../../domain";
 
-type ActionProps = {
-  label: string;
-  href?: string;
-  onClick?: () => void;
-  isExternal?: boolean;
-};
-
-type Props = {
-  title: string;
-  description: string;
-  coverImg?: string;
-  actions?: ActionProps[];
-};
+type Props = {} & Project;
 
 const Component = ({ title, description, coverImg, actions }: Props) => {
   const splittedTitle = title.split(" ");
@@ -51,7 +40,7 @@ const Component = ({ title, description, coverImg, actions }: Props) => {
             return (
               <Button
                 key={index}
-                onClick={action.onClick}
+                // onClick={action.onClick}
                 {...hrefProps}
                 endIcon={action.isExternal && <OpenInNewIcon />}
               >
@@ -66,4 +55,4 @@ const Component = ({ title, description, coverImg, actions }: Props) => {
 };
 
 export default Component;
-export type { Props, ActionProps };
+export type { Props };

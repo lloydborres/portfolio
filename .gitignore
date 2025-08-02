@@ -37,3 +37,8 @@ storybook-static
 .firebaserc
 firebase-debug.log
 firebase-debug.*.log
+
+# Personal Files
+public/portfolio_icon.svg
+src/assets/images/profile_picture.jpg
+src/assets/images/portfolio_logo_light.svg

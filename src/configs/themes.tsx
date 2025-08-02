@@ -1,13 +1,12 @@
 import { createTheme } from "@mui/material/styles";
-import { purple } from "@mui/material/colors";
 
 const portfolioTheme = createTheme({
   palette: {
     primary: {
-      main: purple[500],
+      main: import.meta.env.VITE_APP_THEME_PRIMARY_MAIN,
     },
     secondary: {
-      main: "#f44336",
+      main: import.meta.env.VITE_APP_THEME_SECONDARY_MAIN,
     },
   },
 });

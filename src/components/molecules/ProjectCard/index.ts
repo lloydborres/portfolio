@@ -1,7 +1,4 @@
-import ProjectCard, {
-  type Props as ProjectCardProps,
-  type ActionProps,
-} from "./ProjectCard";
+import ProjectCard, { type Props as ProjectCardProps } from "./ProjectCard";
 
 export { ProjectCard };
-export type { ProjectCardProps, ActionProps };
+export type { ProjectCardProps };

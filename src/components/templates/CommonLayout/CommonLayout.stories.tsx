@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { CommonLayout } from '.';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { CommonLayout } from ".";
 
 const meta = {
-  title: 'Components/Templates/CommonLayout',
+  title: "Components/Templates/CommonLayout",
   component: CommonLayout,
 } satisfies Meta<typeof CommonLayout>;
 
@@ -12,6 +12,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   argTypes: {},
   args: {
-    children: <div style={{ background: 'red' }}>Content Here</div>,
+    name: "Name",
+    children: <div style={{ background: "red" }}>Content Here</div>,
+    pageLoaderProgress: 50,
   },
 };
