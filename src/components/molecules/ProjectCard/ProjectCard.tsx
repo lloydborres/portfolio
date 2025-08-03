@@ -1,11 +1,10 @@
 import { CardMedia, CardContent, Typography, CardActions } from "@mui/material";
 import { OpenInNew as OpenInNewIcon } from "@mui/icons-material";
+import { Button } from "@components";
+import type { IProject } from "@domain";
 import { StyledCard, CardMediaPlaceholder } from "./ProjectCard.styles";
-import { Button } from "../../atoms";
-import { darkModeTheme } from "../../../configs";
-import type { Project } from "../../../domain";
 
-type Props = {} & Project;
+type Props = {} & IProject;
 
 const Component = ({ title, description, coverImg, actions }: Props) => {
   const splittedTitle = title.split(" ");
@@ -14,7 +13,7 @@ const Component = ({ title, description, coverImg, actions }: Props) => {
     ? { image: coverImg }
     : {
         children: (
-          <CardMediaPlaceholder theme={darkModeTheme}>
+          <CardMediaPlaceholder>
             <Typography variant="h4">{`${title[0]}${
               titleMoreThan2Words ? splittedTitle[1][0] : ""
             }`}</Typography>
@@ -55,4 +54,3 @@ const Component = ({ title, description, coverImg, actions }: Props) => {
 };
 
 export default Component;
-export type { Props };

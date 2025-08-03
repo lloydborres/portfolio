@@ -3,9 +3,8 @@ import {
   GitHub as GitHubIcon,
   LinkedIn as LinkedInIcon,
 } from "@mui/icons-material";
-import { IconButton } from "../../atoms";
-import { Container } from "./elements";
-import { darkModeTheme } from "../../../configs";
+import { IconButton } from "@components";
+import { Container } from "./IntroHeader.styles";
 
 type Props = {
   name: string;
@@ -27,7 +26,7 @@ const Component = ({
   linkedin,
 }: Props) => {
   return (
-    <Container theme={darkModeTheme}>
+    <Container>
       <div className="profile-picture-container">
         {!!profilePicSrc && <img alt="Profile" src={profilePicSrc} />}
       </div>
@@ -69,4 +68,3 @@ const Component = ({
 };
 
 export default Component;
-export type { Props };

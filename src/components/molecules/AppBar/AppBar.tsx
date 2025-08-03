@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import { Web as WebIcon } from "@mui/icons-material";
 // import portfolioLogoLightImg from "../../../assets/images/portfolio_logo_light.svg";
-import { StyledAppBar } from "./elements";
+import { StyledAppBar } from "./AppBar.styles";
 
 type Props = {
   title: string;

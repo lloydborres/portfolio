@@ -5,10 +5,9 @@ import {
   GitHub as GitHubIcon,
   LinkedIn as LinkedInIcon,
 } from "@mui/icons-material";
-import { IconButton } from "../../atoms";
-import { darkModeTheme } from "../../../configs";
-import { Container } from "./elements";
-import { PAGE_MAX_WIDTH } from "../../../constants";
+import { IconButton } from "@components";
+import { PAGE_MAX_WIDTH } from "@constants";
+import { Container } from "./Footer.styles";
 
 type Props = {
   name: string;
@@ -21,7 +20,7 @@ const Component = ({ name, email, github, linkedin }: Props) => {
   const currentYear = moment().year();
 
   return (
-    <Container theme={darkModeTheme}>
+    <Container>
       <Stack
         className="footer-content"
         maxWidth={PAGE_MAX_WIDTH}
@@ -75,4 +74,3 @@ const Component = ({ name, email, github, linkedin }: Props) => {
 };
 
 export default Component;
-export type { Props };

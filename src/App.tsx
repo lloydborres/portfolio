@@ -1,7 +1,8 @@
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ThemeProvider } from "@mui/material";
-import { portfolioTheme } from "./configs";
+import { ThemeProvider } from "@mui/material/styles";
+import { mainTheme } from "@configs";
+import { ServicesProvider } from "@providers";
 import { HomePage } from "./features/Home";
 
 const queryClient = new QueryClient({
@@ -12,9 +13,11 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={portfolioTheme}>
-          <HomePage />
-        </ThemeProvider>
+        <ServicesProvider>
+          <ThemeProvider theme={mainTheme}>
+            <HomePage />
+          </ThemeProvider>
+        </ServicesProvider>
       </QueryClientProvider>
     </>
   );

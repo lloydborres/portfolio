@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
-const portfolioTheme = createTheme({
+const mainTheme = createTheme({
   palette: {
     primary: {
       main: import.meta.env.VITE_APP_THEME_PRIMARY_MAIN,
@@ -17,4 +17,4 @@ const darkModeTheme = createTheme({
   },
 });
 
-export { portfolioTheme, darkModeTheme };
+export { mainTheme, darkModeTheme };

@@ -1,15 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { SkillSet, type SkillSetProps } from ".";
-import htmlLogoImg from "../../../assets/images/html_logo.svg";
-import cssLogoImg from "../../../assets/images/css_logo.svg";
-import jsLogoImg from "../../../assets/images/javascript_logo.svg";
-import tsLogoImg from "../../../assets/images/typescript_logo.svg";
-import reactLogoImg from "../../../assets/images/react_logo.svg";
+import {
+  htmlLogoImg,
+  cssLogoImg,
+  javascriptLogoImg,
+  typescriptLogoImg,
+  reactLogoImg,
+} from "@assets";
+import SkillSet from "./SkillSet";
 
 const meta = {
   title: "Components/Organisms/SkillSet",
   component: SkillSet,
-} satisfies Meta<SkillSetProps>;
+} satisfies Meta<typeof SkillSet>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -21,23 +23,23 @@ export const Default: Story = {
     skillCards: [
       {
         skillImgSrc: htmlLogoImg,
-        children: "HTML",
+        label: "HTML",
       },
       {
         skillImgSrc: cssLogoImg,
-        children: "CSS",
+        label: "CSS",
       },
       {
-        skillImgSrc: jsLogoImg,
-        children: "JavaScript",
+        skillImgSrc: javascriptLogoImg,
+        label: "JavaScript",
       },
       {
-        skillImgSrc: tsLogoImg,
-        children: "TypeScript",
+        skillImgSrc: typescriptLogoImg,
+        label: "TypeScript",
       },
       {
         skillImgSrc: reactLogoImg,
-        children: "React",
+        label: "React",
       },
     ],
   },

@@ -1,49 +1,51 @@
-import htmlLogoImg from "../assets/images/html_logo.svg";
-import cssLogoImg from "../assets/images/css_logo.svg";
-import jsLogoImg from "../assets/images/javascript_logo.svg";
-import tsLogoImg from "../assets/images/typescript_logo.svg";
-import reactLogoImg from "../assets/images/react_logo.svg";
-import firebaseLogoImg from "../assets/images/firebase_logo.svg";
-import mySqlLogoImg from "../assets/images/mysql_logo.svg";
-import sqlLogoImg from "../assets/images/sql_logo.svg";
-import expressLogoImg from "../assets/images/expressjs_logo.svg";
+import {
+  htmlLogoImg,
+  cssLogoImg,
+  javascriptLogoImg,
+  typescriptLogoImg,
+  reactLogoImg,
+  firebaseLogoImg,
+  mysqlLogoImg,
+  sqlLogoImg,
+  expressjsLogoImg,
+} from "@assets";
 
 const SKILL_LOOKUP = {
   html: {
     skillImgSrc: htmlLogoImg,
-    children: "HTML",
+    label: "HTML",
   },
   css: {
     skillImgSrc: cssLogoImg,
-    children: "CSS",
+    label: "CSS",
   },
   javaScript: {
-    skillImgSrc: jsLogoImg,
-    children: "JavaScript",
+    skillImgSrc: javascriptLogoImg,
+    label: "JavaScript",
   },
   typeScript: {
-    skillImgSrc: tsLogoImg,
-    children: "TypeScript",
+    skillImgSrc: typescriptLogoImg,
+    label: "TypeScript",
   },
   react: {
     skillImgSrc: reactLogoImg,
-    children: "React",
+    label: "React",
   },
   firebase: {
     skillImgSrc: firebaseLogoImg,
-    children: "Firebase",
+    label: "Firebase",
   },
   mySql: {
-    skillImgSrc: mySqlLogoImg,
-    children: "MySQL",
+    skillImgSrc: mysqlLogoImg,
+    label: "MySQL",
   },
   msSql: {
     skillImgSrc: sqlLogoImg,
-    children: "MSSQL",
+    label: "MSSQL",
   },
   expressJs: {
-    skillImgSrc: expressLogoImg,
-    children: "Express JS",
+    skillImgSrc: expressjsLogoImg,
+    label: "Express JS",
   },
 };
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { CommonLayout } from ".";
+import CommonLayout from "./CommonLayout";
 
 const meta = {
   title: "Components/Templates/CommonLayout",

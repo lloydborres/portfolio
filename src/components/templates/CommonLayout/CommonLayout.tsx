@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Zoom, Fab } from "@mui/material";
 import { KeyboardArrowUp as KeyboardArrowUpIcon } from "@mui/icons-material";
-import { AppBar, Footer, PageLoader } from "../..";
-import { Container, Content } from "./elements";
+import { AppBar, Footer, PageLoader } from "@components";
+import { Container, Content } from "./CommonLayout.styles";
 
 type Props = {
   name: string;

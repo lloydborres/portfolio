@@ -1,9 +1,10 @@
-import { Container, CardsContainer } from "./FeaturedProjects.styles";
-import { ProjectCard, type ProjectCardProps } from "../../molecules";
 import { Typography } from "@mui/material";
+import { ProjectCard } from "@components";
+import type { IProject } from "@domain";
+import { Container, CardsContainer } from "./FeaturedProjects.styles";
 
 type Props = {
-  projects?: ProjectCardProps[];
+  projects?: IProject[];
 };
 
 const Component = ({ projects }: Props) => {
