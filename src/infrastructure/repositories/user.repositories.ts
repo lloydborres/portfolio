@@ -7,7 +7,6 @@ import {
   orderBy,
 } from "firebase/firestore";
 import {
-  UserEntity,
   type IExperience,
   type IProject,
   type ISkillSet,
@@ -39,20 +38,11 @@ class UserRepository implements IUserRepository {
 
     if (!usersSS.empty) {
       const userDoc = usersSS.docs[0];
-      const { name, description, title, email, github, linkedin } =
-        userDoc.data();
 
-      const user = new UserEntity({
+      return {
         id: userDoc.id,
-        name,
-        description,
-        title,
-        email,
-        github,
-        linkedin,
-      }).toObject();
-
-      return user;
+        ...userDoc.data(),
+      } as IUser;
     }
   }
 

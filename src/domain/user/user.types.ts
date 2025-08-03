@@ -5,6 +5,7 @@ interface IUser {
   name: string;
   title: string;
   description: string;
+  profilePicImg?: string;
   email?: string;
   github?: string;
   linkedin?: string;
