@@ -1,10 +1,11 @@
-import { CardsContainer, Container } from "./elements";
-import { SkillCard, type SkillCardProps } from "../../molecules";
 import { Typography } from "@mui/material";
+import { SkillCard } from "@components";
+import type { ISkillSetSkill } from "@domain";
+import { CardsContainer, Container } from "./SkillSet.styles";
 
 type Props = {
   title: string;
-  skillCards?: SkillCardProps[];
+  skillCards?: ISkillSetSkill[];
 };
 
 const Component = ({ title, skillCards }: Props) => {

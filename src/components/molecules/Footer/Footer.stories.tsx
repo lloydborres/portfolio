@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Footer, type FooterProps } from ".";
+import { Footer } from "@components";
 
 const meta = {
   title: "Components/Molecules/Footer",
   component: Footer,
-} satisfies Meta<FooterProps>;
+} satisfies Meta<typeof Footer>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

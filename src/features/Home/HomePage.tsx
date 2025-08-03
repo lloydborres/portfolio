@@ -1,42 +1,47 @@
 import {
   CommonLayout,
-  Experience,
-  FeaturedProjects,
+  // Experience,
+  // FeaturedProjects,
   IntroHeader,
-  SkillSet,
-} from "../../components";
+  // SkillSet,
+} from "@components";
 // import profilePicImg from "../../assets/images/profile_picture.jpg";
 import { useGetHomeData } from "./api";
 
 const HomePage = () => {
   const homeData = useGetHomeData();
-  const [getPerson, getSkillSets, getExperiences, getProjects] = homeData;
-  const { data: personData } = getPerson;
-  const { data: skillSetsData } = getSkillSets;
-  const { data: experiencesData } = getExperiences;
-  const { data: projectsData } = getProjects;
+  const [
+    getUser,
+    // getSkillSets,
+    // getExperiences,
+    // getProjects
+  ] = homeData;
+  const { data: userData } = getUser;
+  // const { data: skillSetsData } = getSkillSets;
+  // const { data: experiencesData } = getExperiences;
+  // const { data: projectsData } = getProjects;
 
   const loadingProgress =
     (homeData.filter((e) => !e.isLoading).length / homeData.length) * 100;
 
   return (
     <CommonLayout
-      name={personData?.name || ""}
-      email={personData?.email}
-      github={personData?.github}
-      linkedin={personData?.linkedin}
+      name={userData?.name || ""}
+      email={userData?.email}
+      github={userData?.github}
+      linkedin={userData?.linkedin}
       pageLoaderProgress={loadingProgress}
     >
       <IntroHeader
-        name={personData?.name || ""}
-        title={personData?.title || ""}
-        description={personData?.description || ""}
+        name={userData?.name || ""}
+        title={userData?.title || ""}
+        description={userData?.description || ""}
         // profilePicSrc={profilePicImg}
-        email={personData?.email}
-        github={personData?.github}
-        linkedin={personData?.linkedin}
+        email={userData?.email}
+        github={userData?.github}
+        linkedin={userData?.linkedin}
       />
-      {skillSetsData?.map((skillSetItem, index) => (
+      {/* {skillSetsData?.map((skillSetItem, index) => (
         <SkillSet
           key={index}
           title={skillSetItem.title}
@@ -44,7 +49,7 @@ const HomePage = () => {
         />
       ))}
       <Experience experiences={experiencesData} />
-      <FeaturedProjects projects={projectsData} />
+      <FeaturedProjects projects={projectsData} /> */}
     </CommonLayout>
   );
 };

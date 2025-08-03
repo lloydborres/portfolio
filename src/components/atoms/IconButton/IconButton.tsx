@@ -1,5 +1,5 @@
 import { type IconButtonProps } from "@mui/material";
-import { StyledIconButton } from "./elements";
+import { StyledIconButton } from "./IconButton.styles";
 
 type Props = {
   variant?: "default" | "outlined";
@@ -16,4 +16,3 @@ const Component = ({ variant = "default", ...otherProps }: Props) => {
 };
 
 export default Component;
-export type { Props };

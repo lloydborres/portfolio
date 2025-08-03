@@ -1,58 +1,61 @@
+import { useServices } from "@hooks";
 import { useQueries } from "@tanstack/react-query";
-import { firebaseProvider } from "../../../services";
-import {
-  SKILL_LOOKUP,
-  type SkillLookupKey,
-} from "../../../constants/skillLookup";
+// import { firebaseProvider } from "../../../services";
+// import {
+//   SKILL_LOOKUP,
+//   type SkillLookupKey,
+// } from "../../../constants/skillLookup";
 
-const getPerson = () => {
-  return firebaseProvider().personRepository.getPerson();
-};
+// const getPerson = () => {
+//   return firebaseProvider().personRepository.getPerson();
+// };
 
-const getSkillSets = async () => {
-  const results = await firebaseProvider().skillSetRepository.getSkillSets();
+// const getSkillSets = async () => {
+//   const results = await firebaseProvider().skillSetRepository.getSkillSets();
 
-  const skillSets = results.map((skillSet) => {
-    const skills = skillSet.skills.map((skill) => {
-      return SKILL_LOOKUP[skill as SkillLookupKey];
-    });
+//   const skillSets = results.map((skillSet) => {
+//     const skills = skillSet.skills.map((skill) => {
+//       return SKILL_LOOKUP[skill as SkillLookupKey];
+//     });
 
-    return {
-      ...skillSet,
-      skills,
-    };
-  });
+//     return {
+//       ...skillSet,
+//       skills,
+//     };
+//   });
 
-  return skillSets;
-};
+//   return skillSets;
+// };
 
-const getExperiences = () => {
-  return firebaseProvider().experienceRepository.getExperiences();
-};
+// const getExperiences = () => {
+//   return firebaseProvider().experienceRepository.getExperiences();
+// };
 
-const getProjects = () => {
-  return firebaseProvider().projectRepository.getProjects();
-};
+// const getProjects = () => {
+//   return firebaseProvider().projectRepository.getProjects();
+// };
 
 const useGetHomeData = () => {
+  const { userService } = useServices();
+
   const queries = useQueries({
     queries: [
       {
-        queryKey: ["getPerson"],
-        queryFn: getPerson,
+        queryKey: ["getUser"],
+        queryFn: () => userService.getUser(),
       },
-      {
-        queryKey: ["getSkillSets"],
-        queryFn: getSkillSets,
-      },
-      {
-        queryKey: ["getExperiences"],
-        queryFn: getExperiences,
-      },
-      {
-        queryKey: ["getProjects"],
-        queryFn: getProjects,
-      },
+      // {
+      //   queryKey: ["getSkillSets"],
+      //   queryFn: getSkillSets,
+      // },
+      // {
+      //   queryKey: ["getExperiences"],
+      //   queryFn: getExperiences,
+      // },
+      // {
+      //   queryKey: ["getProjects"],
+      //   queryFn: getProjects,
+      // },
     ],
   });
 

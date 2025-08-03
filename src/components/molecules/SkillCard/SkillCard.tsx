@@ -1,20 +1,16 @@
-import React from "react";
 import { CardContent, CardMedia, Typography } from "@mui/material";
-import { StyledCard } from "./elements";
+import { StyledCard } from "./SkillCard.styles";
+import type { ISkillSetSkill } from "@domain";
 
-type Props = {
-  skillImgSrc?: string;
-  children?: React.ReactNode;
-  onCardClick?: () => void;
-};
+type Props = {} & ISkillSetSkill;
 
-const Component = ({ skillImgSrc, children, onCardClick }: Props) => {
+const Component = ({ skillImgSrc, label }: Props) => {
   return (
-    <StyledCard variant="outlined" onClick={onCardClick}>
+    <StyledCard variant="outlined">
       <CardMedia image={skillImgSrc} />
       <CardContent>
         <Typography variant="body2" align="center">
-          {children}
+          {label}
         </Typography>
       </CardContent>
     </StyledCard>
@@ -22,4 +18,3 @@ const Component = ({ skillImgSrc, children, onCardClick }: Props) => {
 };
 
 export default Component;
-export type { Props };

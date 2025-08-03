@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
-import { AppBar } from ".";
+import AppBar from "./AppBar";
 
 const meta = {
   title: "Components/Molecules/AppBar",

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { IntroHeader, type IntroHeaderProps } from ".";
+import { IntroHeader } from "@components";
 
 const meta = {
   title: "Components/Molecules/IntroHeader",
   component: IntroHeader,
-} satisfies Meta<IntroHeaderProps>;
+} satisfies Meta<typeof IntroHeader>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

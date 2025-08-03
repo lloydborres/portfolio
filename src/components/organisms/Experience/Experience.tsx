@@ -1,10 +1,10 @@
-import { Typography } from "@mui/material";
 import moment from "moment";
-import { Container, ExperiencesContainer } from "./elements";
-import type { Experience } from "../../../domain";
+import { Typography } from "@mui/material";
+import type { IExperience } from "@domain";
+import { Container, ExperiencesContainer } from "./Experience.styles";
 
 type Props = {
-  experiences?: Experience[];
+  experiences?: IExperience[];
 };
 
 const Component = ({ experiences }: Props) => {
@@ -65,4 +65,3 @@ const Component = ({ experiences }: Props) => {
 };
 
 export default Component;
-export type { Props };

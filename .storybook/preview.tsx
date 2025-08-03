@@ -1,6 +1,6 @@
 import type { Preview } from "@storybook/react-vite";
-import { ThemeProvider, CssBaseline } from "@mui/material";
-import { portfolioTheme } from "../src/configs";
+import { ThemeProvider } from "@mui/material/styles";
+import { mainTheme } from "../src/configs";
 import "@fontsource/roboto/400.css";
 
 const preview: Preview = {
@@ -14,8 +14,7 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <ThemeProvider theme={portfolioTheme}>
-        <CssBaseline />
+      <ThemeProvider theme={mainTheme}>
         <Story />
       </ThemeProvider>
     ),

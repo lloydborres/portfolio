@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 // import { fn } from "storybook/test";
-import { ProjectCard } from ".";
+import { ProjectCard } from "@components";
 
 const meta = {
   title: "Components/Molecules/ProjectCard",

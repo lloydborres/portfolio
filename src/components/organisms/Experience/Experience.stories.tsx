@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Timestamp } from "firebase/firestore";
-import { Experience, type ExperienceProps } from ".";
+import Experience from "./Experience";
 
 const meta = {
   title: "Components/Organisms/Experience",
   component: Experience,
-} satisfies Meta<ExperienceProps>;
+} satisfies Meta<typeof Experience>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
