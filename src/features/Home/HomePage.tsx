@@ -22,7 +22,7 @@ const HomePage = () => {
         name={homeData?.name || ""}
         title={homeData?.title || ""}
         description={homeData?.description || ""}
-        // profilePicSrc={profilePicImg}
+        profilePicSrc={homeData?.profilePicImg}
         email={homeData?.email}
         github={homeData?.github}
         linkedin={homeData?.linkedin}
