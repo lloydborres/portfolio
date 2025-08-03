@@ -42,10 +42,19 @@ interface IProjectAction {
 }
 
 interface IProject {
+  id: string;
   title: string;
   description: string;
   coverImg?: string;
   actions?: IProjectAction[];
+}
+
+interface IUserDetails extends IUser {
+  skillSets: ({
+    skills: ISkillSetSkill[];
+  } & Omit<ISkillSet, "skills">)[];
+  experiences: IExperience[];
+  projects: IProject[];
 }
 
 export type {
@@ -56,4 +65,5 @@ export type {
   IExperience,
   IProjectAction,
   IProject,
+  IUserDetails,
 };

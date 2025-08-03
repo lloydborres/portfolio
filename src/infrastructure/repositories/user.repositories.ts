@@ -4,15 +4,28 @@ import {
   limit,
   getDocs,
   type Firestore,
+  orderBy,
 } from "firebase/firestore";
-import { UserEntity, type IUser } from "@domain";
+import {
+  UserEntity,
+  type IExperience,
+  type IProject,
+  type ISkillSet,
+  type IUser,
+} from "@domain";
 
 interface IUserRepository {
   getFirstUser(): Promise<IUser | undefined>;
+  getUserSkillSets(id: string): Promise<ISkillSet[]>;
+  getUserExperiences(id: string): Promise<IExperience[]>;
+  getUserProjects(id: string): Promise<IProject[]>;
 }
 
 class UserRepository implements IUserRepository {
   private COLLECTION_NAME = "users";
+  private SUB_COLLECTION_SKILL_SETS = "skillSets";
+  private SUB_COLLECTION_EXPERIENCES = "experiences";
+  private SUB_COLLECTION_PROJECTS = "projects";
   private firestore: Firestore;
 
   constructor(firestore: Firestore) {
@@ -41,6 +54,66 @@ class UserRepository implements IUserRepository {
 
       return user;
     }
+  }
+
+  async getUserSkillSets(id: string): Promise<ISkillSet[]> {
+    const skillSetsRef = collection(
+      this.firestore,
+      this.COLLECTION_NAME,
+      id,
+      this.SUB_COLLECTION_SKILL_SETS
+    );
+    const skillSetsSS = await getDocs(skillSetsRef);
+
+    const skillSets: ISkillSet[] = skillSetsSS.docs.map((skillSetDoc) => {
+      return {
+        id: skillSetDoc.id,
+        ...skillSetDoc.data(),
+      } as ISkillSet;
+    });
+
+    return skillSets;
+  }
+
+  async getUserExperiences(id: string): Promise<IExperience[]> {
+    const experiencesRef = collection(
+      this.firestore,
+      this.COLLECTION_NAME,
+      id,
+      this.SUB_COLLECTION_EXPERIENCES
+    );
+    const experiencesQ = query(experiencesRef, orderBy("startDate", "desc"));
+    const experiencesSS = await getDocs(experiencesQ);
+
+    const experiences: IExperience[] = experiencesSS.docs.map(
+      (experienceDoc) => {
+        return {
+          id: experienceDoc.id,
+          ...experienceDoc.data(),
+        } as IExperience;
+      }
+    );
+
+    return experiences;
+  }
+
+  async getUserProjects(id: string): Promise<IProject[]> {
+    const projectsRef = collection(
+      this.firestore,
+      this.COLLECTION_NAME,
+      id,
+      this.SUB_COLLECTION_PROJECTS
+    );
+    const projectsSS = await getDocs(projectsRef);
+
+    const projects: IProject[] = projectsSS.docs.map((projectDoc) => {
+      return {
+        id: projectDoc.id,
+        ...projectDoc.data(),
+      } as IProject;
+    });
+
+    return projects;
   }
 }
 

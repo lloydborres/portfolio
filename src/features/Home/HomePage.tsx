@@ -1,55 +1,41 @@
 import {
   CommonLayout,
-  // Experience,
-  // FeaturedProjects,
+  Experience,
+  FeaturedProjects,
   IntroHeader,
-  // SkillSet,
+  SkillSet,
 } from "@components";
-// import profilePicImg from "../../assets/images/profile_picture.jpg";
-import { useGetHomeData } from "./api";
+import useGetHomeData from "./api/useGetHomeData";
 
 const HomePage = () => {
-  const homeData = useGetHomeData();
-  const [
-    getUser,
-    // getSkillSets,
-    // getExperiences,
-    // getProjects
-  ] = homeData;
-  const { data: userData } = getUser;
-  // const { data: skillSetsData } = getSkillSets;
-  // const { data: experiencesData } = getExperiences;
-  // const { data: projectsData } = getProjects;
-
-  const loadingProgress =
-    (homeData.filter((e) => !e.isLoading).length / homeData.length) * 100;
+  const { data: homeData, isLoading: homeDataIsLoading } = useGetHomeData();
 
   return (
     <CommonLayout
-      name={userData?.name || ""}
-      email={userData?.email}
-      github={userData?.github}
-      linkedin={userData?.linkedin}
-      pageLoaderProgress={loadingProgress}
+      name={homeData?.name || ""}
+      email={homeData?.email}
+      github={homeData?.github}
+      linkedin={homeData?.linkedin}
+      pageLoaderProgress={homeDataIsLoading ? 0 : 100}
     >
       <IntroHeader
-        name={userData?.name || ""}
-        title={userData?.title || ""}
-        description={userData?.description || ""}
+        name={homeData?.name || ""}
+        title={homeData?.title || ""}
+        description={homeData?.description || ""}
         // profilePicSrc={profilePicImg}
-        email={userData?.email}
-        github={userData?.github}
-        linkedin={userData?.linkedin}
+        email={homeData?.email}
+        github={homeData?.github}
+        linkedin={homeData?.linkedin}
       />
-      {/* {skillSetsData?.map((skillSetItem, index) => (
+      {homeData?.skillSets?.map((skillSetItem, index) => (
         <SkillSet
           key={index}
           title={skillSetItem.title}
           skillCards={skillSetItem.skills}
         />
       ))}
-      <Experience experiences={experiencesData} />
-      <FeaturedProjects projects={projectsData} /> */}
+      <Experience experiences={homeData?.experiences} />
+      <FeaturedProjects projects={homeData?.projects} />
     </CommonLayout>
   );
 };
