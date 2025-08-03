@@ -18,7 +18,7 @@ const Container = styled(Box)(({ theme }) => ({
 
   ".intro-description": {
     marginTop: "10px",
-    padding: "20px",
+    padding: "0 20px",
   },
 
   ".profile-picture-container": {
