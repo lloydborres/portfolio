@@ -1,5 +1,6 @@
 export { default as Button } from "./atoms/Button/Button";
 export { default as IconButton } from "./atoms/IconButton/IconButton";
+export { default as ExpandMore } from "./atoms/ExpandMore/ExpandMore";
 
 export { default as AppBar } from "./molecules/AppBar/AppBar";
 export { default as Footer } from "./molecules/Footer/Footer";
