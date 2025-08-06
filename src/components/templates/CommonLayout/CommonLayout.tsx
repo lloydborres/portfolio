@@ -32,10 +32,12 @@ const CommonLayout = ({
   };
 
   const handleHomeNavClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     navigate(NAV_PATHS.BASE);
   };
 
   const handleProjectsNavClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     navigate(NAV_PATHS.PROJECTS.BASE);
   };
 
