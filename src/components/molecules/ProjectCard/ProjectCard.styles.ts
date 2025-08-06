@@ -5,6 +5,19 @@ const StyledCard = styled(Card)(({ theme }) => ({
     height: 350,
   },
 
+  "& .more-details-container": {
+    paddingTop: 0,
+    paddingBottom: 0,
+  },
+
+  "& .more-details-text": {
+    whiteSpace: "pre-wrap",
+  },
+
+  "& .action-buttons-container": {
+    justifyContent: "flex-end",
+  },
+
   [theme.breakpoints.down("sm")]: {
     "& .MuiCardMedia-root": {
       height: 300,

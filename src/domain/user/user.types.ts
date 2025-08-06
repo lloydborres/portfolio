@@ -48,6 +48,7 @@ interface IProject {
   description: string;
   coverImg?: string;
   actions?: IProjectAction[];
+  moreDetails?: string;
   isFeatured?: boolean;
 }
 

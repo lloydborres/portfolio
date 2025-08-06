@@ -8,7 +8,7 @@ const CardsContainer = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   flexWrap: "wrap",
   justifyContent: "center",
-  alignItems: "center",
+  alignItems: "start",
   gap: 20,
   padding: "16px 0",
 
