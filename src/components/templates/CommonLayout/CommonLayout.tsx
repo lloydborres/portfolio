@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import { Zoom, Fab } from "@mui/material";
 import { KeyboardArrowUp as KeyboardArrowUpIcon } from "@mui/icons-material";
 import { AppBar, Footer, PageLoader } from "@components";
+import { NAV_PATHS } from "@constants";
 import { Container, Content } from "./CommonLayout.styles";
 
 type Props = {
@@ -21,10 +23,20 @@ const CommonLayout = ({
   children,
   pageLoaderProgress = 100,
 }: Props) => {
+  const navigate = useNavigate();
+
   const [fabVisible, setFabVisible] = useState(false);
 
   const handleTitleClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleHomeNavClick = () => {
+    navigate(NAV_PATHS.BASE);
+  };
+
+  const handleProjectsNavClick = () => {
+    navigate(NAV_PATHS.PROJECTS.BASE);
   };
 
   const handleFabClick = () => {
@@ -47,7 +59,12 @@ const CommonLayout = ({
   return (
     <>
       <Container>
-        <AppBar title="Portfolio" onTitleClick={handleTitleClick} />
+        <AppBar
+          title="Portfolio"
+          onTitleClick={handleTitleClick}
+          onHomeNavClick={handleHomeNavClick}
+          onProjectsNavClick={handleProjectsNavClick}
+        />
         <Content>{children}</Content>
         <Footer name={name} email={email} github={github} linkedin={linkedin} />
         <Zoom in={fabVisible} unmountOnExit>

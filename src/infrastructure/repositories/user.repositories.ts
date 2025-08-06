@@ -5,19 +5,21 @@ import {
   getDocs,
   type Firestore,
   orderBy,
+  where,
 } from "firebase/firestore";
 import {
   type IExperience,
   type IProject,
   type ISkillSet,
   type IUser,
+  type IGetUserProjectsInput,
 } from "@domain";
 
 interface IUserRepository {
   getFirstUser(): Promise<IUser | undefined>;
   getUserSkillSets(id: string): Promise<ISkillSet[]>;
   getUserExperiences(id: string): Promise<IExperience[]>;
-  getUserProjects(id: string): Promise<IProject[]>;
+  getUserProjects(data: IGetUserProjectsInput): Promise<IProject[]>;
 }
 
 class UserRepository implements IUserRepository {
@@ -87,14 +89,21 @@ class UserRepository implements IUserRepository {
     return experiences;
   }
 
-  async getUserProjects(id: string): Promise<IProject[]> {
+  async getUserProjects(data: IGetUserProjectsInput): Promise<IProject[]> {
+    const { userId, filters } = data;
     const projectsRef = collection(
       this.firestore,
       this.COLLECTION_NAME,
-      id,
+      userId,
       this.SUB_COLLECTION_PROJECTS
     );
-    const projectsSS = await getDocs(projectsRef);
+
+    const projectConstraints = [];
+    if (filters?.isFeatured)
+      projectConstraints.push(where("isFeatured", "==", filters.isFeatured));
+
+    const projectsQ = query(projectsRef, ...projectConstraints);
+    const projectsSS = await getDocs(projectsQ);
 
     const projects: IProject[] = projectsSS.docs.map((projectDoc) => {
       return {

@@ -5,11 +5,15 @@ type Props = {
   variant?: "default" | "outlined";
 } & IconButtonProps;
 
-const Component = ({ variant = "default", ...otherProps }: Props) => {
+const Component = ({
+  variant = "default",
+  className,
+  ...otherProps
+}: Props) => {
   return (
     <StyledIconButton
       {...otherProps}
-      className={`icon-button-${variant}`}
+      className={`icon-button-${variant} ${className ?? ""}`}
       disableTouchRipple
     />
   );

@@ -35,6 +35,11 @@ const Container = styled(Box)(({ theme }) => ({
     objectFit: "cover",
     borderRadius: "100px",
   },
+
+  ".page-title": {
+    color: theme.palette.common.white,
+    padding: "20px 20px 30px",
+  },
 }));
 
 export { Container };

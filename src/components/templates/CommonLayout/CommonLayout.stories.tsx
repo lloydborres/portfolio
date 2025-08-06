@@ -1,9 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import CommonLayout from "./CommonLayout";
+import { MemoryRouter } from "react-router";
 
 const meta = {
   title: "Components/Templates/CommonLayout",
   component: CommonLayout,
+  decorators: [
+    (Story) => (
+      <MemoryRouter>
+        <Story />
+      </MemoryRouter>
+    ),
+  ],
 } satisfies Meta<typeof CommonLayout>;
 
 export default meta;
