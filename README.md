@@ -21,7 +21,8 @@ Welcome to the souce code of my simple portfolio website!
 
 ## Version Notes
 
-`releases/v1.2` and below uses `data.tsx` file to display data
+- `releases/v2.0` and above uses Firebase Firestore to display data
+- `releases/v1.2` and below uses `data.tsx` file to display data
 
 ## Tech Stack/Libraries
 
@@ -37,8 +38,9 @@ Welcome to the souce code of my simple portfolio website!
 2. Create an `.env` file based from [.env.example](.env.example) (optional)
 3. Run `npm run dev` to start the dev server.
 4. Run `npm run storybook` to start storybook.
-5. Material themes can be modified in [themes.tsx](src/configs/themes.tsx) (optional).
-6. Data can be modified in [data.ts](src/constants/data.tsx).
+5. Material themes can be modified in [themes.tsx](src/configs/themes.tsx) and primary/secondary colors can be modified in the `.env` file (optional).
+6. Data are stored in [Firebase Firestore](#setup-firebase-firestore).
+7. More [index.html](./index.html) customization can now be modified through `.env` file.
 
 ## Deployment
 
@@ -62,3 +64,55 @@ Welcome to the souce code of my simple portfolio website!
 10. Run `npm run deploy-dev-portfolio` to deploy the React App to a dev channel for testing (optional).
 11. Run `npm run deploy-dev-storybook` to deploy the Storybook to a dev channel for testing (optional).
 12. `npm run deploy-all` will deploy both React App and Storybook to their respective site.
+
+## Setup Firebase Firestore
+
+1. Setup a [Firebase Project](console.firebase.google.com) if you haven't yet.
+2. Create a Firestore database under 'All products'.
+3. Get you Firebase config and update your `.env` file with their respective values.
+4. In your Firestore rules, at least allow read for everyone `allow read: if true;`.
+5. Create a new collection named `users` and auto-fill ID with the following fields and type.
+   ```
+   {
+      name: string;
+      title: string;
+      description: string;
+      email?: string;
+      github?: string;
+      linkedin?: string;
+   }
+   ```
+6. Create a sub-collection named `skillSets` under `users` collection and auto-fill ID with the following fields and type. Add more documents if necessary.
+   ```
+   {
+      title: string;
+      skills: string[]; // Array of strings e.g. ['html', 'css']
+   }
+   ```
+7. Create a sub-collection named `experiences` under `users` collection and auto-fill ID with the following fields and type. Add more documents if necessary.
+   ```
+   {
+      companyName: string;
+      positions: {
+        title: string;
+        description: string;
+        location: string;
+        startDate: Timestamp;
+        endDate?: Timestamp;
+      }[]; // Array of positions
+   }
+   ```
+8. Create a sub-collection named `projects` under `users` collection and auto-fill ID with the following fields and type. Add more documents if necessary.
+   ```
+   {
+      title: string;
+      description: string;
+      coverImg?: string;
+      actions: {
+        label: string;
+        href: string;
+        isExternal: string;
+      }[]; // Array of actions
+   }
+   ```
+9. Updated data will now be fetched from the Firestore database without having to redeploy.
