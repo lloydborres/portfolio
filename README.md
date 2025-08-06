@@ -77,6 +77,7 @@ Welcome to the souce code of my simple portfolio website!
       name: string;
       title: string;
       description: string;
+      profilePicSrc?: string;
       email?: string;
       github?: string;
       linkedin?: string;
