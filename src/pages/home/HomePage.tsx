@@ -25,6 +25,8 @@ const HomePage = () => {
       }
     >
       <IntroHeader userDetails={userDetailsData} />
+      <FeaturedProjects projects={featuredItemsData?.projects} />
+      <Experience experiences={featuredItemsData?.experiences} />
       {featuredItemsData?.skillSets?.map((skillSetItem, index) => (
         <SkillSet
           key={index}
@@ -32,8 +34,6 @@ const HomePage = () => {
           skillCards={skillSetItem.skills}
         />
       ))}
-      <Experience experiences={featuredItemsData?.experiences} />
-      <FeaturedProjects projects={featuredItemsData?.projects} />
     </CommonLayout>
   );
 };
