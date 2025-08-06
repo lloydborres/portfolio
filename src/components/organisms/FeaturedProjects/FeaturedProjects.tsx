@@ -4,7 +4,11 @@ import type { IProject } from "@domain";
 import { Container, CardsContainer } from "./FeaturedProjects.styles";
 
 type Props = {
-  projects?: IProject[];
+  projects?: ({
+    onLikeClick?: (id: string) => void;
+    likes?: number;
+    isLiked?: boolean;
+  } & IProject)[];
 };
 
 const Component = ({ projects }: Props) => {

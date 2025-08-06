@@ -47,6 +47,7 @@ interface IProject {
   title: string;
   description: string;
   coverImg?: string;
+  likes?: number;
   actions?: IProjectAction[];
   moreDetails?: string;
   isFeatured?: boolean;
@@ -67,6 +68,11 @@ interface IGetUserProjectsInput {
   };
 }
 
+interface ILikeProjectInput {
+  userId: string;
+  projectId: string;
+}
+
 export type {
   IUser,
   ISkillSetSkill,
@@ -77,4 +83,5 @@ export type {
   IProject,
   IUserFeaturedItems,
   IGetUserProjectsInput,
+  ILikeProjectInput,
 };

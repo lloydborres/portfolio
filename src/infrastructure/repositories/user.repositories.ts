@@ -6,6 +6,9 @@ import {
   type Firestore,
   orderBy,
   where,
+  doc,
+  updateDoc,
+  increment,
 } from "firebase/firestore";
 import {
   type IExperience,
@@ -13,6 +16,7 @@ import {
   type ISkillSet,
   type IUser,
   type IGetUserProjectsInput,
+  type ILikeProjectInput,
 } from "@domain";
 
 interface IUserRepository {
@@ -20,6 +24,7 @@ interface IUserRepository {
   getUserSkillSets(id: string): Promise<ISkillSet[]>;
   getUserExperiences(id: string): Promise<IExperience[]>;
   getUserProjects(data: IGetUserProjectsInput): Promise<IProject[]>;
+  likeProject(data: ILikeProjectInput): Promise<boolean>;
 }
 
 class UserRepository implements IUserRepository {
@@ -113,6 +118,26 @@ class UserRepository implements IUserRepository {
     });
 
     return projects;
+  }
+
+  async likeProject(data: ILikeProjectInput): Promise<boolean> {
+    try {
+      const { userId, projectId } = data;
+      const projectDocRef = doc(
+        this.firestore,
+        this.COLLECTION_NAME,
+        userId,
+        this.SUB_COLLECTION_PROJECTS,
+        projectId
+      );
+      await updateDoc(projectDocRef, {
+        likes: increment(1),
+      });
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
   }
 }
 

@@ -5,6 +5,18 @@ const StyledCard = styled(Card)(({ theme }) => ({
     height: 350,
   },
 
+  "& .like-container": {
+    display: "flex",
+    alignItems: "center",
+
+    "button.liked": {
+      cursor: "default",
+      svg: {
+        color: theme.palette.primary.main,
+      },
+    },
+  },
+
   "& .more-details-container": {
     paddingTop: 0,
     paddingBottom: 0,
