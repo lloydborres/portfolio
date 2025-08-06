@@ -1,11 +1,17 @@
 import type { IUserRepository } from "@infrastructure";
 import { SKILL_LOOKUP, type SkillLookupKey } from "@constants";
-import type { IProject, IUser, IUserFeaturedItems } from "./user.types";
+import type {
+  ILikeProjectInput,
+  IProject,
+  IUser,
+  IUserFeaturedItems,
+} from "./user.types";
 
 interface IUserService {
   getUserDetails(): Promise<IUser | undefined>;
   getUserFeaturedItems(userId: string): Promise<IUserFeaturedItems>;
   getUserProjects(userId: string): Promise<IProject[]>;
+  likeProject(data: ILikeProjectInput): Promise<boolean>;
 }
 
 class UserService implements IUserService {
@@ -58,6 +64,10 @@ class UserService implements IUserService {
 
   getUserProjects(userId: string): Promise<IProject[]> {
     return this.userRepository.getUserProjects({ userId });
+  }
+
+  likeProject(data: ILikeProjectInput): Promise<boolean> {
+    return this.userRepository.likeProject(data);
   }
 }
 

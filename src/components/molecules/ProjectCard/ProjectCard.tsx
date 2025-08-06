@@ -5,23 +5,33 @@ import {
   Typography,
   CardActions,
   Collapse,
+  Box,
 } from "@mui/material";
 import {
   OpenInNew as OpenInNewIcon,
+  Favorite as FavoriteIcon,
   ExpandMore as ExpandMoreIcon,
 } from "@mui/icons-material";
-import { Button, ExpandMore } from "@components";
+import { Button, ExpandMore, IconButton } from "@components";
 import type { IProject } from "@domain";
 import { StyledCard, CardMediaPlaceholder } from "./ProjectCard.styles";
 
-type Props = {} & IProject;
+type Props = {
+  onLikeClick?: (id: string) => void;
+  likes?: number;
+  isLiked?: boolean;
+} & IProject;
 
 const Component = ({
+  id,
   title,
   description,
   coverImg,
   moreDetails,
   actions,
+  onLikeClick,
+  likes = 0,
+  isLiked = false,
 }: Props) => {
   const [expanded, setExpanded] = useState(false);
 
@@ -39,6 +49,10 @@ const Component = ({
         ),
       };
 
+  const handleLikeClick = () => {
+    if (onLikeClick) onLikeClick(id);
+  };
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -50,7 +64,18 @@ const Component = ({
         <Typography variant="h6">{title}</Typography>
         <Typography variant="body2">{description}</Typography>
       </CardContent>
-      <CardActions>
+      <CardActions disableSpacing>
+        <Box className="like-container">
+          <IconButton
+            className={isLiked ? "liked" : undefined}
+            onClick={isLiked ? undefined : handleLikeClick}
+            disableRipple={isLiked}
+            disableFocusRipple={isLiked}
+          >
+            <FavoriteIcon />
+          </IconButton>
+          <Typography variant="caption">{likes}</Typography>
+        </Box>
         <ExpandMore expand={expanded} onClick={handleExpandClick}>
           <ExpandMoreIcon />
         </ExpandMore>

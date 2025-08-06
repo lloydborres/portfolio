@@ -1,5 +1,5 @@
+import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-// import { fn } from "storybook/test";
 import { ProjectCard } from "@components";
 
 const meta = {
@@ -24,8 +24,25 @@ export const Default: Story = {
       },
       {
         label: "Action 2",
-        // onClick: fn(),
       },
     ],
+  },
+  render: (args) => {
+    const [likes, setLikes] = useState(0);
+    const [isLiked, setIsLiked] = useState(false);
+
+    const handleLikeClick = () => {
+      setIsLiked(true);
+      setLikes((prev) => prev + 1);
+    };
+
+    return (
+      <ProjectCard
+        {...args}
+        likes={likes}
+        isLiked={isLiked}
+        onLikeClick={handleLikeClick}
+      />
+    );
   },
 };
