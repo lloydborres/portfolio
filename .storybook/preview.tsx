@@ -1,6 +1,5 @@
 import type { Preview } from "@storybook/react-vite";
-import { ThemeProvider } from "@mui/material/styles";
-import { mainTheme } from "../src/configs";
+import { ThemeProvider } from "../src/providers";
 import "@fontsource/roboto/400.css";
 
 const preview: Preview = {
@@ -14,7 +13,7 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <ThemeProvider theme={mainTheme}>
+      <ThemeProvider>
         <Story />
       </ThemeProvider>
     ),

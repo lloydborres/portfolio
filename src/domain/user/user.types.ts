@@ -48,14 +48,22 @@ interface IProject {
   description: string;
   coverImg?: string;
   actions?: IProjectAction[];
+  isFeatured?: boolean;
 }
 
-interface IUserDetails extends IUser {
+interface IUserFeaturedItems {
   skillSets: ({
     skills: ISkillSetSkill[];
   } & Omit<ISkillSet, "skills">)[];
   experiences: IExperience[];
   projects: IProject[];
+}
+
+interface IGetUserProjectsInput {
+  userId: string;
+  filters?: {
+    isFeatured?: boolean;
+  };
 }
 
 export type {
@@ -66,5 +74,6 @@ export type {
   IExperience,
   IProjectAction,
   IProject,
-  IUserDetails,
+  IUserFeaturedItems,
+  IGetUserProjectsInput,
 };

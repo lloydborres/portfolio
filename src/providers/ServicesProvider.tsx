@@ -15,7 +15,7 @@ type Props = {
   children?: React.ReactNode;
 };
 
-const ServicesProvider = ({ children }: Props) => {
+const Provider = ({ children }: Props) => {
   return (
     <ServicesContext.Provider value={services}>
       {children}
@@ -23,5 +23,5 @@ const ServicesProvider = ({ children }: Props) => {
   );
 };
 
-export default ServicesProvider;
+export default Provider;
 export { ServicesContext };
