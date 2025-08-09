@@ -8,6 +8,11 @@ import {
   mysqlLogoImg,
   sqlLogoImg,
   expressjsLogoImg,
+  cursorLogoImg,
+  dotnetLogoImg,
+  gitLogoImg,
+  visualStudioLogoImg,
+  vsCodeLogoImg,
 } from "@assets";
 
 const SKILL_LOOKUP = {
@@ -46,6 +51,26 @@ const SKILL_LOOKUP = {
   expressJs: {
     skillImgSrc: expressjsLogoImg,
     label: "Express JS",
+  },
+  cursor: {
+    skillImgSrc: cursorLogoImg,
+    label: "Cursor",
+  },
+  dotnet: {
+    skillImgSrc: dotnetLogoImg,
+    label: ".NET",
+  },
+  git: {
+    skillImgSrc: gitLogoImg,
+    label: "Git",
+  },
+  visualStudio: {
+    skillImgSrc: visualStudioLogoImg,
+    label: "Visual Studio",
+  },
+  vsCode: {
+    skillImgSrc: vsCodeLogoImg,
+    label: "VS Code",
   },
 };
 
