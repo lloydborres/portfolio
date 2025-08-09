@@ -51,7 +51,11 @@ class UserService implements IUserService {
       };
     });
     const projects = await this.userRepository.getUserProjects({
-      filters: { isFeatured: true },
+      filters: {
+        isFeatured: true,
+        orderBy: "likes",
+        orderByDirection: "desc",
+      },
       userId,
     });
 
@@ -63,7 +67,13 @@ class UserService implements IUserService {
   }
 
   getUserProjects(userId: string): Promise<IProject[]> {
-    return this.userRepository.getUserProjects({ userId });
+    return this.userRepository.getUserProjects({
+      filters: {
+        orderBy: "startDate",
+        orderByDirection: "desc",
+      },
+      userId,
+    });
   }
 
   likeProject(data: ILikeProjectInput): Promise<boolean> {

@@ -58,6 +58,12 @@ const StyleDrawer = styled(Drawer)(() => ({
   ".MuiDrawer-paper": {
     width: "60%",
   },
+
+  ".drawer-close-button-container": {
+    display: "flex",
+    justifyContent: "flex-end",
+    padding: "10px 10px 0 0",
+  },
 }));
 
 export { StyledAppBar, StyleDrawer };

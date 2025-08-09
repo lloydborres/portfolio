@@ -1,4 +1,4 @@
-import type { Timestamp } from "firebase/firestore";
+import type { OrderByDirection, Timestamp } from "firebase/firestore";
 
 interface IUser {
   id: string;
@@ -65,6 +65,8 @@ interface IGetUserProjectsInput {
   userId: string;
   filters?: {
     isFeatured?: boolean;
+    orderBy?: string;
+    orderByDirection?: OrderByDirection;
   };
 }
 

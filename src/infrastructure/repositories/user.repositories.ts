@@ -95,29 +95,38 @@ class UserRepository implements IUserRepository {
   }
 
   async getUserProjects(data: IGetUserProjectsInput): Promise<IProject[]> {
-    const { userId, filters } = data;
-    const projectsRef = collection(
-      this.firestore,
-      this.COLLECTION_NAME,
-      userId,
-      this.SUB_COLLECTION_PROJECTS
-    );
+    try {
+      const { userId, filters } = data;
+      const projectsRef = collection(
+        this.firestore,
+        this.COLLECTION_NAME,
+        userId,
+        this.SUB_COLLECTION_PROJECTS
+      );
 
-    const projectConstraints = [];
-    if (filters?.isFeatured)
-      projectConstraints.push(where("isFeatured", "==", filters.isFeatured));
+      const projectConstraints = [];
+      if (filters?.isFeatured)
+        projectConstraints.push(where("isFeatured", "==", filters.isFeatured));
+      if (filters?.orderBy)
+        projectConstraints.push(
+          orderBy(filters.orderBy, filters.orderByDirection)
+        );
 
-    const projectsQ = query(projectsRef, ...projectConstraints);
-    const projectsSS = await getDocs(projectsQ);
+      const projectsQ = query(projectsRef, ...projectConstraints);
+      const projectsSS = await getDocs(projectsQ);
 
-    const projects: IProject[] = projectsSS.docs.map((projectDoc) => {
-      return {
-        id: projectDoc.id,
-        ...projectDoc.data(),
-      } as IProject;
-    });
+      const projects: IProject[] = projectsSS.docs.map((projectDoc) => {
+        return {
+          id: projectDoc.id,
+          ...projectDoc.data(),
+        } as IProject;
+      });
 
-    return projects;
+      return projects;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      return [];
+    }
   }
 
   async likeProject(data: ILikeProjectInput): Promise<boolean> {
@@ -134,8 +143,8 @@ class UserRepository implements IUserRepository {
         likes: increment(1),
       });
       return true;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      console.log(error);
       return false;
     }
   }

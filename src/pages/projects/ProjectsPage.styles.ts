@@ -12,7 +12,11 @@ const ContentContainer = styled(Box)(({ theme }) => ({
 
 const ProjectsContainer = styled(Stack)(({ theme }) => ({
   padding: "0 80px",
-  gap: "50px",
+  gap: "20px",
+
+  "& .MuiCard-root .MuiCardMedia-root": {
+    height: "450px",
+  },
 
   [theme.breakpoints.down("md")]: {
     padding: "16px 0",
