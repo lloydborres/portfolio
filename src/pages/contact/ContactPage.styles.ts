@@ -3,10 +3,8 @@ import { styled, Box } from "@mui/material";
 const ContentContainer = styled(Box)(({ theme }) => ({
   paddingTop: "50px",
   paddingBottom: "50px",
-
-  "& .MuiPaper-root": {
-    justifySelf: "center",
-  },
+  display: "flex",
+  justifyContent: "center",
 
   "& .MuiCardContent-root": {
     display: "flex",

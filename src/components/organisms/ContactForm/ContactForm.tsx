@@ -62,6 +62,7 @@ const Component = ({
             <TextField
               {...field}
               label="Name"
+              color="secondary"
               error={!!errors.name}
               helperText={errors.name?.message}
               required
@@ -75,6 +76,7 @@ const Component = ({
             <TextField
               {...field}
               label="Email"
+              color="secondary"
               error={!!errors.email}
               helperText={errors.email?.message}
             />
@@ -87,6 +89,7 @@ const Component = ({
             <TextField
               {...field}
               label="Message"
+              color="secondary"
               error={!!errors.message}
               helperText={errors.message?.message}
               rows={3}

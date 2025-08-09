@@ -1,4 +1,9 @@
-import { addDoc, collection, type Firestore } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  Timestamp,
+  type Firestore,
+} from "firebase/firestore";
 import type { ICreateMessageInput } from "@domain";
 
 interface IMessageRepository {
@@ -15,7 +20,11 @@ class MessageRepository implements IMessageRepository {
 
   async createMessage(data: ICreateMessageInput): Promise<boolean> {
     try {
-      await addDoc(collection(this.firestore, this.COLLECTION_NAME), data);
+      await addDoc(collection(this.firestore, this.COLLECTION_NAME), {
+        ...data,
+        sentAt: Timestamp.now(),
+        createdAt: Timestamp.now(),
+      });
 
       return true;
       // eslint-disable-next-line @typescript-eslint/no-unused-vars

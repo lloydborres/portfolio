@@ -34,32 +34,34 @@ const ContactPage = () => {
     >
       <IntroHeader pageTitle="Contact" />
       <ContentContainer>
-        <Card variant="outlined">
-          <CardContent>
-            <ContactForm
-              onSubmitValid={handleMessageSubmitValid}
-              isSendLoading={isCreateMessagePending}
-              sendStatus={createMessageStatus}
-            />
-            <ContactDetailsContainer>
-              <Typography variant="body1" className="contact-details-message">
-                Wanna work together??
-                <br />
-                Drop me a message or just say hey.
-                <br />
-                I'd love to hear from you.
-              </Typography>
-              {!!userDetailsData?.email && (
-                <Typography className="contact-details-item">
-                  <EmailIcon />
-                  <Link href={`mailto:${userDetailsData?.email}`}>
-                    {userDetailsData?.email}
-                  </Link>
+        <div>
+          <Card variant="outlined">
+            <CardContent>
+              <ContactForm
+                onSubmitValid={handleMessageSubmitValid}
+                isSendLoading={isCreateMessagePending}
+                sendStatus={createMessageStatus}
+              />
+              <ContactDetailsContainer>
+                <Typography variant="body1" className="contact-details-message">
+                  Wanna work together??
+                  <br />
+                  Drop me a message or just say hey.
+                  <br />
+                  I'd love to hear from you.
                 </Typography>
-              )}
-            </ContactDetailsContainer>
-          </CardContent>
-        </Card>
+                {!!userDetailsData?.email && (
+                  <Typography className="contact-details-item">
+                    <EmailIcon />
+                    <Link href={`mailto:${userDetailsData?.email}`}>
+                      {userDetailsData?.email}
+                    </Link>
+                  </Typography>
+                )}
+              </ContactDetailsContainer>
+            </CardContent>
+          </Card>
+        </div>
       </ContentContainer>
     </CommonLayout>
   );
