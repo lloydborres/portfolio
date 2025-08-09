@@ -5,6 +5,7 @@ interface IMessage {
   name: string;
   message: string;
   email?: string;
+  sentAt: Timestamp;
   createdAt: Timestamp;
 }
 
