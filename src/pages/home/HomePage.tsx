@@ -21,11 +21,11 @@ const HomePage = () => {
   });
 
   const { userDetailsQuery, featuredItemsQuery } = useGetHome();
-  const { data: userDetailsData, isLoading: userDetailsIsLoading } =
+  const { data: userDetailsData, isPending: userDetailsIsPending } =
     userDetailsQuery;
   const {
     data: featuredItemsData,
-    isLoading: featuredItemsIsLoading,
+    isPending: featuredItemsIsPending,
     refetch: featuredItemsRefetch,
   } = featuredItemsQuery;
 
@@ -77,7 +77,7 @@ const HomePage = () => {
       github={userDetailsData?.github}
       linkedin={userDetailsData?.linkedin}
       pageLoaderProgress={
-        userDetailsIsLoading && featuredItemsIsLoading ? 0 : 100
+        userDetailsIsPending || featuredItemsIsPending ? 0 : 100
       }
     >
       <IntroHeader userDetails={userDetailsData} />

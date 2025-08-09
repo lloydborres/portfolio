@@ -76,9 +76,11 @@ const Component = ({
           </IconButton>
           <Typography variant="caption">{likes}</Typography>
         </Box>
-        <ExpandMore expand={expanded} onClick={handleExpandClick}>
-          <ExpandMoreIcon />
-        </ExpandMore>
+        {(!!moreDetails || (actions?.length ?? 0) > 0) && (
+          <ExpandMore expand={expanded} onClick={handleExpandClick}>
+            <ExpandMoreIcon />
+          </ExpandMore>
+        )}
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         {!!moreDetails && (

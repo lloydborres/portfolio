@@ -11,7 +11,11 @@ import {
   useTheme,
   type AppBarProps,
 } from "@mui/material";
-import { Web as WebIcon, Menu as MenuIcon } from "@mui/icons-material";
+import {
+  Web as WebIcon,
+  Menu as MenuIcon,
+  Close as CloseIcon,
+} from "@mui/icons-material";
 // import portfolioLogoLightImg from "../../../assets/images/portfolio_logo_light.svg";
 import { StyledAppBar, StyleDrawer } from "./AppBar.styles";
 import { Button, IconButton } from "@components";
@@ -62,7 +66,11 @@ const Component = ({
         <Toolbar>
           <Box className="toolbar-icon-container">
             <WebIcon className="toolbar-icon" />
-            {/* <img className="toolbar-icon" alt="Logo" src={portfolioLogoLightImg} /> */}
+            {/* <img
+              className="toolbar-icon"
+              alt="Logo"
+              src={portfolioLogoLightImg}
+            /> */}
             <Typography
               variant="h6"
               component="div"
@@ -95,6 +103,14 @@ const Component = ({
           onClose={handleDrawerToggle}
           anchor="right"
         >
+          <Box
+            className="drawer-close-button-container"
+            onClick={handleDrawerToggle}
+          >
+            <IconButton>
+              <CloseIcon />
+            </IconButton>
+          </Box>
           <List>
             {navItems.map((item) => (
               <ListItem key={item.label}>

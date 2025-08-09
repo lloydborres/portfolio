@@ -16,11 +16,11 @@ const ProjectsPage = () => {
   });
 
   const { userDetailsQuery, projecsQuery } = useGetProjects();
-  const { data: userDetailsData, isLoading: userDetailsIsLoading } =
+  const { data: userDetailsData, isPending: userDetailsIsPending } =
     userDetailsQuery;
   const {
     data: projetsData,
-    isLoading: projectsIsLoading,
+    isPending: projectsIsPending,
     refetch: projectsRefetch,
   } = projecsQuery;
 
@@ -71,7 +71,7 @@ const ProjectsPage = () => {
       email={userDetailsData?.email}
       github={userDetailsData?.github}
       linkedin={userDetailsData?.linkedin}
-      pageLoaderProgress={userDetailsIsLoading || projectsIsLoading ? 0 : 100}
+      pageLoaderProgress={userDetailsIsPending || projectsIsPending ? 0 : 100}
     >
       <IntroHeader pageTitle="Projects" />
       <ContentContainer>
