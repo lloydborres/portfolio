@@ -41,6 +41,11 @@ const CommonLayout = ({
     navigate(NAV_PATHS.PROJECTS.BASE);
   };
 
+  const handleContactNavClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    navigate(NAV_PATHS.CONTACT.BASE);
+  };
+
   const handleFabClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -66,6 +71,7 @@ const CommonLayout = ({
           onTitleClick={handleTitleClick}
           onHomeNavClick={handleHomeNavClick}
           onProjectsNavClick={handleProjectsNavClick}
+          onContactNavClick={handleContactNavClick}
         />
         <Content>{children}</Content>
         <Footer name={name} email={email} github={github} linkedin={linkedin} />

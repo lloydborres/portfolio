@@ -3,6 +3,9 @@ const NAV_PATHS = {
   PROJECTS: {
     BASE: "/projects",
   },
+  CONTACT: {
+    BASE: "/contact",
+  },
 };
 
 export { NAV_PATHS };
