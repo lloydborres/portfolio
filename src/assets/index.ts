@@ -7,3 +7,8 @@ export { default as mysqlLogoImg } from "./images/mysql_logo.svg";
 export { default as reactLogoImg } from "./images/react_logo.svg";
 export { default as sqlLogoImg } from "./images/sql_logo.svg";
 export { default as typescriptLogoImg } from "./images/typescript_logo.svg";
+export { default as cursorLogoImg } from "./images/cursor_logo.svg";
+export { default as dotnetLogoImg } from "./images/dotnet_logo.svg";
+export { default as gitLogoImg } from "./images/git_logo.svg";
+export { default as visualStudioLogoImg } from "./images/visual_studio_logo.svg";
+export { default as vsCodeLogoImg } from "./images/vs_code_logo.svg";
