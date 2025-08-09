@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import { HomePage, ProjectsPage } from "@pages";
+import { HomePage, ProjectsPage, ContactPage } from "@pages";
 import { NAV_PATHS } from "@constants";
 
 const router = createBrowserRouter([
@@ -10,6 +10,10 @@ const router = createBrowserRouter([
   {
     path: NAV_PATHS.PROJECTS.BASE,
     Component: ProjectsPage,
+  },
+  {
+    path: NAV_PATHS.CONTACT.BASE,
+    Component: ContactPage,
   },
 ]);
 

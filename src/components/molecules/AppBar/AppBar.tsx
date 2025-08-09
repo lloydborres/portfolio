@@ -25,6 +25,7 @@ type Props = {
   onTitleClick: () => void;
   onHomeNavClick?: () => void;
   onProjectsNavClick?: () => void;
+  onContactNavClick?: () => void;
 } & AppBarProps;
 
 const Component = ({
@@ -32,6 +33,7 @@ const Component = ({
   onTitleClick,
   onHomeNavClick,
   onProjectsNavClick,
+  onContactNavClick,
   ...otherProps
 }: Props) => {
   const theme = useTheme();
@@ -53,6 +55,10 @@ const Component = ({
     {
       label: "Projects",
       onClick: onProjectsNavClick,
+    },
+    {
+      label: "Contact",
+      onClick: onContactNavClick,
     },
   ];
 

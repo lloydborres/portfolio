@@ -12,5 +12,6 @@ export { default as Experience } from "./organisms/Experience/Experience";
 export { default as FeaturedProjects } from "./organisms/FeaturedProjects/FeaturedProjects";
 export { default as PageLoader } from "./organisms/PageLoader/PageLoader";
 export { default as SkillSet } from "./organisms/SkillSet/SkillSet";
+export { default as ContactForm } from "./organisms/ContactForm/ContactForm";
 
 export { default as CommonLayout } from "./templates/CommonLayout/CommonLayout";
