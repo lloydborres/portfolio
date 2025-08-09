@@ -14,8 +14,10 @@ const ProjectsContainer = styled(Stack)(({ theme }) => ({
   padding: "0 80px",
   gap: "20px",
 
-  "& .MuiCard-root .MuiCardMedia-root": {
-    height: "450px",
+  [theme.breakpoints.up("lg")]: {
+    "& .MuiCard-root .MuiCardMedia-root": {
+      height: "450px",
+    },
   },
 
   [theme.breakpoints.down("md")]: {
