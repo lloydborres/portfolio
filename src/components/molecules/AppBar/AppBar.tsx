@@ -2,44 +2,55 @@ import { useState } from "react";
 import {
   alpha,
   Box,
-  List,
   ListItem,
   ListItemButton,
+  ListItemIcon,
   ListItemText,
-  Toolbar,
-  Typography,
+  // Typography,
   useTheme,
   type AppBarProps,
 } from "@mui/material";
 import {
-  Web as WebIcon,
+  // Web as WebIcon,
   Menu as MenuIcon,
   Close as CloseIcon,
+  Home as HomeIcon,
+  Work as WorkIcon,
+  Assignment as AssignmentIcon,
+  Call as CallIcon,
 } from "@mui/icons-material";
 // import portfolioLogoLightImg from "../../../assets/images/portfolio_logo_light.svg";
-import { StyledAppBar, StyleDrawer } from "./AppBar.styles";
-import { Button, IconButton } from "@components";
+import {
+  StyledAppBar,
+  StyledToolbar,
+  StyledList,
+  StyleDrawer,
+} from "./AppBar.styles";
+import { IconButton } from "@components";
 
 type Props = {
   title: string;
   onTitleClick: () => void;
   onHomeNavClick?: () => void;
+  onExperienceNavClick?: () => void;
   onProjectsNavClick?: () => void;
   onContactNavClick?: () => void;
+  activeItem?: string;
 } & AppBarProps;
 
 const Component = ({
-  title,
-  onTitleClick,
+  // title,
+  // onTitleClick,
   onHomeNavClick,
+  onExperienceNavClick,
   onProjectsNavClick,
   onContactNavClick,
+  activeItem,
   ...otherProps
 }: Props) => {
   const theme = useTheme();
 
-  const rgbaBackground = alpha(theme.palette.primary.main, 0.5);
-  // const rgbaBackground = alpha(theme.palette.grey["900"], 0.5);
+  const rgbaBackground = alpha(theme.palette.common.white, 0.5);
 
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -49,16 +60,28 @@ const Component = ({
 
   const navItems = [
     {
+      name: "home",
       label: "Home",
       onClick: onHomeNavClick,
+      icon: <HomeIcon />,
     },
     {
+      name: "experience",
+      label: "Experience",
+      onClick: onExperienceNavClick,
+      icon: <WorkIcon />,
+    },
+    {
+      name: "projects",
       label: "Projects",
       onClick: onProjectsNavClick,
+      icon: <AssignmentIcon />,
     },
     {
+      name: "contact",
       label: "Contact",
       onClick: onContactNavClick,
+      icon: <CallIcon />,
     },
   ];
 
@@ -69,14 +92,14 @@ const Component = ({
         component="nav"
         {...otherProps}
       >
-        <Toolbar>
-          <Box className="toolbar-icon-container">
+        <StyledToolbar>
+          {/* <Box className="toolbar-icon-container">
             <WebIcon className="toolbar-icon" />
-            {/* <img
+            <img
               className="toolbar-icon"
               alt="Logo"
               src={portfolioLogoLightImg}
-            /> */}
+            />
             <Typography
               variant="h6"
               component="div"
@@ -85,23 +108,30 @@ const Component = ({
             >
               {title}
             </Typography>
-          </Box>
+          </Box> */}
 
-          <Box className="toolbar-menu">
+          <StyledList className="toolbar-menu">
             {navItems.map((item) => (
-              <Button key={item.label} onClick={item.onClick}>
-                {item.label}
-              </Button>
+              <ListItem key={item.label}>
+                <ListItemButton
+                  onClick={item.onClick}
+                  selected={activeItem === item.name}
+                >
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemText primary={item.label} />
+                </ListItemButton>
+              </ListItem>
             ))}
-          </Box>
+          </StyledList>
 
           <IconButton
             className="toolbar-drawer-button"
             onClick={handleDrawerToggle}
+            color="primary"
           >
             <MenuIcon />
           </IconButton>
-        </Toolbar>
+        </StyledToolbar>
       </StyledAppBar>
       <nav>
         <StyleDrawer
@@ -117,15 +147,19 @@ const Component = ({
               <CloseIcon />
             </IconButton>
           </Box>
-          <List>
+          <StyledList>
             {navItems.map((item) => (
               <ListItem key={item.label}>
-                <ListItemButton onClick={item.onClick}>
+                <ListItemButton
+                  onClick={item.onClick}
+                  selected={activeItem === item.name}
+                >
+                  <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.label} />
                 </ListItemButton>
               </ListItem>
             ))}
-          </List>
+          </StyledList>
         </StyleDrawer>
       </nav>
     </>
