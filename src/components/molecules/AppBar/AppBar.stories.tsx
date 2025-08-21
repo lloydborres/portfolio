@@ -11,9 +11,18 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  argTypes: {},
+  globals: {
+    backgrounds: { value: "red50" },
+  },
+  argTypes: {
+    activeItem: {
+      control: { type: "select" },
+      options: ["home", "experience", "projects", "contact"],
+    },
+  },
   args: {
     title: "Portfolio",
     onTitleClick: fn(),
+    activeItem: "home",
   },
 };

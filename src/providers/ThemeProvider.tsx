@@ -3,10 +3,10 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 const mainTheme = createTheme({
   palette: {
     primary: {
-      main: import.meta.env.VITE_APP_THEME_PRIMARY_MAIN,
+      main: "#8B0000",
     },
     secondary: {
-      main: import.meta.env.VITE_APP_THEME_SECONDARY_MAIN,
+      main: "#E5FB00",
     },
   },
 });

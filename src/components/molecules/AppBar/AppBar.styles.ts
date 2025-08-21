@@ -1,64 +1,59 @@
-import { styled, AppBar, Drawer, type Theme } from "@mui/material";
-import { PAGE_MAX_WIDTH } from "@constants";
+import {
+  styled,
+  AppBar,
+  Drawer,
+  type Theme,
+  Toolbar,
+  List,
+} from "@mui/material";
+// import { PAGE_MAX_WIDTH } from "@constants";
 
-const StyledAppBar = styled(AppBar)<{ theme?: Theme }>(({ theme }) => ({
-  backdropFilter: "blur(10px)",
-  WebkitBackdropFilter: "blur(10px)",
-  borderBottom: "1px solid rgba(255, 255, 255, 0.3)",
+const StyledAppBar = styled(AppBar)<{ theme?: Theme }>(() => ({
+  borderRadius: 10,
+}));
 
-  ".toolbar-icon-container": {
-    display: "flex",
-    alignItems: "center",
-    flexGrow: 1,
-  },
-
-  ".toolbar-icon": {
-    height: 30,
-    objectFit: "contain",
-    marginRight: 8,
-  },
-
-  ".toolbar-title": {
-    cursor: "pointer",
-  },
+const StyledToolbar = styled(Toolbar)<{ theme?: Theme }>(({ theme }) => ({
+  justifyContent: "end",
 
   ".toolbar-menu": {
-    ".MuiButton-root": {
-      color: theme.palette.common.white,
-    },
-  },
-
-  ".toolbar-drawer-button": {
     display: "none",
-    svg: {
-      color: theme.palette.common.white,
-    },
   },
 
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.up("lg")]: {
+    justifyContent: "center",
+
     ".toolbar-menu": {
+      display: "flex",
+      justifyContent: "space-evenly",
+      width: "100%",
+    },
+    ".toolbar-drawer-button": {
       display: "none",
     },
-
-    ".toolbar-drawer-button": {
-      display: "initial",
-    },
   },
+}));
 
-  [theme.breakpoints.up("md")]: {
-    alignItems: "center",
-    "& .MuiToolbar-root": {
-      width: "100%",
-      maxWidth: PAGE_MAX_WIDTH,
-    },
+const StyledList = styled(List)<{ theme?: Theme }>(({ theme }) => ({
+  ".MuiListItemButton-root": {
+    borderRadius: 10,
+    color: theme.palette.grey[600],
+  },
+  ".MuiListItemButton-root svg": {
+    fill: theme.palette.grey[600],
+  },
+  ".MuiListItemButton-root.Mui-selected": {
+    background: "none",
+    color: theme.palette.primary.main,
+  },
+  ".MuiListItemButton-root.Mui-selected svg": {
+    fill: theme.palette.primary.main,
   },
 }));
 
 const StyleDrawer = styled(Drawer)(() => ({
   ".MuiDrawer-paper": {
-    width: "60%",
+    width: "75%",
   },
-
   ".drawer-close-button-container": {
     display: "flex",
     justifyContent: "flex-end",
@@ -66,4 +61,4 @@ const StyleDrawer = styled(Drawer)(() => ({
   },
 }));
 
-export { StyledAppBar, StyleDrawer };
+export { StyledAppBar, StyledToolbar, StyledList, StyleDrawer };
