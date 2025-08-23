@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Footer } from "@components";
+import Footer from "./Footer";
 
 const meta = {
   title: "Components/Molecules/Footer",
@@ -10,10 +10,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  globals: {
+    backgrounds: { value: "backgroundLight" },
+  },
   argTypes: {},
   args: {
-    name: "Name",
-    github: "https://github.com/",
-    linkedin: "https://www.linkedin.com/in/",
+    name: "First Name Last Name",
   },
 };

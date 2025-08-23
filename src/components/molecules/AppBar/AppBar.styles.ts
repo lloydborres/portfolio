@@ -9,7 +9,7 @@ import {
 // import { PAGE_MAX_WIDTH } from "@constants";
 
 const StyledAppBar = styled(AppBar)<{ theme?: Theme }>(() => ({
-  borderRadius: 10,
+  borderRadius: 20,
 }));
 
 const StyledToolbar = styled(Toolbar)<{ theme?: Theme }>(({ theme }) => ({
