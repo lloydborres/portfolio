@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-// import { fn } from "storybook/test";
+import { fn } from "storybook/test";
+import { firebaseLogoImg, reactLogoImg, typescriptLogoImg } from "@assets";
 import FeaturedProjects from "./FeaturedProjects";
 
 const meta = {
@@ -11,6 +12,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  globals: {
+    backgrounds: { value: "backgroundLight" },
+  },
   argTypes: {},
   args: {
     projects: [
@@ -19,14 +23,21 @@ export const Default: Story = {
         title: "Project A",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        actions: [
+        skills: [
           {
-            label: "Action 1",
-            isExternal: true,
+            label: "React",
+            imgSrc: reactLogoImg,
           },
           {
-            label: "Action 2",
-            // onClick: fn(),
+            label: "TypeScript",
+            imgSrc: typescriptLogoImg,
+          },
+          {
+            label: "Firebase",
+            imgSrc: firebaseLogoImg,
+          },
+          {
+            label: "Agile",
           },
         ],
       },
@@ -35,25 +46,20 @@ export const Default: Story = {
         title: "Project",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        actions: [
-          {
-            label: "Action 1",
-            // onClick: fn(),
-          },
-        ],
       },
       {
         id: "3",
         title: "Project C",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        actions: [
+        skills: [
           {
-            label: "Action 1",
-            // onClick: fn(),
+            label: "React",
+            imgSrc: reactLogoImg,
           },
         ],
       },
     ],
+    onSeeMoreClick: fn(),
   },
 };

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { ProjectCard } from "@components";
+import { firebaseLogoImg, reactLogoImg, typescriptLogoImg } from "@assets";
+import ProjectCard from "./ProjectCard";
 
 const meta = {
   title: "Components/Molecules/ProjectCard",
@@ -17,13 +18,21 @@ export const Default: Story = {
     title: "Project A",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    actions: [
+    skills: [
       {
-        label: "Action 1",
-        isExternal: true,
+        label: "React",
+        imgSrc: reactLogoImg,
       },
       {
-        label: "Action 2",
+        label: "TypeScript",
+        imgSrc: typescriptLogoImg,
+      },
+      {
+        label: "Firebase",
+        imgSrc: firebaseLogoImg,
+      },
+      {
+        label: "Agile",
       },
     ],
   },

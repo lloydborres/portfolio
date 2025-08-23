@@ -1,25 +1,26 @@
 import { Typography } from "@mui/material";
-import { ProjectCard } from "@components";
-import type { IProject } from "@domain";
+import { Button, ProjectCard, type ProjectCardProps } from "@components";
 import { Container, CardsContainer } from "./FeaturedProjects.styles";
 
 type Props = {
-  projects?: ({
-    onLikeClick?: (id: string) => void;
-    likes?: number;
-    isLiked?: boolean;
-  } & IProject)[];
+  projects?: ProjectCardProps[];
+  onSeeMoreClick?: () => void;
 };
 
-const Component = ({ projects }: Props) => {
+const Component = ({ projects, onSeeMoreClick }: Props) => {
   return (
     <Container>
-      <Typography variant="h5">Projects</Typography>
+      <Typography variant="h2">Projects</Typography>
       <CardsContainer>
         {projects?.map((project, index) => {
           return <ProjectCard key={index} {...project} />;
         })}
       </CardsContainer>
+      {!!onSeeMoreClick && (
+        <Button variant="contained" onClick={onSeeMoreClick}>
+          See More
+        </Button>
+      )}
     </Container>
   );
 };

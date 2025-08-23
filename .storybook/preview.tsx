@@ -14,7 +14,7 @@ const preview: Preview = {
       options: {
         light: { name: "Light", value: "#FFFFFF" },
         dark: { name: "Dark", value: "#333333" },
-        red50: { name: "Red50", value: "#FEEBEE" },
+        backgroundLight: { name: "BackgroundLight", value: "#F5E5E0" },
       },
     },
   },
