@@ -1,26 +1,30 @@
-import { styled, Box, Stack } from "@mui/material";
+import { styled, Box } from "@mui/material";
 
-const Container = styled(Box)(() => ({
-  padding: "16px 0",
+const Container = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: 20,
+  padding: 30,
+  background: theme.palette.background.paper,
+  borderRadius: 20,
+
+  h2: {
+    fontSize: 36,
+    width: "100%",
+  },
 }));
 
-const CardsContainer = styled(Stack)(({ theme }) => ({
-  flexDirection: "row",
-  flexWrap: "wrap",
+const CardsContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
   justifyContent: "center",
   alignItems: "start",
   gap: 20,
-  padding: "16px 0",
 
-  "& .MuiCard-root": {
-    width: "calc((100% - 24px) / 2)",
-  },
-
-  [theme.breakpoints.down("sm")]: {
-    flexDirection: "column",
-    "& .MuiCard-root": {
-      width: "100%",
-    },
+  [theme.breakpoints.up("lg")]: {
+    display: "grid",
+    gridTemplateColumns: "auto auto",
   },
 }));
 

@@ -12,7 +12,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   globals: {
-    backgrounds: { value: "red50" },
+    backgrounds: { value: "backgroundLight" },
   },
   argTypes: {
     activeItem: {

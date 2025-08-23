@@ -1,12 +1,37 @@
 import { styled, Card } from "@mui/material";
 
 const StyledCard = styled(Card)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  borderRadius: 20,
+  height: "100%",
+
   "& .MuiCardMedia-root": {
-    height: 350,
+    height: 300,
   },
 
-  "& .like-container": {
-    display: "flex",
+  "& .MuiCardContent-root": {
+    padding: "10px 20px 5px",
+    flexGrow: 1,
+    h3: {
+      fontSize: 34,
+    },
+  },
+
+  "& .project-card-description": {
+    display: "-webkit-box",
+    WebkitBoxOrient: "vertical",
+    WebkitLineClamp: 4,
+    overflow: "hidden",
+  },
+
+  "& .MuiCardActions-root": {
+    justifyContent: "space-between",
+    padding: "5px 20px 20px",
+  },
+
+  "& .project-card-like-container": {
+    flexDirection: "row",
     alignItems: "center",
 
     "button.liked": {
@@ -14,25 +39,6 @@ const StyledCard = styled(Card)(({ theme }) => ({
       svg: {
         color: theme.palette.primary.main,
       },
-    },
-  },
-
-  "& .more-details-container": {
-    paddingTop: 0,
-    paddingBottom: 0,
-  },
-
-  "& .more-details-text": {
-    whiteSpace: "pre-wrap",
-  },
-
-  "& .action-buttons-container": {
-    justifyContent: "flex-end",
-  },
-
-  [theme.breakpoints.down("sm")]: {
-    "& .MuiCardMedia-root": {
-      height: 300,
     },
   },
 }));
