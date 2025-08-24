@@ -89,7 +89,7 @@ const HomePage = () => {
         userDetailsIsPending || featuredItemsIsPending ? 0 : 100
       }
     >
-      <Section>{userDetailsData?.description}</Section>
+      <Section header="About">{userDetailsData?.description}</Section>
       <FeaturedProjects
         projects={featuredItemsData?.projects.map((project) => ({
           ...project,

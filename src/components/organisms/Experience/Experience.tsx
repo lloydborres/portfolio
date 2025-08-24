@@ -1,7 +1,8 @@
 import moment from "moment";
 import { Typography } from "@mui/material";
 import type { IExperience } from "@domain";
-import { Container, ExperiencesContainer } from "./Experience.styles";
+import { ExperiencesContainer } from "./Experience.styles";
+import { Section } from "@components";
 
 type Props = {
   experiences?: IExperience[];
@@ -9,8 +10,7 @@ type Props = {
 
 const Component = ({ experiences }: Props) => {
   return (
-    <Container>
-      <Typography variant="h5">Experience</Typography>
+    <Section header="Experience">
       <ExperiencesContainer>
         {experiences?.map((exp, expIdx) => (
           <div key={expIdx} className="experience-row-container">
@@ -60,7 +60,7 @@ const Component = ({ experiences }: Props) => {
           </div>
         ))}
       </ExperiencesContainer>
-    </Container>
+    </Section>
   );
 };
 
