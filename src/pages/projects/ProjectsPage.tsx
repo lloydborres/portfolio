@@ -68,7 +68,7 @@ const ProjectsPage = () => {
 
   return (
     <CommonLayout
-      name={userDetailsData?.name || ""}
+      name={userDetailsData?.name}
       appBarTitle="Projects"
       menuActiveItem="projects"
       pageLoaderProgress={userDetailsIsPending || projectsIsPending ? 0 : 100}

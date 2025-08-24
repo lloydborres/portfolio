@@ -5,6 +5,9 @@ import Experience from "./Experience";
 const meta = {
   title: "Components/Organisms/Experience",
   component: Experience,
+  globals: {
+    backgrounds: { value: "backgroundLight" },
+  },
 } satisfies Meta<typeof Experience>;
 
 export default meta;

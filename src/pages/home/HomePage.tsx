@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { Box, Typography, useTheme } from "@mui/material";
-import { HomeLayout, FeaturedProjects } from "@components";
+import { HomeLayout, FeaturedProjects, Section } from "@components";
 import { NAV_PATHS, STRG_LIKED_PROJECTS } from "@constants";
 import { tagNameToTagPillProps } from "@utils";
 import useLikeProject from "../projects/api/useLikeProject";
 import useGetHome from "./api/useGetHome";
 
 const HomePage = () => {
-  const theme = useTheme();
   const navigate = useNavigate();
 
   const [likedProjects, setLikedProjects] = useState<string[]>(() => {
@@ -78,8 +76,8 @@ const HomePage = () => {
   return (
     <HomeLayout
       userDetails={{
-        name: userDetailsData?.name || "",
-        title: userDetailsData?.title || "",
+        name: userDetailsData?.name,
+        title: userDetailsData?.title,
         profilePicUrl: userDetailsData?.profilePicSrc,
         githubUrl: userDetailsData?.github,
         linkedInUrl: userDetailsData?.linkedin,
@@ -91,23 +89,7 @@ const HomePage = () => {
         userDetailsIsPending || featuredItemsIsPending ? 0 : 100
       }
     >
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "20px",
-          padding: "30px",
-          backgroundColor: theme.palette.common.white,
-          borderRadius: "20px",
-        }}
-      >
-        <Typography variant="h2" sx={{ fontSize: 36 }}>
-          About
-        </Typography>
-        <Typography variant="body1" sx={{ whiteSpace: "pre-wrap" }}>
-          {userDetailsData?.description}
-        </Typography>
-      </Box>
+      <Section>{userDetailsData?.description}</Section>
       <FeaturedProjects
         projects={featuredItemsData?.projects.map((project) => ({
           ...project,

@@ -10,6 +10,7 @@ export { default as IntroHeader } from "./molecules/IntroHeader/IntroHeader";
 export { default as ProjectCard } from "./molecules/ProjectCard/ProjectCard";
 export type { Props as ProjectCardProps } from "./molecules/ProjectCard/ProjectCard";
 export { default as SkillCard } from "./molecules/SkillCard/SkillCard";
+export { default as Section } from "./molecules/Section/Section";
 
 export { default as Experience } from "./organisms/Experience/Experience";
 export { default as FeaturedProjects } from "./organisms/FeaturedProjects/FeaturedProjects";

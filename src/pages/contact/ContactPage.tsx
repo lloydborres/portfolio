@@ -26,7 +26,7 @@ const ContactPage = () => {
 
   return (
     <CommonLayout
-      name={userDetailsData?.name || ""}
+      name={userDetailsData?.name}
       appBarTitle="Contact"
       pageLoaderProgress={userDetailsIsPending ? 0 : 100}
     >
