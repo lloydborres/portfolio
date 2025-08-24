@@ -1,29 +1,15 @@
-import { styled, Box, Stack } from "@mui/material";
+import { styled, Box } from "@mui/material";
 
-const ContentContainer = styled(Box)(({ theme }) => ({
-  paddingTop: "50px",
-  paddingBottom: "50px",
-
-  [theme.breakpoints.down("md")]: {
-    paddingTop: "16px",
-    paddingBottom: "16px",
-  },
-}));
-
-const ProjectsContainer = styled(Stack)(({ theme }) => ({
-  padding: "0 80px",
-  gap: "20px",
+const ProjectsContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: 20,
 
   [theme.breakpoints.up("lg")]: {
-    "& .MuiCard-root .MuiCardMedia-root": {
-      height: "450px",
-    },
-  },
-
-  [theme.breakpoints.down("md")]: {
-    padding: "16px 0",
-    gap: "20px",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr 1fr",
   },
 }));
 
-export { ContentContainer, ProjectsContainer };
+export { ProjectsContainer };

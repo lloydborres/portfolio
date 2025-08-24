@@ -12,10 +12,15 @@ const StyledCard = styled(Card)(({ theme }) => ({
   },
 
   "& .MuiCardContent-root": {
+    display: "flex",
+    flexDirection: "column",
     padding: "10px 20px 5px",
     flexGrow: 1,
     h3: {
       fontSize: 34,
+    },
+    p: {
+      flexGrow: 1,
     },
   },
 

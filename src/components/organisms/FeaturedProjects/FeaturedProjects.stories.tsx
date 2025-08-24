@@ -23,7 +23,7 @@ export const Default: Story = {
         title: "Project A",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        skills: [
+        tags: [
           {
             label: "React",
             imgSrc: reactLogoImg,
@@ -52,7 +52,7 @@ export const Default: Story = {
         title: "Project C",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        skills: [
+        tags: [
           {
             label: "React",
             imgSrc: reactLogoImg,

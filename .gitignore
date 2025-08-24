@@ -42,3 +42,4 @@ firebase-debug.*.log
 public/portfolio_icon.svg
 src/assets/images/profile_picture.jpg
 src/assets/images/portfolio_logo_light.svg
+src/assets/images/portfolio_logo_dark.svg

@@ -33,7 +33,8 @@
       "@hooks": ["./src/hooks"],
       "@infrastructure": ["./src/infrastructure"],
       "@pages": ["./src/pages"],
-      "@providers": ["./src/providers"]
+      "@providers": ["./src/providers"],
+      "@utils": ["./src/utils"]
     }
   },
   "include": ["src"]

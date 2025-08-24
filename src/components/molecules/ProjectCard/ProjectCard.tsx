@@ -7,15 +7,20 @@ import {
 } from "@mui/material";
 import { Favorite as FavoriteIcon } from "@mui/icons-material";
 import { IconButton, Button, type TagPillProps, TagPill } from "@components";
-import type { IProject } from "@domain";
 import { StyledCard, CardMediaPlaceholder } from "./ProjectCard.styles";
 
 type Props = {
-  onLikeClick?: (id: string) => void;
+  id: string;
+  title: string;
+  description: string;
+  coverImg?: string;
+  moreDetails?: string;
+  isFeatured?: boolean;
+  tags?: TagPillProps[];
   likes?: number;
+  onLikeClick?: (id: string) => void;
   isLiked?: boolean;
-  skills?: TagPillProps[];
-} & IProject;
+};
 
 const Component = ({
   id,
@@ -23,9 +28,9 @@ const Component = ({
   description,
   coverImg,
   onLikeClick,
+  tags = [],
   likes = 0,
   isLiked = false,
-  skills = [],
 }: Props) => {
   const splittedTitle = title.split(" ");
   const titleMoreThan2Words = splittedTitle.length > 1;
@@ -58,12 +63,8 @@ const Component = ({
           {description}
         </Typography>
         <Stack marginTop="10px" direction="row" gap="10px" flexWrap="wrap">
-          {skills.map((skill) => (
-            <TagPill
-              key={skill.label}
-              label={skill.label}
-              imgSrc={skill.imgSrc}
-            />
+          {tags.map((tag) => (
+            <TagPill key={tag.label} label={tag.label} imgSrc={tag.imgSrc} />
           ))}
         </Stack>
       </CardContent>

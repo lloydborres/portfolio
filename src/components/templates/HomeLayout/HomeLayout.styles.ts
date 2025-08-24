@@ -23,7 +23,7 @@ const Content = styled(Stack)(({ theme }) => ({
   position: "relative",
   flexGrow: 1,
   gap: 30,
-  padding: "100px 30px 30px",
+  padding: 20,
 
   [theme.breakpoints.up("lg")]: {
     padding: "30px 15px",

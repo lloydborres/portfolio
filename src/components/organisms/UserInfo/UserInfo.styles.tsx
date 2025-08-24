@@ -1,6 +1,8 @@
 import { styled, Stack, Box, Link } from "@mui/material";
 
 const Container = styled(Box)(({ theme }) => ({
+  width: "100%",
+
   [theme.breakpoints.up("lg")]: {
     height: "calc(100vh - 60px)",
     padding: "30px 15px",
