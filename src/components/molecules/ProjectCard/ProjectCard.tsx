@@ -5,7 +5,10 @@ import {
   CardActions,
   Stack,
 } from "@mui/material";
-import { Favorite as FavoriteIcon } from "@mui/icons-material";
+import {
+  Favorite as FavoriteIcon,
+  OpenInNew as OpenInNewIcon,
+} from "@mui/icons-material";
 import { IconButton, Button, type TagPillProps, TagPill } from "@components";
 import { StyledCard, CardMediaPlaceholder } from "./ProjectCard.styles";
 
@@ -20,6 +23,9 @@ type Props = {
   likes?: number;
   onLikeClick?: (id: string) => void;
   isLiked?: boolean;
+  actionText?: string;
+  onActionClick?: () => void;
+  isActionExternal?: boolean;
 };
 
 const Component = ({
@@ -28,9 +34,12 @@ const Component = ({
   description,
   coverImg,
   onLikeClick,
+  onActionClick,
   tags = [],
   likes = 0,
   isLiked = false,
+  actionText = "Read More",
+  isActionExternal = false,
 }: Props) => {
   const splittedTitle = title.split(" ");
   const titleMoreThan2Words = splittedTitle.length > 1;
@@ -80,7 +89,15 @@ const Component = ({
           </IconButton>
           <Typography variant="caption">{likes}</Typography>
         </Stack>
-        <Button variant="outlined">Read More</Button>
+        {!!onActionClick && (
+          <Button
+            variant="outlined"
+            onClick={onActionClick}
+            endIcon={isActionExternal && <OpenInNewIcon />}
+          >
+            {actionText}
+          </Button>
+        )}
       </CardActions>
     </StyledCard>
   );

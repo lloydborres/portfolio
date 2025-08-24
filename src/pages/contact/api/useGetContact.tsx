@@ -2,14 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import { useServices } from "@hooks";
 
 const useGetContact = () => {
-  const { userService } = useServices();
+  const { portfolioService } = useServices();
 
-  const userDetailsQuery = useQuery({
-    queryKey: ["userDetails"],
-    queryFn: () => userService.getUserDetails(),
+  const portfolioDetailsQuery = useQuery({
+    queryKey: ["portfolioDetails"],
+    queryFn: () => portfolioService.getPortfolioDetails(),
   });
 
-  return { userDetailsQuery };
+  return { portfolioDetailsQuery };
 };
 
 export default useGetContact;

@@ -1,18 +1,18 @@
-import { MessageService, UserService } from "@domain";
+import { MessageService, PortfolioService } from "@domain";
 import {
   firebaseFirestore,
   MessageRepository,
-  UserRepository,
+  PortfolioRepository,
 } from "@infrastructure";
 import { createContext } from "react";
 
-const userRepository = new UserRepository(firebaseFirestore);
-const userService = new UserService(userRepository);
+const portfolioRepository = new PortfolioRepository(firebaseFirestore);
+const portfolioService = new PortfolioService(portfolioRepository);
 const messageRepository = new MessageRepository(firebaseFirestore);
 const messageService = new MessageService(messageRepository);
 
 const services = {
-  userService,
+  portfolioService,
   messageService,
 };
 

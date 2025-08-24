@@ -51,12 +51,20 @@ const Component = ({
         </Typography>
         <Stack flexDirection="row" justifyContent="center" gap="20px">
           {!!githubUrl && (
-            <LinkIcon href={githubUrl}>
+            <LinkIcon
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <GitHubIcon />
             </LinkIcon>
           )}
           {!!linkedInUrl && (
-            <LinkIcon href={linkedInUrl}>
+            <LinkIcon
+              href={linkedInUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <LinkedInIcon />
             </LinkIcon>
           )}

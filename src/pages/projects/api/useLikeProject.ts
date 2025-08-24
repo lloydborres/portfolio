@@ -3,11 +3,11 @@ import type { ILikeProjectInput } from "@domain";
 import { useServices } from "@hooks";
 
 const useLikeProject = () => {
-  const { userService } = useServices();
+  const { portfolioService } = useServices();
 
   const mutation = useMutation({
     mutationKey: ["likeProject"],
-    mutationFn: (data: ILikeProjectInput) => userService.likeProject(data),
+    mutationFn: (data: ILikeProjectInput) => portfolioService.likeProject(data),
   });
 
   return mutation;
