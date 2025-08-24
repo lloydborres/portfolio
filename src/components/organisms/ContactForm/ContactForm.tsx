@@ -74,7 +74,7 @@ const Component = ({
           render={({ field }) => (
             <TextField
               {...field}
-              label="Email"
+              label="Email (optional)"
               error={!!errors.email}
               helperText={errors.email?.message}
             />

@@ -40,7 +40,7 @@ const ContactPage = () => {
             />
             <ContactDetailsContainer>
               <Typography variant="body1" className="contact-details-message">
-                Wanna work together??
+                Wanna work together?
                 <br />
                 Drop me a message or just say hey.
                 <br />

@@ -37,6 +37,11 @@ const CommonLayout = ({
     navigate(NAV_PATHS.BASE);
   };
 
+  const handleExperienceNavClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    navigate(NAV_PATHS.EXPERIENCE.BASE);
+  };
+
   const handleProjectsNavClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     navigate(NAV_PATHS.PROJECTS.BASE);
@@ -59,6 +64,7 @@ const CommonLayout = ({
           activeItem={menuActiveItem}
           onTitleClick={handleTitleClick}
           onHomeNavClick={handleHomeNavClick}
+          onExperienceNavClick={handleExperienceNavClick}
           onProjectsNavClick={handleProjectsNavClick}
           onContactNavClick={handleContactNavClick}
         />

@@ -1,11 +1,5 @@
 import { styled } from "@mui/material";
 
-const Container = styled("div")(({ theme }) => ({
-  padding: 30,
-  background: theme.palette.background.paper,
-  borderRadius: 20,
-}));
-
 const ExperiencesContainer = styled("div")(({ theme }) => ({
   ".experience-row-container": {
     padding: "16px 0",
@@ -63,4 +57,4 @@ const ExperiencesContainer = styled("div")(({ theme }) => ({
   },
 }));
 
-export { Container, ExperiencesContainer };
+export { ExperiencesContainer };

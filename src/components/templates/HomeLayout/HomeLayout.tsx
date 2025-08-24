@@ -52,6 +52,11 @@ const HomeLayout = ({
     navigate(NAV_PATHS.BASE);
   };
 
+  const handleExperienceNavClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    navigate(NAV_PATHS.EXPERIENCE.BASE);
+  };
+
   const handleProjectsNavClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     navigate(NAV_PATHS.PROJECTS.BASE);
@@ -91,6 +96,7 @@ const HomeLayout = ({
                 title={appBarTitle}
                 activeItem={menuActiveItem}
                 onTitleClick={handleTitleClick}
+                onExperienceNavClick={handleExperienceNavClick}
                 onHomeNavClick={handleHomeNavClick}
                 onProjectsNavClick={handleProjectsNavClick}
                 onContactNavClick={handleContactNavClick}
