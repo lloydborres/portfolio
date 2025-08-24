@@ -21,6 +21,7 @@ const CardsContainer = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   alignItems: "start",
   gap: 20,
+  width: "100%",
 
   [theme.breakpoints.up("lg")]: {
     display: "grid",

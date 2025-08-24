@@ -10,9 +10,9 @@ import useGetContact from "./api/useGetContact";
 import useCreateMessage from "./api/useCreateMessage";
 
 const ContactPage = () => {
-  const { userDetailsQuery } = useGetContact();
-  const { data: userDetailsData, isPending: userDetailsIsPending } =
-    userDetailsQuery;
+  const { portfolioDetailsQuery } = useGetContact();
+  const { data: portfolioDetailsData, isPending: portfolioDetailsIsPending } =
+    portfolioDetailsQuery;
   const {
     mutate: createMessageMutate,
     isPending: isCreateMessagePending,
@@ -26,9 +26,9 @@ const ContactPage = () => {
 
   return (
     <CommonLayout
-      name={userDetailsData?.name}
+      name={portfolioDetailsData?.name}
       appBarTitle="Contact"
-      pageLoaderProgress={userDetailsIsPending ? 0 : 100}
+      pageLoaderProgress={portfolioDetailsIsPending ? 0 : 100}
     >
       <ContentContainer>
         <Card variant="outlined">
@@ -46,11 +46,11 @@ const ContactPage = () => {
                 <br />
                 I'd love to hear from you.
               </Typography>
-              {!!userDetailsData?.email && (
+              {!!portfolioDetailsData?.email && (
                 <Typography className="contact-details-item">
                   <EmailIcon />
-                  <Link href={`mailto:${userDetailsData?.email}`}>
-                    {userDetailsData?.email}
+                  <Link href={`mailto:${portfolioDetailsData?.email}`}>
+                    {portfolioDetailsData?.email}
                   </Link>
                 </Typography>
               )}

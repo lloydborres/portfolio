@@ -2,23 +2,24 @@ import { useServices } from "@hooks";
 import { useQuery } from "@tanstack/react-query";
 
 const useGetHome = () => {
-  const { userService } = useServices();
+  const { portfolioService } = useServices();
 
-  const userDetailsQuery = useQuery({
-    queryKey: ["userDetails"],
-    queryFn: () => userService.getUserDetails(),
+  const portfolioDetailsQuery = useQuery({
+    queryKey: ["portfolioDetails"],
+    queryFn: () => portfolioService.getPortfolioDetails(),
   });
 
-  const userId = userDetailsQuery.data?.id;
+  const portfolioId = portfolioDetailsQuery.data?.id;
 
   const featuredItemsQuery = useQuery({
-    queryKey: ["userFeaturedItems", userId],
+    queryKey: ["portfolioFeaturedItems", portfolioId],
     queryFn: () => {
-      if (userId) return userService.getUserFeaturedItems(userId);
+      if (portfolioId)
+        return portfolioService.getPortfolioFeaturedItems(portfolioId);
     },
   });
 
-  return { userDetailsQuery, featuredItemsQuery };
+  return { portfolioDetailsQuery, featuredItemsQuery };
 };
 
 export default useGetHome;

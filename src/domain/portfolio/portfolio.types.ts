@@ -1,6 +1,6 @@
 import type { OrderByDirection, Timestamp } from "firebase/firestore";
 
-interface IUser {
+interface IPortfolio {
   id: string;
   name: string;
   title: string;
@@ -44,16 +44,15 @@ interface IProject {
   coverImg?: string;
   tags?: string[];
   likes?: number;
-  actions?: {
+  links?: {
     label: string;
-    href?: string;
+    url?: string;
     isExternal?: boolean;
   }[];
-  moreDetails?: string;
   isFeatured?: boolean;
 }
 
-interface IUserFeaturedItems {
+interface IPortfolioFeaturedItems {
   skillSets: ({
     skills: ISkillSetSkill[];
   } & Omit<ISkillSet, "skills">)[];
@@ -61,8 +60,8 @@ interface IUserFeaturedItems {
   projects: IProject[];
 }
 
-interface IGetUserProjectsInput {
-  userId: string;
+interface IGetPortfolioProjectsInput {
+  portfolioId: string;
   filters?: {
     isFeatured?: boolean;
     orderBy?: string;
@@ -71,18 +70,18 @@ interface IGetUserProjectsInput {
 }
 
 interface ILikeProjectInput {
-  userId: string;
+  portfolioId: string;
   projectId: string;
 }
 
 export type {
-  IUser,
+  IPortfolio,
   ISkillSetSkill,
   ISkillSet,
   IPosition,
   IExperience,
   IProject,
-  IUserFeaturedItems,
-  IGetUserProjectsInput,
+  IPortfolioFeaturedItems,
+  IGetPortfolioProjectsInput,
   ILikeProjectInput,
 };

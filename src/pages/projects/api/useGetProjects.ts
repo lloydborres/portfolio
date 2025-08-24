@@ -2,23 +2,24 @@ import { useQuery } from "@tanstack/react-query";
 import { useServices } from "@hooks";
 
 const useGetProjects = () => {
-  const { userService } = useServices();
+  const { portfolioService } = useServices();
 
-  const userDetailsQuery = useQuery({
-    queryKey: ["userDetails"],
-    queryFn: () => userService.getUserDetails(),
+  const portfolioDetailsQuery = useQuery({
+    queryKey: ["portfolioDetails"],
+    queryFn: () => portfolioService.getPortfolioDetails(),
   });
 
-  const userId = userDetailsQuery.data?.id;
+  const portfolioId = portfolioDetailsQuery.data?.id;
 
   const projecsQuery = useQuery({
-    queryKey: ["userProjects", userId],
+    queryKey: ["portfolioProjects", portfolioId],
     queryFn: () => {
-      if (userId) return userService.getUserProjects(userId);
+      if (portfolioId)
+        return portfolioService.getPortfolioProjects(portfolioId);
     },
   });
 
-  return { userDetailsQuery, projecsQuery };
+  return { portfolioDetailsQuery, projecsQuery };
 };
 
 export default useGetProjects;

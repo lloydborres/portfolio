@@ -18,9 +18,9 @@ const HomePage = () => {
     return [];
   });
 
-  const { userDetailsQuery, featuredItemsQuery } = useGetHome();
-  const { data: userDetailsData, isPending: userDetailsIsPending } =
-    userDetailsQuery;
+  const { portfolioDetailsQuery, featuredItemsQuery } = useGetHome();
+  const { data: portfolioDetailsData, isPending: portfolioDetailsIsPending } =
+    portfolioDetailsQuery;
   const {
     data: featuredItemsData,
     isPending: featuredItemsIsPending,
@@ -30,14 +30,14 @@ const HomePage = () => {
   const { mutate: likeProjectMutate } = useLikeProject();
 
   const handleLikeClick = (id: string) => {
-    if (userDetailsData) {
+    if (portfolioDetailsData) {
       setLikedProjects((prev) => {
         const newLiked = [...prev, id];
         localStorage.setItem(STRG_LIKED_PROJECTS, JSON.stringify(newLiked));
         return newLiked;
       });
       likeProjectMutate(
-        { userId: userDetailsData?.id, projectId: id },
+        { portfolioId: portfolioDetailsData?.id, projectId: id },
         {
           onSuccess: (res) => {
             if (res) {
@@ -73,30 +73,46 @@ const HomePage = () => {
     navigate(NAV_PATHS.PROJECTS.BASE);
   };
 
+  const handleProjectActionClick = (url: string) => () => {
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <HomeLayout
       userDetails={{
-        name: userDetailsData?.name,
-        title: userDetailsData?.title,
-        profilePicUrl: userDetailsData?.profilePicSrc,
-        githubUrl: userDetailsData?.github,
-        linkedInUrl: userDetailsData?.linkedin,
-        email: userDetailsData?.email,
-        location: userDetailsData?.location,
+        name: portfolioDetailsData?.name,
+        title: portfolioDetailsData?.title,
+        profilePicUrl: portfolioDetailsData?.profilePicSrc,
+        githubUrl: portfolioDetailsData?.github,
+        linkedInUrl: portfolioDetailsData?.linkedin,
+        email: portfolioDetailsData?.email,
+        location: portfolioDetailsData?.location,
       }}
       menuActiveItem="home"
       pageLoaderProgress={
-        userDetailsIsPending || featuredItemsIsPending ? 0 : 100
+        portfolioDetailsIsPending || featuredItemsIsPending ? 0 : 100
       }
     >
-      <Section header="About">{userDetailsData?.description}</Section>
+      <Section header="About">{portfolioDetailsData?.description}</Section>
       <FeaturedProjects
-        projects={featuredItemsData?.projects.map((project) => ({
-          ...project,
-          tags: project.tags?.map((tag) => tagNameToTagPillProps(tag)),
-          isLiked: likedProjects.includes(project.id),
-          onLikeClick: handleLikeClick,
-        }))}
+        projects={featuredItemsData?.projects.map((project) => {
+          const firstProjectLink =
+            project.links && project.links.length > 0
+              ? project.links[0]
+              : undefined;
+
+          return {
+            ...project,
+            tags: project.tags?.map((tag) => tagNameToTagPillProps(tag)),
+            isLiked: likedProjects.includes(project.id),
+            onLikeClick: handleLikeClick,
+            actionText: firstProjectLink?.label,
+            onActionClick: firstProjectLink?.url
+              ? handleProjectActionClick(firstProjectLink.url)
+              : undefined,
+            isActionExternal: firstProjectLink?.isExternal,
+          };
+        })}
         onSeeMoreClick={handleSeeMoreClick}
       />
     </HomeLayout>
