@@ -1,0 +1,65 @@
+import { styled, Stack, Box, Link } from "@mui/material";
+
+const Container = styled(Box)(() => ({}));
+
+const ProfilePicContainer = styled(Box)(() => ({
+  position: "relative",
+  height: 87,
+
+  img: {
+    position: "absolute",
+    top: 0,
+    left: "calc(50% - (173px/2))",
+    height: 173,
+    width: 173,
+    objectFit: "cover",
+    borderRadius: 20,
+  },
+}));
+
+const InfoContainer = styled(Stack)(({ theme }) => ({
+  gap: 20,
+  padding: "100px 20px 20px",
+  background: theme.palette.background.paper,
+  borderRadius: 20,
+
+  ".user-info-name": {
+    fontSize: 36,
+    textAlign: "center",
+  },
+
+  ".user-info-title": {
+    fontSize: 16,
+    textAlign: "center",
+  },
+}));
+
+const LinkIcon = styled(Link)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  padding: 7,
+  border: `2px solid ${theme.palette.primary.main}`,
+  borderRadius: 10,
+
+  "&:hover": {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.background.paper,
+  },
+}));
+
+const InfoLink = styled(Link)(({ theme }) => ({
+  display: "flex",
+  gap: 10,
+  padding: 30,
+  border: `2px solid ${theme.palette.primary.main}`,
+  borderRadius: 10,
+  textDecoration: "none",
+
+  "&:hover": {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.common.white,
+  },
+}));
+
+export { Container, ProfilePicContainer, InfoContainer, LinkIcon, InfoLink };
