@@ -1,12 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import { Box, Typography, useTheme } from "@mui/material";
 import { HomeLayout, FeaturedProjects } from "@components";
-import { STRG_LIKED_PROJECTS } from "@constants";
+import { NAV_PATHS, STRG_LIKED_PROJECTS } from "@constants";
+import { tagNameToTagPillProps } from "@utils";
 import useLikeProject from "../projects/api/useLikeProject";
 import useGetHome from "./api/useGetHome";
 
 const HomePage = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const [likedProjects, setLikedProjects] = useState<string[]>(() => {
     const cachedLikedProjects = localStorage.getItem(STRG_LIKED_PROJECTS);
@@ -67,6 +70,11 @@ const HomePage = () => {
     }
   };
 
+  const handleSeeMoreClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    navigate(NAV_PATHS.PROJECTS.BASE);
+  };
+
   return (
     <HomeLayout
       userDetails={{
@@ -103,9 +111,11 @@ const HomePage = () => {
       <FeaturedProjects
         projects={featuredItemsData?.projects.map((project) => ({
           ...project,
+          tags: project.tags?.map((tag) => tagNameToTagPillProps(tag)),
           isLiked: likedProjects.includes(project.id),
           onLikeClick: handleLikeClick,
         }))}
+        onSeeMoreClick={handleSeeMoreClick}
       />
     </HomeLayout>
   );

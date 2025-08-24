@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { CommonLayout, IntroHeader, ProjectCard } from "@components";
+import { CommonLayout, ProjectCard } from "@components";
+import { tagNameToTagPillProps } from "@utils";
 import { STRG_LIKED_PROJECTS } from "@constants";
 import useGetProjects from "./api/useGetProjects";
 import useLikeProject from "./api/useLikeProject";
-import { ContentContainer, ProjectsContainer } from "./ProjectsPage.styles";
+import { ProjectsContainer } from "./ProjectsPage.styles";
 
 const ProjectsPage = () => {
   const [likedProjects, setLikedProjects] = useState<string[]>(() => {
@@ -68,22 +69,21 @@ const ProjectsPage = () => {
   return (
     <CommonLayout
       name={userDetailsData?.name || ""}
+      appBarTitle="Projects"
       menuActiveItem="projects"
       pageLoaderProgress={userDetailsIsPending || projectsIsPending ? 0 : 100}
     >
-      <IntroHeader pageTitle="Projects" />
-      <ContentContainer>
-        <ProjectsContainer>
-          {projetsData?.map((project, index) => (
-            <ProjectCard
-              key={index}
-              {...project}
-              onLikeClick={handleLikeClick}
-              isLiked={likedProjects.includes(project.id)}
-            />
-          ))}
-        </ProjectsContainer>
-      </ContentContainer>
+      <ProjectsContainer>
+        {projetsData?.map((project, index) => (
+          <ProjectCard
+            key={index}
+            {...project}
+            tags={project.tags?.map((tag) => tagNameToTagPillProps(tag))}
+            onLikeClick={handleLikeClick}
+            isLiked={likedProjects.includes(project.id)}
+          />
+        ))}
+      </ProjectsContainer>
     </CommonLayout>
   );
 };

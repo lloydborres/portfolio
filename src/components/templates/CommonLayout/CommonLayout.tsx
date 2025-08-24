@@ -8,6 +8,7 @@ import { Container, Content } from "./CommonLayout.styles";
 
 type Props = {
   name: string;
+  appBarTitle?: string;
   menuActiveItem?: string;
   children?: React.ReactNode;
   pageLoaderProgress?: number;
@@ -17,6 +18,7 @@ const CommonLayout = ({
   name,
   menuActiveItem,
   children,
+  appBarTitle = "Portfolio",
   pageLoaderProgress = 100,
 }: Props) => {
   const navigate = useNavigate();
@@ -53,7 +55,7 @@ const CommonLayout = ({
     <>
       <Container>
         <AppBar
-          title="Portfolio"
+          title={appBarTitle}
           activeItem={menuActiveItem}
           onTitleClick={handleTitleClick}
           onHomeNavClick={handleHomeNavClick}

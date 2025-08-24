@@ -1,6 +1,6 @@
 import { Card, CardContent, Typography, Link } from "@mui/material";
 import { Email as EmailIcon } from "@mui/icons-material";
-import { CommonLayout, IntroHeader, ContactForm } from "@components";
+import { CommonLayout, ContactForm } from "@components";
 import type { ICreateMessageInput } from "@domain";
 import {
   ContentContainer,
@@ -27,38 +27,36 @@ const ContactPage = () => {
   return (
     <CommonLayout
       name={userDetailsData?.name || ""}
+      appBarTitle="Contact"
       pageLoaderProgress={userDetailsIsPending ? 0 : 100}
     >
-      <IntroHeader pageTitle="Contact" />
       <ContentContainer>
-        <div>
-          <Card variant="outlined">
-            <CardContent>
-              <ContactForm
-                onSubmitValid={handleMessageSubmitValid}
-                isSendLoading={isCreateMessagePending}
-                sendStatus={createMessageStatus}
-              />
-              <ContactDetailsContainer>
-                <Typography variant="body1" className="contact-details-message">
-                  Wanna work together??
-                  <br />
-                  Drop me a message or just say hey.
-                  <br />
-                  I'd love to hear from you.
+        <Card variant="outlined">
+          <CardContent>
+            <ContactForm
+              onSubmitValid={handleMessageSubmitValid}
+              isSendLoading={isCreateMessagePending}
+              sendStatus={createMessageStatus}
+            />
+            <ContactDetailsContainer>
+              <Typography variant="body1" className="contact-details-message">
+                Wanna work together??
+                <br />
+                Drop me a message or just say hey.
+                <br />
+                I'd love to hear from you.
+              </Typography>
+              {!!userDetailsData?.email && (
+                <Typography className="contact-details-item">
+                  <EmailIcon />
+                  <Link href={`mailto:${userDetailsData?.email}`}>
+                    {userDetailsData?.email}
+                  </Link>
                 </Typography>
-                {!!userDetailsData?.email && (
-                  <Typography className="contact-details-item">
-                    <EmailIcon />
-                    <Link href={`mailto:${userDetailsData?.email}`}>
-                      {userDetailsData?.email}
-                    </Link>
-                  </Typography>
-                )}
-              </ContactDetailsContainer>
-            </CardContent>
-          </Card>
-        </div>
+              )}
+            </ContactDetailsContainer>
+          </CardContent>
+        </Card>
       </ContentContainer>
     </CommonLayout>
   );

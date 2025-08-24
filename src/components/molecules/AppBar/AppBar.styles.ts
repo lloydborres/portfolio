@@ -8,22 +8,35 @@ import {
 } from "@mui/material";
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
+  backdropFilter: "blur(10px)",
+  WebkitBackdropFilter: "blur(10px)",
+  border: "2px solid",
   borderRadius: 20,
   top: 20,
   left: 20,
   right: 20,
-  width: "calc(100% - 40px)",
 
   [theme.breakpoints.up("lg")]: {
     top: 30,
     left: 0,
     right: 0,
-    width: "100%",
   },
 }));
 
 const StyledToolbar = styled(Toolbar)<{ theme?: Theme }>(({ theme }) => ({
-  justifyContent: "end",
+  justifyContent: "space-between",
+
+  ".toolbar-brand": {
+    display: "flex",
+    alignItems: "center",
+    gap: 10,
+    color: theme.palette.primary.main,
+  },
+
+  ".toolbar-brand-icon": {
+    height: 30,
+    objectFit: "contain",
+  },
 
   ".toolbar-menu": {
     display: "none",
@@ -32,11 +45,16 @@ const StyledToolbar = styled(Toolbar)<{ theme?: Theme }>(({ theme }) => ({
   [theme.breakpoints.up("lg")]: {
     justifyContent: "center",
 
+    ".toolbar-brand": {
+      display: "none",
+    },
+
     ".toolbar-menu": {
       display: "flex",
       justifyContent: "space-evenly",
       width: "100%",
     },
+
     ".toolbar-drawer-button": {
       display: "none",
     },

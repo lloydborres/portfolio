@@ -6,12 +6,12 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  // Typography,
+  Typography,
   useTheme,
   type AppBarProps,
 } from "@mui/material";
 import {
-  // Web as WebIcon,
+  Web as WebIcon,
   Menu as MenuIcon,
   Close as CloseIcon,
   Home as HomeIcon,
@@ -20,6 +20,7 @@ import {
   Call as CallIcon,
 } from "@mui/icons-material";
 // import portfolioLogoLightImg from "../../../assets/images/portfolio_logo_light.svg";
+// import portfolioLogoDarkImg from "../../../assets/images/portfolio_logo_dark.svg";
 import {
   StyledAppBar,
   StyledToolbar,
@@ -39,8 +40,8 @@ type Props = {
 } & AppBarProps;
 
 const Component = ({
-  // title,
-  // onTitleClick,
+  title,
+  onTitleClick,
   onHomeNavClick,
   onExperienceNavClick,
   onProjectsNavClick,
@@ -50,7 +51,8 @@ const Component = ({
 }: Props) => {
   const theme = useTheme();
 
-  const rgbaBackground = alpha(theme.palette.common.white, 0.9);
+  const rgbaBackground = alpha(theme.palette.common.white, 0.5);
+  const rgbaBorder = alpha(theme.palette.primary.main, 0.3);
 
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -88,28 +90,13 @@ const Component = ({
   return (
     <>
       <StyledAppBar
-        sx={{ background: rgbaBackground }}
+        sx={{ background: rgbaBackground, borderColor: rgbaBorder }}
         component="nav"
+        position="sticky"
+        elevation={0}
         {...otherProps}
       >
         <StyledToolbar>
-          {/* <Box className="toolbar-icon-container">
-            <WebIcon className="toolbar-icon" />
-            <img
-              className="toolbar-icon"
-              alt="Logo"
-              src={portfolioLogoLightImg}
-            />
-            <Typography
-              variant="h6"
-              component="div"
-              className="toolbar-title"
-              onClick={onTitleClick}
-            >
-              {title}
-            </Typography>
-          </Box> */}
-
           <StyledList className="toolbar-menu">
             {navItems.map((item) => (
               <ListItem key={item.label}>
@@ -123,6 +110,23 @@ const Component = ({
               </ListItem>
             ))}
           </StyledList>
+
+          <Box className="toolbar-brand">
+            <WebIcon className="toolbar-brand-icon" />
+            {/* <img
+              className="toolbar-brand-icon"
+              alt="Logo"
+              src={portfolioLogoDarkImg}
+            /> */}
+            <Typography
+              variant="h6"
+              component="div"
+              className="toolbar-title"
+              onClick={onTitleClick}
+            >
+              {title}
+            </Typography>
+          </Box>
 
           <IconButton
             className="toolbar-drawer-button"

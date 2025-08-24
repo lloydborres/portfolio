@@ -9,12 +9,12 @@ const Container = styled("button")<{ theme?: Theme }>(({ theme }) => ({
   border: `1px solid ${theme.palette.primary.main}`,
   background: theme.palette.common.white,
   borderRadius: 40,
-  cursor: "pointer",
+  // cursor: "pointer",
 
-  "&:hover": {
-    background: theme.palette.primary.main,
-    color: theme.palette.common.white,
-  },
+  // "&:hover": {
+  //   background: theme.palette.primary.main,
+  //   color: theme.palette.common.white,
+  // },
 
   img: {
     height: 20,

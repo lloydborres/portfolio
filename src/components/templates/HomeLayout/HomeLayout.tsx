@@ -20,6 +20,7 @@ import { Container, Content } from "./HomeLayout.styles";
 
 type Props = {
   userDetails: UserInfoProps;
+  appBarTitle?: string;
   menuActiveItem?: string;
   children?: React.ReactNode;
   pageLoaderProgress?: number;
@@ -29,6 +30,7 @@ const HomeLayout = ({
   userDetails,
   menuActiveItem,
   children,
+  appBarTitle = "Portfolio",
   pageLoaderProgress = 100,
 }: Props) => {
   const theme = useTheme();
@@ -68,33 +70,30 @@ const HomeLayout = ({
     <>
       <Container>
         {isTabletOrMobile ? (
-          <>
+          <Content>
             <AppBar
-              title="Portfolio"
+              title={appBarTitle}
               activeItem={menuActiveItem}
               onTitleClick={handleTitleClick}
               onHomeNavClick={handleHomeNavClick}
               onProjectsNavClick={handleProjectsNavClick}
               onContactNavClick={handleContactNavClick}
             />
-            <Content>
-              <UserInfo {...userDetails} />
-              {children}
-              <Footer name={userDetails.name} />
-            </Content>
-          </>
+            <UserInfo {...userDetails} />
+            {children}
+            <Footer name={userDetails.name} />
+          </Content>
         ) : (
           <>
             <UserInfo {...userDetails} />
             <Content>
               <AppBar
-                title="Portfolio"
+                title={appBarTitle}
                 activeItem={menuActiveItem}
                 onTitleClick={handleTitleClick}
                 onHomeNavClick={handleHomeNavClick}
                 onProjectsNavClick={handleProjectsNavClick}
                 onContactNavClick={handleContactNavClick}
-                position="sticky"
               />
               {children}
               <Footer name={userDetails.name} />

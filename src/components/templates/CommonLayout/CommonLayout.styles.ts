@@ -1,22 +1,31 @@
 import { styled, Box, Stack } from "@mui/material";
 
 const Container = styled(Box)(({ theme }) => ({
+  position: "relative",
   display: "flex",
   flexDirection: "column",
-  minHeight: "100dvh",
+  gap: 30,
+  minHeight: "calc(100vh - 40px)",
   backgroundColor: theme.palette.background.default,
+  padding: 20,
 
   "& .MuiFab-root": {
     position: "fixed",
     right: "20px",
     bottom: "20px",
   },
+
+  [theme.breakpoints.up("lg")]: {
+    paddingLeft: `calc((100% - ${theme.breakpoints.values.lg}px) / 2)`,
+    paddingRight: `calc((100% - ${theme.breakpoints.values.lg}px) / 2)`,
+  },
 }));
 
 const Content = styled(Stack)(() => ({
-  flexGrow: 1,
+  display: "flex",
+  flexDirection: "column",
   gap: 30,
-  padding: "100px 20px 20px",
+  flexGrow: 1,
 }));
 
 export { Container, Content };

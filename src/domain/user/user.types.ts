@@ -37,19 +37,18 @@ interface IExperience {
   positions: IPosition[];
 }
 
-interface IProjectAction {
-  label: string;
-  href?: string;
-  isExternal?: boolean;
-}
-
 interface IProject {
   id: string;
   title: string;
   description: string;
   coverImg?: string;
+  tags?: string[];
   likes?: number;
-  actions?: IProjectAction[];
+  actions?: {
+    label: string;
+    href?: string;
+    isExternal?: boolean;
+  }[];
   moreDetails?: string;
   isFeatured?: boolean;
 }
@@ -82,7 +81,6 @@ export type {
   ISkillSet,
   IPosition,
   IExperience,
-  IProjectAction,
   IProject,
   IUserFeaturedItems,
   IGetUserProjectsInput,

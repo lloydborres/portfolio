@@ -1,19 +1,21 @@
 import { styled, Box } from "@mui/material";
 
 const ContentContainer = styled(Box)(({ theme }) => ({
-  paddingTop: "50px",
-  paddingBottom: "50px",
-  display: "flex",
-  justifyContent: "center",
+  flexGrow: 1,
 
   "& .MuiCardContent-root": {
     display: "flex",
+    flexDirection: "column-reverse",
     alignItems: "start",
     justifyContent: "space-evenly",
   },
 
   "& .MuiCardContent-root > form": {
-    width: "400px",
+    width: "100%",
+  },
+
+  "& .MuiPaper-root.MuiPaper-outlined": {
+    borderRadius: 20,
   },
 
   "& .MuiTypography-root.contact-details-message": {
@@ -29,14 +31,21 @@ const ContentContainer = styled(Box)(({ theme }) => ({
     marginRight: 5,
   },
 
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.up("lg")]: {
+    alignContent: "center",
+
     "& .MuiCardContent-root": {
       display: "flex",
-      flexDirection: "column-reverse",
+      flexDirection: "row",
+    },
+
+    "& .MuiPaper-root.MuiPaper-outlined": {
+      width: "fit-content",
+      justifySelf: "center",
     },
 
     "& .MuiCardContent-root > form": {
-      width: "100%",
+      width: 400,
     },
   },
 }));
