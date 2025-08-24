@@ -15,8 +15,8 @@ import {
 } from "./UserInfo.styles";
 
 type Props = {
-  name: string;
-  title: string;
+  name?: string;
+  title?: string;
   profilePicUrl?: string;
   githubUrl?: string;
   linkedInUrl?: string;

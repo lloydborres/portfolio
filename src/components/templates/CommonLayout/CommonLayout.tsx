@@ -7,7 +7,7 @@ import { NAV_PATHS } from "@constants";
 import { Container, Content } from "./CommonLayout.styles";
 
 type Props = {
-  name: string;
+  name?: string;
   appBarTitle?: string;
   menuActiveItem?: string;
   children?: React.ReactNode;

@@ -3,7 +3,7 @@ import { Typography, Link } from "@mui/material";
 import { Container } from "./Footer.styles";
 
 type Props = {
-  name: string;
+  name?: string;
 };
 
 const Component = ({ name }: Props) => {
