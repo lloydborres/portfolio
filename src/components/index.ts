@@ -16,5 +16,8 @@ export { default as FeaturedProjects } from "./organisms/FeaturedProjects/Featur
 export { default as PageLoader } from "./organisms/PageLoader/PageLoader";
 export { default as SkillSet } from "./organisms/SkillSet/SkillSet";
 export { default as ContactForm } from "./organisms/ContactForm/ContactForm";
+export { default as UserInfo } from "./organisms/UserInfo/UserInfo";
+export type { Props as UserInfoProps } from "./organisms/UserInfo/UserInfo";
 
 export { default as CommonLayout } from "./templates/CommonLayout/CommonLayout";
+export { default as HomeLayout } from "./templates/HomeLayout/HomeLayout";

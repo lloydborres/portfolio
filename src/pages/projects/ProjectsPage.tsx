@@ -68,9 +68,7 @@ const ProjectsPage = () => {
   return (
     <CommonLayout
       name={userDetailsData?.name || ""}
-      email={userDetailsData?.email}
-      github={userDetailsData?.github}
-      linkedin={userDetailsData?.linkedin}
+      menuActiveItem="projects"
       pageLoaderProgress={userDetailsIsPending || projectsIsPending ? 0 : 100}
     >
       <IntroHeader pageTitle="Projects" />

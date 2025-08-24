@@ -1,8 +1,16 @@
 import { styled, Stack, Box, Link } from "@mui/material";
 
-const Container = styled(Box)(() => ({}));
+const Container = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.up("lg")]: {
+    height: "calc(100vh - 60px)",
+    padding: "30px 15px",
+    position: "sticky",
+    top: 0,
+    left: 0,
+  },
+}));
 
-const ProfilePicContainer = styled(Box)(() => ({
+const ProfilePicContainer = styled(Box)(({ theme }) => ({
   position: "relative",
   height: 87,
 
@@ -14,6 +22,15 @@ const ProfilePicContainer = styled(Box)(() => ({
     width: 173,
     objectFit: "cover",
     borderRadius: 20,
+  },
+
+  [theme.breakpoints.up("lg")]: {
+    height: 110,
+    img: {
+      left: "calc(50% - (219px/2))",
+      height: 219,
+      width: 219,
+    },
   },
 }));
 
@@ -31,6 +48,11 @@ const InfoContainer = styled(Stack)(({ theme }) => ({
   ".user-info-title": {
     fontSize: 16,
     textAlign: "center",
+  },
+
+  [theme.breakpoints.up("lg")]: {
+    height: "calc(100% - 120px)",
+    padding: "140px 34px 0",
   },
 }));
 

@@ -1,16 +1,13 @@
 import { useState } from "react";
-import {
-  CommonLayout,
-  Experience,
-  FeaturedProjects,
-  IntroHeader,
-  SkillSet,
-} from "@components";
+import { Box, Typography, useTheme } from "@mui/material";
+import { HomeLayout, FeaturedProjects } from "@components";
 import { STRG_LIKED_PROJECTS } from "@constants";
 import useLikeProject from "../projects/api/useLikeProject";
 import useGetHome from "./api/useGetHome";
 
 const HomePage = () => {
+  const theme = useTheme();
+
   const [likedProjects, setLikedProjects] = useState<string[]>(() => {
     const cachedLikedProjects = localStorage.getItem(STRG_LIKED_PROJECTS);
     if (cachedLikedProjects) {
@@ -71,16 +68,38 @@ const HomePage = () => {
   };
 
   return (
-    <CommonLayout
-      name={userDetailsData?.name || ""}
-      email={userDetailsData?.email}
-      github={userDetailsData?.github}
-      linkedin={userDetailsData?.linkedin}
+    <HomeLayout
+      userDetails={{
+        name: userDetailsData?.name || "",
+        title: userDetailsData?.title || "",
+        profilePicUrl: userDetailsData?.profilePicSrc,
+        githubUrl: userDetailsData?.github,
+        linkedInUrl: userDetailsData?.linkedin,
+        email: userDetailsData?.email,
+        location: userDetailsData?.location,
+      }}
+      menuActiveItem="home"
       pageLoaderProgress={
         userDetailsIsPending || featuredItemsIsPending ? 0 : 100
       }
     >
-      <IntroHeader userDetails={userDetailsData} />
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "20px",
+          padding: "30px",
+          backgroundColor: theme.palette.common.white,
+          borderRadius: "20px",
+        }}
+      >
+        <Typography variant="h2" sx={{ fontSize: 36 }}>
+          About
+        </Typography>
+        <Typography variant="body1" sx={{ whiteSpace: "pre-wrap" }}>
+          {userDetailsData?.description}
+        </Typography>
+      </Box>
       <FeaturedProjects
         projects={featuredItemsData?.projects.map((project) => ({
           ...project,
@@ -88,15 +107,7 @@ const HomePage = () => {
           onLikeClick: handleLikeClick,
         }))}
       />
-      <Experience experiences={featuredItemsData?.experiences} />
-      {featuredItemsData?.skillSets?.map((skillSetItem, index) => (
-        <SkillSet
-          key={index}
-          title={skillSetItem.title}
-          skillCards={skillSetItem.skills}
-        />
-      ))}
-    </CommonLayout>
+    </HomeLayout>
   );
 };
 

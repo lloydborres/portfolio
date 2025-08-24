@@ -24,7 +24,7 @@ const CardsContainer = styled(Box)(({ theme }) => ({
 
   [theme.breakpoints.up("lg")]: {
     display: "grid",
-    gridTemplateColumns: "auto auto",
+    gridTemplateColumns: "1fr 1fr",
   },
 }));
 

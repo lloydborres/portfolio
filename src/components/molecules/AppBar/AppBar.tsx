@@ -50,7 +50,7 @@ const Component = ({
 }: Props) => {
   const theme = useTheme();
 
-  const rgbaBackground = alpha(theme.palette.common.white, 0.5);
+  const rgbaBackground = alpha(theme.palette.common.white, 0.9);
 
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -133,35 +133,34 @@ const Component = ({
           </IconButton>
         </StyledToolbar>
       </StyledAppBar>
-      <nav>
-        <StyleDrawer
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          anchor="right"
+      <StyleDrawer
+        component="nav"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        anchor="right"
+      >
+        <Box
+          className="drawer-close-button-container"
+          onClick={handleDrawerToggle}
         >
-          <Box
-            className="drawer-close-button-container"
-            onClick={handleDrawerToggle}
-          >
-            <IconButton>
-              <CloseIcon />
-            </IconButton>
-          </Box>
-          <StyledList>
-            {navItems.map((item) => (
-              <ListItem key={item.label}>
-                <ListItemButton
-                  onClick={item.onClick}
-                  selected={activeItem === item.name}
-                >
-                  <ListItemIcon>{item.icon}</ListItemIcon>
-                  <ListItemText primary={item.label} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </StyledList>
-        </StyleDrawer>
-      </nav>
+          <IconButton>
+            <CloseIcon />
+          </IconButton>
+        </Box>
+        <StyledList>
+          {navItems.map((item) => (
+            <ListItem key={item.label}>
+              <ListItemButton
+                onClick={item.onClick}
+                selected={activeItem === item.name}
+              >
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.label} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </StyledList>
+      </StyleDrawer>
     </>
   );
 };
