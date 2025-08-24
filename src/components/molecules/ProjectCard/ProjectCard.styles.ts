@@ -4,6 +4,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   borderRadius: 20,
+  width: "100%",
   height: "100%",
 
   "& .MuiCardMedia-root": {

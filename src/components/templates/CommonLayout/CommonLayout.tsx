@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router";
-import { Zoom, Fab } from "@mui/material";
+import { Zoom, Fab, useScrollTrigger } from "@mui/material";
 import { KeyboardArrowUp as KeyboardArrowUpIcon } from "@mui/icons-material";
 import { AppBar, Footer, PageLoader } from "@components";
 import { NAV_PATHS } from "@constants";
@@ -8,24 +8,23 @@ import { Container, Content } from "./CommonLayout.styles";
 
 type Props = {
   name: string;
-  email?: string;
-  github?: string;
-  linkedin?: string;
+  menuActiveItem?: string;
   children?: React.ReactNode;
   pageLoaderProgress?: number;
 };
 
 const CommonLayout = ({
   name,
-  email,
-  github,
-  linkedin,
+  menuActiveItem,
   children,
   pageLoaderProgress = 100,
 }: Props) => {
   const navigate = useNavigate();
 
-  const [fabVisible, setFabVisible] = useState(false);
+  const fabTrigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 100,
+  });
 
   const handleTitleClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -50,32 +49,22 @@ const CommonLayout = ({
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setFabVisible(window.scrollY > 400);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    // Cleanup listener on unmount
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <>
       <Container>
         <AppBar
           title="Portfolio"
+          activeItem={menuActiveItem}
           onTitleClick={handleTitleClick}
           onHomeNavClick={handleHomeNavClick}
           onProjectsNavClick={handleProjectsNavClick}
           onContactNavClick={handleContactNavClick}
         />
-        <Content>{children}</Content>
-        <Footer name={name} email={email} github={github} linkedin={linkedin} />
-        <Zoom in={fabVisible} unmountOnExit>
+        <Content>
+          {children}
+          <Footer name={name} />
+        </Content>
+        <Zoom in={fabTrigger} unmountOnExit>
           <Fab color="primary" onClick={handleFabClick} disableTouchRipple>
             <KeyboardArrowUpIcon />
           </Fab>

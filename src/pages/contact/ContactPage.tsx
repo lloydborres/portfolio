@@ -27,9 +27,6 @@ const ContactPage = () => {
   return (
     <CommonLayout
       name={userDetailsData?.name || ""}
-      email={userDetailsData?.email}
-      github={userDetailsData?.github}
-      linkedin={userDetailsData?.linkedin}
       pageLoaderProgress={userDetailsIsPending ? 0 : 100}
     >
       <IntroHeader pageTitle="Contact" />

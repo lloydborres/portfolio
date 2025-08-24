@@ -22,6 +22,6 @@ export const Default: Story = {
   args: {
     name: "Name",
     children: <div style={{ background: "red" }}>Content Here</div>,
-    pageLoaderProgress: 50,
+    pageLoaderProgress: 100,
   },
 };

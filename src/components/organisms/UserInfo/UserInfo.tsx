@@ -87,3 +87,4 @@ const Component = ({
 };
 
 export default Component;
+export type { Props };

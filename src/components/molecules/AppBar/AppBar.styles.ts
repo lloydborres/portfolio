@@ -6,10 +6,20 @@ import {
   Toolbar,
   List,
 } from "@mui/material";
-// import { PAGE_MAX_WIDTH } from "@constants";
 
-const StyledAppBar = styled(AppBar)<{ theme?: Theme }>(() => ({
+const StyledAppBar = styled(AppBar)(({ theme }) => ({
   borderRadius: 20,
+  top: 20,
+  left: 20,
+  right: 20,
+  width: "calc(100% - 40px)",
+
+  [theme.breakpoints.up("lg")]: {
+    top: 30,
+    left: 0,
+    right: 0,
+    width: "100%",
+  },
 }));
 
 const StyledToolbar = styled(Toolbar)<{ theme?: Theme }>(({ theme }) => ({

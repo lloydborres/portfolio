@@ -9,6 +9,7 @@ interface IUser {
   email?: string;
   github?: string;
   linkedin?: string;
+  location?: string;
 }
 
 interface ISkillSetSkill {
