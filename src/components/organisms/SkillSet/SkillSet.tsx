@@ -1,10 +1,9 @@
-import { Section, SkillCard } from "@components";
-import type { ISkillSetSkill } from "@domain";
+import { Section, SkillCard, type SkillCardProps } from "@components";
 import { CardsContainer } from "./SkillSet.styles";
 
 type Props = {
   title?: string;
-  skillCards?: ISkillSetSkill[];
+  skillCards?: SkillCardProps[];
 };
 
 const Component = ({ title, skillCards }: Props) => {

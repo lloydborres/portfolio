@@ -17,10 +17,11 @@ Welcome to the souce code of my simple portfolio website!
 
 **Portfolio:** https://portfolio.lloydborres.com \
 **Storybook:** https://portfolio-sb.lloydborres.com \
-**Figma:** https://www.figma.com/design/RQCYf7U8FfqjJGFWUtd2IS/Portfolio?node-id=7603-7193&t=rfPgFeRNNeaUoJou-1
+**Figma:** https://www.figma.com/design/RQCYf7U8FfqjJGFWUtd2IS/Portfolio?node-id=9656-2380&t=q6iQTBMSb4Hzh8wf-4
 
 ## Version Notes
 
+- `releases/v3.0` and above uses a slightly different database structure
 - `releases/v2.0` and above uses Firebase Firestore to display data
 - `releases/v1.2` and below uses `data.tsx` file to display data
 
@@ -65,7 +66,7 @@ Welcome to the souce code of my simple portfolio website!
 11. Run `npm run deploy-dev-storybook` to deploy the Storybook to a dev channel for testing (optional).
 12. `npm run deploy-all` will deploy both React App and Storybook to their respective site.
 
-## Setup Firebase Firestore
+## Setup Firebase Firestore (TODO v3)
 
 1. Setup a [Firebase Project](console.firebase.google.com) if you haven't yet.
 2. Create a Firestore database under 'All products'.

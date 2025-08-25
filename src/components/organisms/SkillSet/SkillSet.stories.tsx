@@ -11,6 +11,9 @@ import SkillSet from "./SkillSet";
 const meta = {
   title: "Components/Organisms/SkillSet",
   component: SkillSet,
+  globals: {
+    backgrounds: { value: "backgroundLight" },
+  },
 } satisfies Meta<typeof SkillSet>;
 
 export default meta;
@@ -22,23 +25,23 @@ export const Default: Story = {
     title: "Front-End",
     skillCards: [
       {
-        skillImgSrc: htmlLogoImg,
+        imgSrc: htmlLogoImg,
         label: "HTML",
       },
       {
-        skillImgSrc: cssLogoImg,
+        imgSrc: cssLogoImg,
         label: "CSS",
       },
       {
-        skillImgSrc: javascriptLogoImg,
+        imgSrc: javascriptLogoImg,
         label: "JavaScript",
       },
       {
-        skillImgSrc: typescriptLogoImg,
+        imgSrc: typescriptLogoImg,
         label: "TypeScript",
       },
       {
-        skillImgSrc: reactLogoImg,
+        imgSrc: reactLogoImg,
         label: "React",
       },
     ],

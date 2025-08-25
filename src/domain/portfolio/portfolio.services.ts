@@ -1,10 +1,10 @@
 import type { IPortfolioRepository } from "@infrastructure";
-import { SKILL_LOOKUP, type SkillLookupKey } from "@constants";
 import type {
   ILikeProjectInput,
   IProject,
   IPortfolio,
   IPortfolioFeaturedItems,
+  IPortfolioExperienceItems,
 } from "./portfolio.types";
 
 interface IPortfolioService {
@@ -12,6 +12,9 @@ interface IPortfolioService {
   getPortfolioFeaturedItems(
     portfolioId: string
   ): Promise<IPortfolioFeaturedItems>;
+  getPortfolioExperienceItems(
+    portfolioId: string
+  ): Promise<IPortfolioExperienceItems>;
   getPortfolioProjects(portfolioId: string): Promise<IProject[]>;
   likeProject(data: ILikeProjectInput): Promise<boolean>;
 }
@@ -32,19 +35,23 @@ class PortfolioService implements IPortfolioService {
   async getPortfolioFeaturedItems(
     portfolioId: string
   ): Promise<IPortfolioFeaturedItems> {
-    const skillSets = await this.PortfolioRepository.getPortfolioSkillSets(
-      portfolioId
-    );
-    const remappedSkillSets = skillSets.map((skillSet) => {
-      const remappedSkills = skillSet.skills.map(
-        (skill) => SKILL_LOOKUP[skill as SkillLookupKey]
-      );
-      return {
-        ...skillSet,
-        skills: remappedSkills,
-      };
+    const projects = await this.PortfolioRepository.getPortfolioProjects({
+      filters: {
+        isFeatured: true,
+        orderBy: "likes",
+        orderByDirection: "desc",
+      },
+      portfolioId,
     });
 
+    return {
+      projects,
+    };
+  }
+
+  async getPortfolioExperienceItems(
+    portfolioId: string
+  ): Promise<IPortfolioExperienceItems> {
     const experiences = await this.PortfolioRepository.getPortfolioExperiences(
       portfolioId
     );
@@ -58,19 +65,14 @@ class PortfolioService implements IPortfolioService {
         positions: sortedPositions,
       };
     });
-    const projects = await this.PortfolioRepository.getPortfolioProjects({
-      filters: {
-        isFeatured: true,
-        orderBy: "likes",
-        orderByDirection: "desc",
-      },
-      portfolioId,
-    });
+
+    const skillSets = await this.PortfolioRepository.getPortfolioSkillSets(
+      portfolioId
+    );
 
     return {
-      skillSets: remappedSkillSets,
       experiences: remappedExperiences,
-      projects,
+      skillSets,
     };
   }
 

@@ -1,12 +1,13 @@
 import { HomeLayout, Section, Experience, SkillSet } from "@components";
-import useGetHome from "../home/api/useGetHome";
+import { skillNameToSkillCardProps } from "@utils";
+import useGetExperience from "./api/useGetExperience";
 
 const ExperiencePage = () => {
-  const { portfolioDetailsQuery, featuredItemsQuery } = useGetHome();
+  const { portfolioDetailsQuery, experienceItemsQuery } = useGetExperience();
   const { data: portfolioDetailsData, isPending: portfolioDetailsIsPending } =
     portfolioDetailsQuery;
-  const { data: featuredItemsData, isPending: featuredItemsIsPending } =
-    featuredItemsQuery;
+  const { data: experienceItemsData, isPending: experienceItemsIsPending } =
+    experienceItemsQuery;
 
   return (
     <HomeLayout
@@ -22,16 +23,18 @@ const ExperiencePage = () => {
       appBarTitle="Experience"
       menuActiveItem="experience"
       pageLoaderProgress={
-        portfolioDetailsIsPending || featuredItemsIsPending ? 0 : 100
+        portfolioDetailsIsPending || experienceItemsIsPending ? 0 : 100
       }
     >
       <Section header="About">{portfolioDetailsData?.description}</Section>
-      <Experience experiences={featuredItemsData?.experiences} />
-      {featuredItemsData?.skillSets?.map((skillSetItem, index) => (
+      <Experience experiences={experienceItemsData?.experiences} />
+      {experienceItemsData?.skillSets?.map((skillSetItem, index) => (
         <SkillSet
           key={index}
           title={skillSetItem.title}
-          skillCards={skillSetItem.skills}
+          skillCards={skillSetItem.skills.map((skill) =>
+            skillNameToSkillCardProps(skill)
+          )}
         />
       ))}
     </HomeLayout>

@@ -12,11 +12,6 @@ interface IPortfolio {
   location?: string;
 }
 
-interface ISkillSetSkill {
-  label: string;
-  skillImgSrc?: string;
-}
-
 interface ISkillSet {
   id: string;
   title: string;
@@ -53,11 +48,12 @@ interface IProject {
 }
 
 interface IPortfolioFeaturedItems {
-  skillSets: ({
-    skills: ISkillSetSkill[];
-  } & Omit<ISkillSet, "skills">)[];
-  experiences: IExperience[];
   projects: IProject[];
+}
+
+interface IPortfolioExperienceItems {
+  skillSets: ISkillSet[];
+  experiences: IExperience[];
 }
 
 interface IGetPortfolioProjectsInput {
@@ -76,12 +72,12 @@ interface ILikeProjectInput {
 
 export type {
   IPortfolio,
-  ISkillSetSkill,
   ISkillSet,
   IPosition,
   IExperience,
   IProject,
   IPortfolioFeaturedItems,
+  IPortfolioExperienceItems,
   IGetPortfolioProjectsInput,
   ILikeProjectInput,
 };

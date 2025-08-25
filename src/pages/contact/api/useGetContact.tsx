@@ -1,13 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import { useServices } from "@hooks";
+import useGetPortfolioDetails from "../../home/api/useGetPortfolioDetails";
 
 const useGetContact = () => {
-  const { portfolioService } = useServices();
-
-  const portfolioDetailsQuery = useQuery({
-    queryKey: ["portfolioDetails"],
-    queryFn: () => portfolioService.getPortfolioDetails(),
-  });
+  const portfolioDetailsQuery = useGetPortfolioDetails();
 
   return { portfolioDetailsQuery };
 };

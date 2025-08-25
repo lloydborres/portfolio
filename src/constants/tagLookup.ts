@@ -72,6 +72,9 @@ const TAG_LOOKUP = {
     imgSrc: vsCodeLogoImg,
     label: "VS Code",
   },
+  ["c-sharp"]: {
+    label: "C#",
+  },
 };
 
 type TagLookupKey = keyof typeof TAG_LOOKUP;
