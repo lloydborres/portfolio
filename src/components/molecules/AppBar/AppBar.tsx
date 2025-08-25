@@ -119,7 +119,7 @@ const Component = ({
               src={portfolioLogoDarkImg}
             /> */}
             <Typography
-              variant="h6"
+              variant="h2"
               component="div"
               className="toolbar-title"
               onClick={onTitleClick}
