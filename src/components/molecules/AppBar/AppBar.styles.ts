@@ -30,12 +30,13 @@ const StyledToolbar = styled(Toolbar)<{ theme?: Theme }>(({ theme }) => ({
     display: "flex",
     alignItems: "center",
     gap: 10,
-    color: theme.palette.primary.main,
+    color: theme.palette.secondary.main,
   },
 
   ".toolbar-brand-icon": {
     height: 30,
     objectFit: "contain",
+    color: theme.palette.primary.main,
   },
 
   ".toolbar-menu": {
