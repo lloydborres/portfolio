@@ -1,13 +1,11 @@
 import { useServices } from "@hooks";
 import { useQuery } from "@tanstack/react-query";
+import useGetPortfolioDetails from "./useGetPortfolioDetails";
 
 const useGetHome = () => {
   const { portfolioService } = useServices();
 
-  const portfolioDetailsQuery = useQuery({
-    queryKey: ["portfolioDetails"],
-    queryFn: () => portfolioService.getPortfolioDetails(),
-  });
+  const portfolioDetailsQuery = useGetPortfolioDetails();
 
   const portfolioId = portfolioDetailsQuery.data?.id;
 
@@ -16,6 +14,7 @@ const useGetHome = () => {
     queryFn: () => {
       if (portfolioId)
         return portfolioService.getPortfolioFeaturedItems(portfolioId);
+      return null;
     },
   });
 

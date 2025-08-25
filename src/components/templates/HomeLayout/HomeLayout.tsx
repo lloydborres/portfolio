@@ -81,6 +81,7 @@ const HomeLayout = ({
               activeItem={menuActiveItem}
               onTitleClick={handleTitleClick}
               onHomeNavClick={handleHomeNavClick}
+              onExperienceNavClick={handleExperienceNavClick}
               onProjectsNavClick={handleProjectsNavClick}
               onContactNavClick={handleContactNavClick}
             />

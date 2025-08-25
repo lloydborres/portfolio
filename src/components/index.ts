@@ -6,10 +6,10 @@ export type { Props as TagPillProps } from "./atoms/TagPill/TagPill";
 
 export { default as AppBar } from "./molecules/AppBar/AppBar";
 export { default as Footer } from "./molecules/Footer/Footer";
-export { default as IntroHeader } from "./molecules/IntroHeader/IntroHeader";
 export { default as ProjectCard } from "./molecules/ProjectCard/ProjectCard";
 export type { Props as ProjectCardProps } from "./molecules/ProjectCard/ProjectCard";
 export { default as SkillCard } from "./molecules/SkillCard/SkillCard";
+export type { Props as SkillCardProps } from "./molecules/SkillCard/SkillCard";
 export { default as Section } from "./molecules/Section/Section";
 
 export { default as Experience } from "./organisms/Experience/Experience";

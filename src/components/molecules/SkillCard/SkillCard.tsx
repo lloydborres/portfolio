@@ -1,13 +1,15 @@
 import { CardContent, CardMedia, Typography } from "@mui/material";
 import { StyledCard } from "./SkillCard.styles";
-import type { ISkillSetSkill } from "@domain";
 
-type Props = {} & ISkillSetSkill;
+type Props = {
+  label: string;
+  imgSrc?: string;
+};
 
-const Component = ({ skillImgSrc, label }: Props) => {
+const Component = ({ label, imgSrc }: Props) => {
   return (
     <StyledCard variant="outlined">
-      <CardMedia image={skillImgSrc} />
+      <CardMedia image={imgSrc} />
       <CardContent>
         <Typography variant="body2" align="center">
           {label}
@@ -18,3 +20,4 @@ const Component = ({ skillImgSrc, label }: Props) => {
 };
 
 export default Component;
+export type { Props };

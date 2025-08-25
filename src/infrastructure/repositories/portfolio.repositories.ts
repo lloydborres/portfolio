@@ -64,8 +64,8 @@ class PortfolioRepository implements IPortfolioRepository {
         id: portfolioDoc.id,
         ...portfolioDoc.data(),
       } as IPortfolio;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      console.log(error);
       return undefined;
     }
   }
@@ -78,7 +78,8 @@ class PortfolioRepository implements IPortfolioRepository {
         id,
         this.SUB_COLLECTION_SKILL_SETS
       );
-      const skillSetsSS = await getDocs(skillSetsRef);
+      const skillSetsQ = query(skillSetsRef, orderBy("order", "asc"));
+      const skillSetsSS = await getDocs(skillSetsQ);
 
       const skillSets: ISkillSet[] = skillSetsSS.docs.map((skillSetDoc) => {
         return {
@@ -88,8 +89,8 @@ class PortfolioRepository implements IPortfolioRepository {
       });
 
       return skillSets;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      console.log(error);
       return [];
     }
   }
@@ -115,8 +116,8 @@ class PortfolioRepository implements IPortfolioRepository {
       );
 
       return experiences;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      console.log(error);
       return [];
     }
   }

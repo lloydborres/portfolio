@@ -1,9 +1,11 @@
-import type { TagPillProps } from "@components";
+import type { TagPillProps, SkillCardProps } from "@components";
 import { TAG_LOOKUP, type TagLookupKey } from "@constants";
 
-const tagNameToLabel = (name: string) => {
-  const formatted = name.replace(/-/g, " ");
-  return formatted.charAt(0).toUpperCase() + formatted.slice(1);
+const nameToLabel = (name: string) => {
+  return name
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 };
 
 const tagNameToTagPillProps = (name: string): TagPillProps => {
@@ -12,9 +14,20 @@ const tagNameToTagPillProps = (name: string): TagPillProps => {
     return tagLookup;
   } else {
     return {
-      label: tagNameToLabel(name),
+      label: nameToLabel(name),
     };
   }
 };
 
-export { tagNameToLabel, tagNameToTagPillProps };
+const skillNameToSkillCardProps = (name: string): SkillCardProps => {
+  if (name in TAG_LOOKUP) {
+    const tagLookup = TAG_LOOKUP[name as TagLookupKey];
+    return tagLookup;
+  } else {
+    return {
+      label: nameToLabel(name),
+    };
+  }
+};
+
+export { nameToLabel, tagNameToTagPillProps, skillNameToSkillCardProps };
