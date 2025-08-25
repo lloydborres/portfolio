@@ -1,4 +1,4 @@
-import { HomeLayout, Section, Experience, SkillSet } from "@components";
+import { HomeLayout, Experience, SkillSet } from "@components";
 import { skillNameToSkillCardProps } from "@utils";
 import useGetExperience from "./api/useGetExperience";
 
@@ -26,7 +26,6 @@ const ExperiencePage = () => {
         portfolioDetailsIsPending || experienceItemsIsPending ? 0 : 100
       }
     >
-      <Section header="About">{portfolioDetailsData?.description}</Section>
       <Experience experiences={experienceItemsData?.experiences} />
       {experienceItemsData?.skillSets?.map((skillSetItem, index) => (
         <SkillSet

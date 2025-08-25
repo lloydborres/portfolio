@@ -9,7 +9,7 @@ type Props = {
 const Component = ({ header, children }: Props) => {
   return (
     <Container>
-      <Typography variant="h2" sx={{ fontSize: 36 }}>
+      <Typography variant="h3" sx={{ fontSize: 36 }}>
         {header}
       </Typography>
       {typeof children === "string" ? (

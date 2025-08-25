@@ -39,6 +39,10 @@ const StyledToolbar = styled(Toolbar)<{ theme?: Theme }>(({ theme }) => ({
     color: theme.palette.primary.main,
   },
 
+  ".toolbar-title": {
+    fontSize: 20,
+  },
+
   ".toolbar-menu": {
     display: "none",
   },

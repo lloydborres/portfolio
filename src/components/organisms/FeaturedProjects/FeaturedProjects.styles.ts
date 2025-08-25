@@ -9,7 +9,7 @@ const Container = styled(Box)(({ theme }) => ({
   background: theme.palette.background.paper,
   borderRadius: 20,
 
-  h2: {
+  h3: {
     fontSize: 36,
     width: "100%",
   },

@@ -5,7 +5,7 @@ const Container = styled(Box)(({ theme }) => ({
 
   [theme.breakpoints.up("lg")]: {
     height: "calc(100vh - 60px)",
-    padding: "30px 15px",
+    padding: "32px 15px 30px",
     position: "sticky",
     top: 0,
     left: 0,

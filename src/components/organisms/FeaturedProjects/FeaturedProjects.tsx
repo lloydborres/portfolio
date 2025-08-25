@@ -10,7 +10,7 @@ type Props = {
 const Component = ({ projects, onSeeMoreClick }: Props) => {
   return (
     <Container>
-      <Typography variant="h2">Projects</Typography>
+      <Typography variant="h3">Projects</Typography>
       <CardsContainer>
         {projects?.map((project, index) => {
           return <ProjectCard key={index} {...project} />;
