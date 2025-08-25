@@ -80,9 +80,10 @@ const InfoLink = styled(Link)(({ theme }) => ({
   borderRadius: 10,
   textDecoration: "none",
 
-  "&:hover": {
+  "&[href]:hover": {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.common.white,
+    textDecoration: "underline",
   },
 }));
 

@@ -6,7 +6,10 @@ const Container = styled("button")<{ theme?: Theme }>(({ theme }) => ({
   gap: 8,
   width: "fit-content",
   padding: "5px 15px",
-  border: `1px solid ${theme.palette.primary.main}`,
+  border: "none",
+  // boxShadow: `0 0 0 1px ${theme.palette.primary.main}`,
+  // TODO: Use color above and hover below if you decide to make it clickable
+  boxShadow: `0 0 0 1px ${theme.palette.grey["400"]}`,
   background: theme.palette.common.white,
   borderRadius: 40,
   // cursor: "pointer",
@@ -20,6 +23,10 @@ const Container = styled("button")<{ theme?: Theme }>(({ theme }) => ({
     height: 20,
     width: 20,
     objectFit: "cover",
+  },
+
+  ".MuiTypography-root": {
+    color: theme.palette.text.primary,
   },
 }));
 

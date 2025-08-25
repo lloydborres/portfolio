@@ -10,7 +10,10 @@ const Component = ({ progress = 0 }: Props) => {
   const rgbaBackground = alpha(theme.palette.grey["900"], 0.9);
 
   return (
-    <Backdrop sx={{ background: rgbaBackground }} open={progress < 100}>
+    <Backdrop
+      sx={{ background: rgbaBackground, zIndex: "1101" }}
+      open={progress < 100}
+    >
       <LinearProgress
         sx={{ width: "80%" }}
         variant={progress ? "determinate" : "indeterminate"}
