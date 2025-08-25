@@ -32,6 +32,8 @@ const ContentContainer = styled(Box)(({ theme }) => ({
   },
 
   [theme.breakpoints.up("lg")]: {
+    display: "flex",
+    justifyContent: "center",
     alignContent: "center",
 
     "& .MuiCardContent-root": {
