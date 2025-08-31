@@ -12,9 +12,9 @@ const Component = ({ projects, onSeeMoreClick }: Props) => {
     <Container>
       <Typography variant="h3">Projects</Typography>
       <CardsContainer>
-        {projects?.map((project, index) => {
-          return <ProjectCard key={index} {...project} />;
-        })}
+        {projects?.map((project, index) => (
+          <ProjectCard key={index} {...project} />
+        ))}
       </CardsContainer>
       {!!onSeeMoreClick && (
         <Button variant="contained" onClick={onSeeMoreClick}>

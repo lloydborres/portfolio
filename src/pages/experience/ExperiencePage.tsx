@@ -4,8 +4,7 @@ import useGetExperience from "./api/useGetExperience";
 
 const ExperiencePage = () => {
   const { portfolioDetailsQuery, experienceItemsQuery } = useGetExperience();
-  const { data: portfolioDetailsData, isPending: portfolioDetailsIsPending } =
-    portfolioDetailsQuery;
+  const { data: portfolioDetailsData } = portfolioDetailsQuery;
   const { data: experienceItemsData, isPending: experienceItemsIsPending } =
     experienceItemsQuery;
 
@@ -22,11 +21,17 @@ const ExperiencePage = () => {
       }}
       appBarTitle="Experience"
       menuActiveItem="experience"
-      pageLoaderProgress={
-        portfolioDetailsIsPending || experienceItemsIsPending ? 0 : 100
-      }
     >
-      <Experience experiences={experienceItemsData?.experiences} />
+      <Experience
+        experiences={
+          experienceItemsIsPending
+            ? Array.from({ length: 1 }).map((_e, idx) => ({
+                id: idx.toString(),
+                positions: [{}],
+              }))
+            : experienceItemsData?.experiences
+        }
+      />
       {experienceItemsData?.skillSets?.map((skillSetItem, index) => (
         <SkillSet
           key={index}

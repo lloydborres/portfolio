@@ -9,6 +9,12 @@ const StyledCard = styled(Card)(({ theme }) => ({
 
   "& .MuiCardMedia-root": {
     height: 300,
+
+    img: {
+      height: "100%",
+      width: "100%",
+      objectFit: "cover",
+    },
   },
 
   "& .MuiCardContent-root": {

@@ -1,4 +1,5 @@
-import { Stack, Typography } from "@mui/material";
+import { useState } from "react";
+import { Skeleton, Stack, Typography } from "@mui/material";
 import {
   GitHub as GitHubIcon,
   LinkedIn as LinkedInIcon,
@@ -9,6 +10,7 @@ import {
 import {
   Container,
   ProfilePicContainer,
+  ProfilePicWrapper,
   InfoContainer,
   LinkIcon,
   InfoLink,
@@ -35,19 +37,31 @@ const Component = ({
   phone,
   location,
 }: Props) => {
+  const [profilePicLoading, setProfilePicLoading] = useState(true);
+
+  const handleProfilePicLoad = () => {
+    setProfilePicLoading(false);
+  };
+
   return (
     <Container>
-      {!!profilePicUrl && (
-        <ProfilePicContainer>
-          <img alt="Profile Picture" src={profilePicUrl} />
-        </ProfilePicContainer>
-      )}
+      <ProfilePicContainer>
+        <ProfilePicWrapper>
+          {profilePicLoading && <Skeleton variant="rectangular" />}
+          <img
+            alt="Profile Picture"
+            style={profilePicLoading ? { display: "none" } : {}}
+            src={profilePicUrl}
+            onLoad={handleProfilePicLoad}
+          />
+        </ProfilePicWrapper>
+      </ProfilePicContainer>
       <InfoContainer>
         <Typography className="user-info-name" variant="h1">
-          {name}
+          {name ? name : <Skeleton />}
         </Typography>
         <Typography className="user-info-title" variant="body1">
-          {title}
+          {title ? title : <Skeleton />}
         </Typography>
         <Stack flexDirection="row" justifyContent="center" gap="20px">
           {!!githubUrl && (

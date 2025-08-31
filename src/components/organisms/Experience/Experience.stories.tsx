@@ -76,3 +76,9 @@ export const TwoCompany: Story = {
     ],
   },
 };
+
+export const Loading: Story = {
+  args: {
+    experiences: [{ id: "1", positions: [{}] }],
+  },
+};

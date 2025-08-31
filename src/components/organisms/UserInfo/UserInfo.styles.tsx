@@ -16,23 +16,32 @@ const ProfilePicContainer = styled(Box)(({ theme }) => ({
   position: "relative",
   height: 87,
 
-  img: {
-    position: "absolute",
-    top: 0,
-    left: "calc(50% - (173px/2))",
-    height: 173,
-    width: 173,
+  [theme.breakpoints.up("lg")]: {
+    height: 110,
+  },
+}));
+
+const ProfilePicWrapper = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  top: 0,
+  left: "calc(50% - (173px/2))",
+  height: 173,
+  width: 173,
+  borderRadius: 20,
+  backgroundColor: theme.palette.background.paper,
+
+  "img, .MuiSkeleton-root": {
     objectFit: "cover",
+    height: "100%",
+    width: "100%",
     borderRadius: 20,
   },
 
   [theme.breakpoints.up("lg")]: {
-    height: 110,
-    img: {
-      left: "calc(50% - (219px/2))",
-      height: 219,
-      width: 219,
-    },
+    left: "calc(50% - (219px/2))",
+    height: 219,
+    width: 219,
+    "img, .MuiSkeleton-root": {},
   },
 }));
 
@@ -87,4 +96,11 @@ const InfoLink = styled(Link)(({ theme }) => ({
   },
 }));
 
-export { Container, ProfilePicContainer, InfoContainer, LinkIcon, InfoLink };
+export {
+  Container,
+  ProfilePicContainer,
+  ProfilePicWrapper,
+  InfoContainer,
+  LinkIcon,
+  InfoLink,
+};
