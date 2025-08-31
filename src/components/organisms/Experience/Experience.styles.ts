@@ -45,6 +45,7 @@ const ExperiencesContainer = styled("div")(({ theme }) => ({
 
   ".position-container": {
     padding: "16px 0",
+    width: "100%",
   },
 
   ".position-title": {

@@ -43,6 +43,9 @@ const ContentContainer = styled(Box)(({ theme }) => ({
 
     "& .MuiPaper-root.MuiPaper-outlined": {
       width: "fit-content",
+      height: "fit-content",
+      alignSelf: "center",
+      placeSelf: "center",
       justifySelf: "center",
     },
 

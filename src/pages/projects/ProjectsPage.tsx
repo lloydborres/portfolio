@@ -17,8 +17,7 @@ const ProjectsPage = () => {
   });
 
   const { portfolioDetailsQuery, projecsQuery } = useGetProjects();
-  const { data: portfolioDetailsData, isPending: portfolioDetailsIsPending } =
-    portfolioDetailsQuery;
+  const { data: portfolioDetailsData } = portfolioDetailsQuery;
   const {
     data: projetsData,
     isPending: projectsIsPending,
@@ -75,34 +74,35 @@ const ProjectsPage = () => {
       name={portfolioDetailsData?.name}
       appBarTitle="Projects"
       menuActiveItem="projects"
-      pageLoaderProgress={
-        portfolioDetailsIsPending || projectsIsPending ? 0 : 100
-      }
     >
       <ProjectsContainer>
-        {projetsData?.map((project, index) => {
-          const firstProjectLink =
-            project.links && project.links.length > 0
-              ? project.links[0]
-              : undefined;
+        {projectsIsPending
+          ? Array.from({ length: 3 }).map((_e, idx) => (
+              <ProjectCard key={idx} id={idx.toString()} isLoading />
+            ))
+          : projetsData?.map((project, index) => {
+              const firstProjectLink =
+                project.links && project.links.length > 0
+                  ? project.links[0]
+                  : undefined;
 
-          return (
-            <ProjectCard
-              key={index}
-              {...project}
-              tags={project.tags?.map((tag) => tagNameToTagPillProps(tag))}
-              onLikeClick={handleLikeClick}
-              isLiked={likedProjects.includes(project.id)}
-              actionText={firstProjectLink?.label}
-              onActionClick={
-                firstProjectLink?.url
-                  ? handleProjectActionClick(firstProjectLink.url)
-                  : undefined
-              }
-              isActionExternal={firstProjectLink?.isExternal}
-            />
-          );
-        })}
+              return (
+                <ProjectCard
+                  key={index}
+                  {...project}
+                  tags={project.tags?.map((tag) => tagNameToTagPillProps(tag))}
+                  onLikeClick={handleLikeClick}
+                  isLiked={likedProjects.includes(project.id)}
+                  actionText={firstProjectLink?.label}
+                  onActionClick={
+                    firstProjectLink?.url
+                      ? handleProjectActionClick(firstProjectLink.url)
+                      : undefined
+                  }
+                  isActionExternal={firstProjectLink?.isExternal}
+                />
+              );
+            })}
       </ProjectsContainer>
     </CommonLayout>
   );

@@ -19,8 +19,7 @@ const HomePage = () => {
   });
 
   const { portfolioDetailsQuery, featuredItemsQuery } = useGetHome();
-  const { data: portfolioDetailsData, isPending: portfolioDetailsIsPending } =
-    portfolioDetailsQuery;
+  const { data: portfolioDetailsData } = portfolioDetailsQuery;
   const {
     data: featuredItemsData,
     isPending: featuredItemsIsPending,
@@ -89,30 +88,34 @@ const HomePage = () => {
         location: portfolioDetailsData?.location,
       }}
       menuActiveItem="home"
-      pageLoaderProgress={
-        portfolioDetailsIsPending || featuredItemsIsPending ? 0 : 100
-      }
     >
       <Section header="About">{portfolioDetailsData?.description}</Section>
       <FeaturedProjects
-        projects={featuredItemsData?.projects.map((project) => {
-          const firstProjectLink =
-            project.links && project.links.length > 0
-              ? project.links[0]
-              : undefined;
+        projects={
+          featuredItemsIsPending
+            ? Array.from({ length: 2 }).map((_e, idx) => ({
+                id: idx.toString(),
+                isLoading: true,
+              }))
+            : featuredItemsData?.projects.map((project) => {
+                const firstProjectLink =
+                  project.links && project.links.length > 0
+                    ? project.links[0]
+                    : undefined;
 
-          return {
-            ...project,
-            tags: project.tags?.map((tag) => tagNameToTagPillProps(tag)),
-            isLiked: likedProjects.includes(project.id),
-            onLikeClick: handleLikeClick,
-            actionText: firstProjectLink?.label,
-            onActionClick: firstProjectLink?.url
-              ? handleProjectActionClick(firstProjectLink.url)
-              : undefined,
-            isActionExternal: firstProjectLink?.isExternal,
-          };
-        })}
+                return {
+                  ...project,
+                  tags: project.tags?.map((tag) => tagNameToTagPillProps(tag)),
+                  isLiked: likedProjects.includes(project.id),
+                  onLikeClick: handleLikeClick,
+                  actionText: firstProjectLink?.label,
+                  onActionClick: firstProjectLink?.url
+                    ? handleProjectActionClick(firstProjectLink.url)
+                    : undefined,
+                  isActionExternal: firstProjectLink?.isExternal,
+                };
+              })
+        }
         onSeeMoreClick={handleSeeMoreClick}
       />
     </HomeLayout>

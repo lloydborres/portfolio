@@ -4,6 +4,7 @@ import {
   Typography,
   CardActions,
   Stack,
+  Skeleton,
 } from "@mui/material";
 import {
   Favorite as FavoriteIcon,
@@ -14,8 +15,8 @@ import { StyledCard, CardMediaPlaceholder } from "./ProjectCard.styles";
 
 type Props = {
   id: string;
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   coverImg?: string;
   moreDetails?: string;
   isFeatured?: boolean;
@@ -26,6 +27,7 @@ type Props = {
   actionText?: string;
   onActionClick?: () => void;
   isActionExternal?: boolean;
+  isLoading?: boolean;
 };
 
 const Component = ({
@@ -40,20 +42,10 @@ const Component = ({
   isLiked = false,
   actionText = "Read More",
   isActionExternal = false,
+  isLoading = false,
 }: Props) => {
-  const splittedTitle = title.split(" ");
+  const splittedTitle = title?.split(" ") ?? [];
   const titleMoreThan2Words = splittedTitle.length > 1;
-  const cardMediaProps = coverImg
-    ? { image: coverImg }
-    : {
-        children: (
-          <CardMediaPlaceholder>
-            <Typography variant="h4">{`${title[0]}${
-              titleMoreThan2Words ? splittedTitle[1][0] : ""
-            }`}</Typography>
-          </CardMediaPlaceholder>
-        ),
-      };
 
   const handleLikeClick = () => {
     if (onLikeClick) onLikeClick(id);
@@ -61,15 +53,33 @@ const Component = ({
 
   return (
     <StyledCard variant="outlined">
-      <CardMedia {...cardMediaProps} />
+      <CardMedia>
+        {coverImg ? (
+          <>
+            <img alt={title} loading="lazy" src={coverImg} />
+          </>
+        ) : (
+          <>
+            {title ? (
+              <CardMediaPlaceholder>
+                <Typography variant="h4">{`${title[0]}${
+                  titleMoreThan2Words ? splittedTitle[1][0] : ""
+                }`}</Typography>
+              </CardMediaPlaceholder>
+            ) : (
+              <Skeleton variant="rectangular" height="100%" />
+            )}
+          </>
+        )}
+      </CardMedia>
       <CardContent>
-        <Typography variant="h3">{title}</Typography>
+        <Typography variant="h3">{title ? title : <Skeleton />}</Typography>
         <Typography
           variant="body1"
           className="project-card-description"
           marginTop="10px"
         >
-          {description}
+          {description ? description : <Skeleton />}
         </Typography>
         <Stack marginTop="10px" direction="row" gap="10px" flexWrap="wrap">
           {tags.map((tag) => (
@@ -78,25 +88,31 @@ const Component = ({
         </Stack>
       </CardContent>
       <CardActions disableSpacing>
-        <Stack className="project-card-like-container">
-          <IconButton
-            className={isLiked ? "liked" : undefined}
-            onClick={isLiked ? undefined : handleLikeClick}
-            disableRipple={isLiked}
-            disableFocusRipple={isLiked}
-          >
-            <FavoriteIcon />
-          </IconButton>
-          <Typography variant="caption">{likes}</Typography>
-        </Stack>
-        {!!onActionClick && (
-          <Button
-            variant="outlined"
-            onClick={onActionClick}
-            endIcon={isActionExternal && <OpenInNewIcon />}
-          >
-            {actionText}
-          </Button>
+        {isLoading ? (
+          <Skeleton variant="rectangular" width="100%" />
+        ) : (
+          <>
+            <Stack className="project-card-like-container">
+              <IconButton
+                className={isLiked ? "liked" : undefined}
+                onClick={isLiked ? undefined : handleLikeClick}
+                disableRipple={isLiked}
+                disableFocusRipple={isLiked}
+              >
+                <FavoriteIcon />
+              </IconButton>
+              <Typography variant="caption">{likes}</Typography>
+            </Stack>
+            {!!onActionClick && (
+              <Button
+                variant="outlined"
+                onClick={onActionClick}
+                endIcon={isActionExternal && <OpenInNewIcon />}
+              >
+                {actionText}
+              </Button>
+            )}
+          </>
         )}
       </CardActions>
     </StyledCard>
