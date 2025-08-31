@@ -19,12 +19,16 @@ const HomePage = () => {
   });
 
   const { portfolioDetailsQuery, featuredItemsQuery } = useGetHome();
-  const { data: portfolioDetailsData } = portfolioDetailsQuery;
+  const { data: portfolioDetailsData, isPending: portfolioDetailsPending } =
+    portfolioDetailsQuery;
   const {
     data: featuredItemsData,
     isPending: featuredItemsIsPending,
     refetch: featuredItemsRefetch,
   } = featuredItemsQuery;
+
+  const featuredItemsNotReady =
+    portfolioDetailsPending || featuredItemsIsPending;
 
   const { mutate: likeProjectMutate } = useLikeProject();
 
@@ -92,7 +96,7 @@ const HomePage = () => {
       <Section header="About">{portfolioDetailsData?.description}</Section>
       <FeaturedProjects
         projects={
-          featuredItemsIsPending
+          featuredItemsNotReady
             ? Array.from({ length: 2 }).map((_e, idx) => ({
                 id: idx.toString(),
                 isLoading: true,
