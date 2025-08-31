@@ -13,6 +13,16 @@ import {
   gitLogoImg,
   visualStudioLogoImg,
   vsCodeLogoImg,
+  androidLogoImg,
+  awsLogoImg,
+  azureLogoImg,
+  figmaLogoImg,
+  flutterLogoImg,
+  googleCloudLogoImg,
+  javaLogoImg,
+  materialUiLogoImg,
+  phpLogoImg,
+  wordpressLogoImg,
 } from "@assets";
 
 const TAG_LOOKUP = {
@@ -74,6 +84,49 @@ const TAG_LOOKUP = {
   },
   ["c-sharp"]: {
     label: "C#",
+  },
+  ["android"]: {
+    imgSrc: androidLogoImg,
+    label: "Android",
+  },
+  ["aws"]: {
+    imgSrc: awsLogoImg,
+    label: "AWS",
+  },
+  ["azure"]: {
+    imgSrc: azureLogoImg,
+    label: "Azure",
+  },
+  ["figma"]: {
+    imgSrc: figmaLogoImg,
+    label: "Figma",
+  },
+  ["flutter"]: {
+    imgSrc: flutterLogoImg,
+    label: "Flutter",
+  },
+  ["googleCloud"]: {
+    imgSrc: googleCloudLogoImg,
+    label: "Google Cloud Platform",
+  },
+  ["ios"]: {
+    label: "iOS",
+  },
+  ["java"]: {
+    imgSrc: javaLogoImg,
+    label: "Java",
+  },
+  ["material-ui"]: {
+    imgSrc: materialUiLogoImg,
+    label: "Material UI",
+  },
+  ["php"]: {
+    imgSrc: phpLogoImg,
+    label: "php",
+  },
+  ["wordpress"]: {
+    imgSrc: wordpressLogoImg,
+    label: "Wordpress",
   },
 };
 

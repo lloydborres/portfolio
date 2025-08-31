@@ -17,12 +17,15 @@ const ProjectsPage = () => {
   });
 
   const { portfolioDetailsQuery, projecsQuery } = useGetProjects();
-  const { data: portfolioDetailsData } = portfolioDetailsQuery;
+  const { data: portfolioDetailsData, isPending: portfolioDetailsPending } =
+    portfolioDetailsQuery;
   const {
     data: projetsData,
     isPending: projectsIsPending,
     refetch: projectsRefetch,
   } = projecsQuery;
+
+  const projectsNotReady = portfolioDetailsPending || projectsIsPending;
 
   const { mutate: likeProjectMutate } = useLikeProject();
 
@@ -76,7 +79,7 @@ const ProjectsPage = () => {
       menuActiveItem="projects"
     >
       <ProjectsContainer>
-        {projectsIsPending
+        {projectsNotReady
           ? Array.from({ length: 3 }).map((_e, idx) => (
               <ProjectCard key={idx} id={idx.toString()} isLoading />
             ))

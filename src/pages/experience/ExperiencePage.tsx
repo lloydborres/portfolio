@@ -4,9 +4,13 @@ import useGetExperience from "./api/useGetExperience";
 
 const ExperiencePage = () => {
   const { portfolioDetailsQuery, experienceItemsQuery } = useGetExperience();
-  const { data: portfolioDetailsData } = portfolioDetailsQuery;
+  const { data: portfolioDetailsData, isPending: portfolioDetailsPending } =
+    portfolioDetailsQuery;
   const { data: experienceItemsData, isPending: experienceItemsIsPending } =
     experienceItemsQuery;
+
+  const experienceItemsNotReady =
+    portfolioDetailsPending || experienceItemsIsPending;
 
   return (
     <HomeLayout
@@ -24,7 +28,7 @@ const ExperiencePage = () => {
     >
       <Experience
         experiences={
-          experienceItemsIsPending
+          experienceItemsNotReady
             ? Array.from({ length: 1 }).map((_e, idx) => ({
                 id: idx.toString(),
                 positions: [{}],
