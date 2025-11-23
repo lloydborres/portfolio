@@ -32,6 +32,12 @@ interface IExperience {
   positions: IPosition[];
 }
 
+interface IProjectDetail {
+  id: string;
+  label: string;
+  order: number;
+}
+
 interface IProject {
   id: string;
   title: string;
@@ -45,6 +51,7 @@ interface IProject {
     isExternal?: boolean;
   }[];
   isFeatured?: boolean;
+  projectDetails?: IProjectDetail[];
 }
 
 interface IPortfolioFeaturedItems {
