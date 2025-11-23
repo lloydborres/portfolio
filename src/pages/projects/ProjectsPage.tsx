@@ -5,8 +5,11 @@ import { STRG_LIKED_PROJECTS } from "@constants";
 import useGetProjects from "./api/useGetProjects";
 import useLikeProject from "./api/useLikeProject";
 import { ProjectsContainer } from "./ProjectsPage.styles";
+import { useNavigate } from "react-router";
 
 const ProjectsPage = () => {
+  const navigate = useNavigate();
+
   const [likedProjects, setLikedProjects] = useState<string[]>(() => {
     const cachedLikedProjects = localStorage.getItem(STRG_LIKED_PROJECTS);
     if (cachedLikedProjects) {
@@ -68,8 +71,8 @@ const ProjectsPage = () => {
     }
   };
 
-  const handleProjectActionClick = (url: string) => () => {
-    window.open(url, "_blank", "noopener,noreferrer");
+  const handleProjectActionClick = (id: string) => () => {
+    navigate(id);
   };
 
   return (
@@ -84,11 +87,6 @@ const ProjectsPage = () => {
               <ProjectCard key={idx} id={idx.toString()} isLoading />
             ))
           : projetsData?.map((project, index) => {
-              const firstProjectLink =
-                project.links && project.links.length > 0
-                  ? project.links[0]
-                  : undefined;
-
               return (
                 <ProjectCard
                   key={index}
@@ -96,13 +94,8 @@ const ProjectsPage = () => {
                   tags={project.tags?.map((tag) => tagNameToTagPillProps(tag))}
                   onLikeClick={handleLikeClick}
                   isLiked={likedProjects.includes(project.id)}
-                  actionText={firstProjectLink?.label}
-                  onActionClick={
-                    firstProjectLink?.url
-                      ? handleProjectActionClick(firstProjectLink.url)
-                      : undefined
-                  }
-                  isActionExternal={firstProjectLink?.isExternal}
+                  actionText="Read More"
+                  onActionClick={handleProjectActionClick(project.id)}
                 />
               );
             })}
