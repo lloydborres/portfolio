@@ -22,3 +22,8 @@ export { default as javaLogoImg } from "./images/java_logo.svg";
 export { default as materialUiLogoImg } from "./images/material_ui_logo.svg";
 export { default as phpLogoImg } from "./images/php_logo.svg";
 export { default as wordpressLogoImg } from "./images/wordpress_logo.svg";
+export { default as cloudflareLogoImg } from "./images/cloudflare_logo.svg";
+export { default as dockerLogoImg } from "./images/docker_logo.svg";
+export { default as linuxLogoImg } from "./images/linux_logo.svg";
+export { default as terminalLogoImg } from "./images/terminal_logo.svg";
+export { default as windowsLogoImg } from "./images/windows_logo.svg";

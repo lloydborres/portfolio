@@ -23,6 +23,11 @@ import {
   materialUiLogoImg,
   phpLogoImg,
   wordpressLogoImg,
+  cloudflareLogoImg,
+  dockerLogoImg,
+  linuxLogoImg,
+  terminalLogoImg,
+  windowsLogoImg
 } from "@assets";
 
 const TAG_LOOKUP = {
@@ -127,6 +132,26 @@ const TAG_LOOKUP = {
   ["wordpress"]: {
     imgSrc: wordpressLogoImg,
     label: "Wordpress",
+  },
+  ["cloudflare"]: {
+    imgSrc: cloudflareLogoImg,
+    label: "Cloudflare",
+  },
+  ["docker"]: {
+    imgSrc: dockerLogoImg,
+    label: "Docker",
+  },
+  ["linux"]: {
+    imgSrc: linuxLogoImg,
+    label: "Linux",
+  },
+  ["ssh"]: {
+    imgSrc: terminalLogoImg,
+    label: "SSH",
+  },
+  ["windows"]: {
+    imgSrc: windowsLogoImg,
+    label: "Windows",
   },
 };
 
