@@ -1,6 +1,6 @@
 {
-  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "always"
+    "source.fixAll.prettier": "explicit",
+    "source.fixAll.eslint": "explicit"
   }
 }
