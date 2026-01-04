@@ -50,7 +50,7 @@ const HomePage = () => {
                 const newLiked = [...prev].filter((e) => e !== id);
                 localStorage.setItem(
                   STRG_LIKED_PROJECTS,
-                  JSON.stringify(newLiked)
+                  JSON.stringify(newLiked),
                 );
                 return newLiked;
               });
@@ -61,12 +61,12 @@ const HomePage = () => {
               const newLiked = [...prev].filter((e) => e !== id);
               localStorage.setItem(
                 STRG_LIKED_PROJECTS,
-                JSON.stringify(newLiked)
+                JSON.stringify(newLiked),
               );
               return newLiked;
             });
           },
-        }
+        },
       );
     }
   };
@@ -76,8 +76,9 @@ const HomePage = () => {
     navigate(NAV_PATHS.PROJECTS.BASE);
   };
 
-  const handleProjectActionClick = (url: string) => () => {
-    window.open(url, "_blank", "noopener,noreferrer");
+  const handleProjectActionClick = (id: string) => () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    navigate(`${NAV_PATHS.PROJECTS.BASE}/${id}`);
   };
 
   return (
@@ -102,21 +103,12 @@ const HomePage = () => {
                 isLoading: true,
               }))
             : featuredItemsData?.projects.map((project) => {
-                const firstProjectLink =
-                  project.links && project.links.length > 0
-                    ? project.links[0]
-                    : undefined;
-
                 return {
                   ...project,
                   tags: project.tags?.map((tag) => tagNameToTagPillProps(tag)),
                   isLiked: likedProjects.includes(project.id),
                   onLikeClick: handleLikeClick,
-                  actionText: firstProjectLink?.label,
-                  onActionClick: firstProjectLink?.url
-                    ? handleProjectActionClick(firstProjectLink.url)
-                    : undefined,
-                  isActionExternal: firstProjectLink?.isExternal,
+                  onActionClick: handleProjectActionClick(project.id),
                 };
               })
         }
