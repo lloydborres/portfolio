@@ -11,6 +11,7 @@ export type { Props as ProjectCardProps } from "./molecules/ProjectCard/ProjectC
 export { default as SkillCard } from "./molecules/SkillCard/SkillCard";
 export type { Props as SkillCardProps } from "./molecules/SkillCard/SkillCard";
 export { default as Section } from "./molecules/Section/Section";
+export { default as ProjectDetailsHeader } from "./molecules/ProjectDetailsHeader/ProjectDetailsHeader";
 
 export { default as Experience } from "./organisms/Experience/Experience";
 export { default as FeaturedProjects } from "./organisms/FeaturedProjects/FeaturedProjects";

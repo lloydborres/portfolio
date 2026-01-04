@@ -30,4 +30,16 @@ const skillNameToSkillCardProps = (name: string): SkillCardProps => {
   }
 };
 
-export { nameToLabel, tagNameToTagPillProps, skillNameToSkillCardProps };
+const buttonAction =
+  ({ url, isExternal }: { url?: string; isExternal?: boolean }) =>
+  () => {
+    if (isExternal) window.open(url, "_blank", "noopener,noreferrer");
+    else window.open(url, "_self");
+  };
+
+export {
+  nameToLabel,
+  tagNameToTagPillProps,
+  skillNameToSkillCardProps,
+  buttonAction,
+};

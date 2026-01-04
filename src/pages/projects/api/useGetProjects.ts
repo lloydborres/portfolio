@@ -11,7 +11,7 @@ const useGetProjects = () => {
 
   const portfolioId = portfolioDetailsQuery.data?.id;
 
-  const projecsQuery = useQuery({
+  const projectsQuery = useQuery({
     queryKey: ["portfolioProjects", portfolioId],
     queryFn: () => {
       if (portfolioId)
@@ -19,7 +19,7 @@ const useGetProjects = () => {
     },
   });
 
-  return { portfolioDetailsQuery, projecsQuery };
+  return { portfolioDetailsQuery, projectsQuery };
 };
 
 export default useGetProjects;

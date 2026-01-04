@@ -19,14 +19,14 @@ const ProjectsPage = () => {
     return [];
   });
 
-  const { portfolioDetailsQuery, projecsQuery } = useGetProjects();
+  const { portfolioDetailsQuery, projectsQuery } = useGetProjects();
   const { data: portfolioDetailsData, isPending: portfolioDetailsPending } =
     portfolioDetailsQuery;
   const {
     data: projetsData,
     isPending: projectsIsPending,
     refetch: projectsRefetch,
-  } = projecsQuery;
+  } = projectsQuery;
 
   const projectsNotReady = portfolioDetailsPending || projectsIsPending;
 
@@ -50,7 +50,7 @@ const ProjectsPage = () => {
                 const newLiked = [...prev].filter((e) => e !== id);
                 localStorage.setItem(
                   STRG_LIKED_PROJECTS,
-                  JSON.stringify(newLiked)
+                  JSON.stringify(newLiked),
                 );
                 return newLiked;
               });
@@ -61,12 +61,12 @@ const ProjectsPage = () => {
               const newLiked = [...prev].filter((e) => e !== id);
               localStorage.setItem(
                 STRG_LIKED_PROJECTS,
-                JSON.stringify(newLiked)
+                JSON.stringify(newLiked),
               );
               return newLiked;
             });
           },
-        }
+        },
       );
     }
   };
