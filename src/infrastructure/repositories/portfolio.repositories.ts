@@ -18,15 +18,20 @@ import {
   type IPortfolio,
   type IGetPortfolioProjectsInput,
   type ILikeProjectInput,
+  type IGetProjectDetailsByIdInput,
+  type IProjectDetail,
 } from "@domain";
 
 interface IPortfolioRepository {
   getFirstPortfolio(): Promise<IPortfolio | undefined>;
   getPortfolioById(id: string): Promise<IPortfolio | undefined>;
-  getPortfolioSkillSets(id: string): Promise<ISkillSet[]>;
-  getPortfolioExperiences(id: string): Promise<IExperience[]>;
+  getPortfolioSkillSets(portfolioId: string): Promise<ISkillSet[]>;
+  getPortfolioExperiences(portfolioId: string): Promise<IExperience[]>;
   getPortfolioProjects(data: IGetPortfolioProjectsInput): Promise<IProject[]>;
   likeProject(data: ILikeProjectInput): Promise<boolean>;
+  getProjectDetailsById(
+    data: IGetProjectDetailsByIdInput,
+  ): Promise<IProject | undefined>;
 }
 
 class PortfolioRepository implements IPortfolioRepository {
@@ -34,6 +39,7 @@ class PortfolioRepository implements IPortfolioRepository {
   private SUB_COLLECTION_SKILL_SETS = "skillSets";
   private SUB_COLLECTION_EXPERIENCES = "experiences";
   private SUB_COLLECTION_PROJECTS = "projects";
+  private SUB_COLLECTION_DETAILS = "details";
   private firestore: Firestore;
 
   constructor(firestore: Firestore) {
@@ -70,13 +76,13 @@ class PortfolioRepository implements IPortfolioRepository {
     }
   }
 
-  async getPortfolioSkillSets(id: string): Promise<ISkillSet[]> {
+  async getPortfolioSkillSets(portfolioId: string): Promise<ISkillSet[]> {
     try {
       const skillSetsRef = collection(
         this.firestore,
         this.COLLECTION_NAME,
-        id,
-        this.SUB_COLLECTION_SKILL_SETS
+        portfolioId,
+        this.SUB_COLLECTION_SKILL_SETS,
       );
       const skillSetsQ = query(skillSetsRef, orderBy("order", "asc"));
       const skillSetsSS = await getDocs(skillSetsQ);
@@ -95,13 +101,13 @@ class PortfolioRepository implements IPortfolioRepository {
     }
   }
 
-  async getPortfolioExperiences(id: string): Promise<IExperience[]> {
+  async getPortfolioExperiences(portfolioId: string): Promise<IExperience[]> {
     try {
       const experiencesRef = collection(
         this.firestore,
         this.COLLECTION_NAME,
-        id,
-        this.SUB_COLLECTION_EXPERIENCES
+        portfolioId,
+        this.SUB_COLLECTION_EXPERIENCES,
       );
       const experiencesQ = query(experiencesRef, orderBy("startDate", "desc"));
       const experiencesSS = await getDocs(experiencesQ);
@@ -112,7 +118,7 @@ class PortfolioRepository implements IPortfolioRepository {
             id: experienceDoc.id,
             ...experienceDoc.data(),
           } as IExperience;
-        }
+        },
       );
 
       return experiences;
@@ -123,7 +129,7 @@ class PortfolioRepository implements IPortfolioRepository {
   }
 
   async getPortfolioProjects(
-    data: IGetPortfolioProjectsInput
+    data: IGetPortfolioProjectsInput,
   ): Promise<IProject[]> {
     try {
       const { portfolioId, filters } = data;
@@ -131,7 +137,7 @@ class PortfolioRepository implements IPortfolioRepository {
         this.firestore,
         this.COLLECTION_NAME,
         portfolioId,
-        this.SUB_COLLECTION_PROJECTS
+        this.SUB_COLLECTION_PROJECTS,
       );
 
       const projectConstraints = [];
@@ -139,7 +145,7 @@ class PortfolioRepository implements IPortfolioRepository {
         projectConstraints.push(where("isFeatured", "==", filters.isFeatured));
       if (filters?.orderBy)
         projectConstraints.push(
-          orderBy(filters.orderBy, filters.orderByDirection)
+          orderBy(filters.orderBy, filters.orderByDirection),
         );
 
       const projectsQ = query(projectsRef, ...projectConstraints);
@@ -167,7 +173,7 @@ class PortfolioRepository implements IPortfolioRepository {
         this.COLLECTION_NAME,
         portfolioId,
         this.SUB_COLLECTION_PROJECTS,
-        projectId
+        projectId,
       );
       await updateDoc(projectDocRef, {
         likes: increment(1),
@@ -176,6 +182,52 @@ class PortfolioRepository implements IPortfolioRepository {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       return false;
+    }
+  }
+
+  async getProjectDetailsById(
+    data: IGetProjectDetailsByIdInput,
+  ): Promise<IProject | undefined> {
+    try {
+      const { portfolioId, projectId } = data;
+
+      const projectDocRef = doc(
+        this.firestore,
+        this.COLLECTION_NAME,
+        portfolioId,
+        this.SUB_COLLECTION_PROJECTS,
+        projectId,
+      );
+      const projectDoc = await getDoc(projectDocRef);
+
+      const projectDetailsRef = collection(
+        this.firestore,
+        this.COLLECTION_NAME,
+        portfolioId,
+        this.SUB_COLLECTION_PROJECTS,
+        projectId,
+        this.SUB_COLLECTION_DETAILS,
+      );
+      const projectDetailsQ = query(projectDetailsRef, orderBy("order", "asc"));
+      const projectDetailsSS = await getDocs(projectDetailsQ);
+
+      const projectDetails: IProjectDetail[] = projectDetailsSS.docs.map(
+        (projectDetailDoc) => {
+          return {
+            id: projectDetailDoc.id,
+            ...projectDetailDoc.data(),
+          } as IProjectDetail;
+        },
+      );
+
+      return {
+        id: projectDoc.id,
+        ...projectDoc.data(),
+        projectDetails,
+      } as IProject;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      return undefined;
     }
   }
 }

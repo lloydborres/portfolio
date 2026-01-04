@@ -35,6 +35,7 @@ interface IExperience {
 interface IProjectDetail {
   id: string;
   label: string;
+  content: string;
   order: number;
 }
 
@@ -77,14 +78,21 @@ interface ILikeProjectInput {
   projectId: string;
 }
 
+interface IGetProjectDetailsByIdInput {
+  portfolioId: string;
+  projectId: string;
+}
+
 export type {
   IPortfolio,
   ISkillSet,
   IPosition,
   IExperience,
   IProject,
+  IProjectDetail,
   IPortfolioFeaturedItems,
   IPortfolioExperienceItems,
   IGetPortfolioProjectsInput,
   ILikeProjectInput,
+  IGetProjectDetailsByIdInput,
 };
