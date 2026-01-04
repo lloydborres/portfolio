@@ -6,12 +6,18 @@ import { tagNameToTagPillProps } from "@utils";
 const ProjectDetailsPage = () => {
   const { projectId } = useParams();
 
-  const { projectsDetailsQuery } = useGetProjectDetailsById(projectId);
+  const { portfolioDetailsQuery, projectsDetailsQuery } =
+    useGetProjectDetailsById(projectId);
+  const { data: portfolioDetailsData } = portfolioDetailsQuery;
   const { data: projectDetailsData, isPending: projectDetailsIsPending } =
     projectsDetailsQuery;
 
   return (
-    <CommonLayout name="Test" appBarTitle="Projects" menuActiveItem="projects">
+    <CommonLayout
+      name={portfolioDetailsData?.name}
+      appBarTitle="Projects"
+      menuActiveItem="projects"
+    >
       <ProjectDetailsHeader
         title={projectDetailsData?.title}
         description={projectDetailsData?.description}
