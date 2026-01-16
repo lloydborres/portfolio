@@ -1,5 +1,10 @@
 import { useParams } from "react-router";
-import { CommonLayout, ProjectDetailsHeader, Section } from "@components";
+import {
+  CommonLayout,
+  ProjectDetailsGallery,
+  ProjectDetailsHeader,
+  Section,
+} from "@components";
 import useGetProjectDetailsById from "./api/useGetProjectDetailsById";
 import { tagNameToTagPillProps } from "@utils";
 
@@ -29,15 +34,33 @@ const ProjectDetailsPage = () => {
         isLoading={projectDetailsIsPending}
       />
       {projectDetailsIsPending ? (
-        <Section />
+        <>
+          <ProjectDetailsGallery isLoading />
+          <Section />
+        </>
       ) : (
-        projectDetailsData?.projectDetails?.map((projectDetail, idx) => (
-          <Section
-            key={idx}
-            header={projectDetail.label}
-            children={projectDetail.content}
-          />
-        ))
+        projectDetailsData?.projectDetails?.map((projectDetail, idx) => {
+          switch (projectDetail.type) {
+            case "gallery": {
+              return (
+                <ProjectDetailsGallery
+                  projectTitle={projectDetailsData.title}
+                  coverImg={projectDetailsData.coverImg}
+                  items={projectDetail.items}
+                />
+              );
+            }
+            case "detail": {
+              return (
+                <Section
+                  key={idx}
+                  header={projectDetail.label}
+                  children={projectDetail.content}
+                />
+              );
+            }
+          }
+        })
       )}
     </CommonLayout>
   );

@@ -36,6 +36,20 @@ interface IProjectDetail {
   id: string;
   label: string;
   content: string;
+  type: "detail";
+  order: number;
+}
+
+interface IProjectGalleryItem {
+  label: string;
+  src: string;
+  type: string;
+}
+
+interface IProjectGallery {
+  id: string;
+  items: IProjectGalleryItem[];
+  type: "gallery";
   order: number;
 }
 
@@ -52,7 +66,7 @@ interface IProject {
     isExternal?: boolean;
   }[];
   isFeatured?: boolean;
-  projectDetails?: IProjectDetail[];
+  projectDetails?: (IProjectDetail | IProjectGallery)[];
 }
 
 interface IPortfolioFeaturedItems {
@@ -90,6 +104,8 @@ export type {
   IExperience,
   IProject,
   IProjectDetail,
+  IProjectGalleryItem,
+  IProjectGallery,
   IPortfolioFeaturedItems,
   IPortfolioExperienceItems,
   IGetPortfolioProjectsInput,
