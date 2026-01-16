@@ -1,4 +1,5 @@
-import { Skeleton, Typography } from "@mui/material";
+import { Skeleton, Typography, Link } from "@mui/material";
+import Markdown from "react-markdown";
 import { Container } from "./Section.styles";
 
 type Props = {
@@ -13,9 +14,20 @@ const Component = ({ header, children }: Props) => {
         {header ? header : <Skeleton />}
       </Typography>
       {typeof children === "string" ? (
-        <Typography variant="body1" sx={{ whiteSpace: "pre-wrap" }}>
-          {children ? children : <Skeleton />}
-        </Typography>
+        children ? (
+          <Markdown
+            components={{
+              p: Typography,
+              a: (props) => (
+                <Link {...props} target="_blank" rel="noopener noreferrer" />
+              ),
+            }}
+          >
+            {children}
+          </Markdown>
+        ) : (
+          <Skeleton />
+        )
       ) : children ? (
         children
       ) : (
