@@ -33,6 +33,15 @@ const Container = styled(Box)(({ theme }) => ({
     color: theme.palette.common.white,
   },
 
+  ".MuiButtonBase-root.MuiButton-root:first-of-type": {
+    paddingLeft: 30,
+    paddingRight: 30,
+  },
+
+  ".MuiButtonBase-root.MuiButton-root": {
+    fontWeight: 700,
+  },
+
   ".project-description": {
     color: theme.palette.common.white,
   },
@@ -43,7 +52,7 @@ const Container = styled(Box)(({ theme }) => ({
     },
 
     ".project-header-content": {
-      background: `linear-gradient(to top, ${alpha(theme.palette.grey[900], 1)} 30%, ${alpha(theme.palette.grey[900], 0)} 80%)`,
+      background: `linear-gradient(to top, ${alpha(theme.palette.grey[900], 1)} 40%, ${alpha(theme.palette.grey[900], 0)} 100%)`,
       marginTop: 300,
     },
   },

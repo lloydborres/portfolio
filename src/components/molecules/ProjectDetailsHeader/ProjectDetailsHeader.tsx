@@ -42,7 +42,7 @@ const Component = ({
               {links?.map((link, index) => (
                 <Button
                   key={index}
-                  variant={index === 0 ? "contained" : "outlined"}
+                  variant={index === 0 ? "contained" : "text"}
                   onClick={buttonAction({
                     url: link.url,
                     isExternal: link.isExternal,
