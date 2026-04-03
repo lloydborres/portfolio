@@ -27,3 +27,5 @@ export { default as dockerLogoImg } from "./images/docker_logo.svg";
 export { default as linuxLogoImg } from "./images/linux_logo.svg";
 export { default as terminalLogoImg } from "./images/terminal_logo.svg";
 export { default as windowsLogoImg } from "./images/windows_logo.svg";
+export { default as pico8LogoImg } from "./images/pico_8_logo.svg";
+export { default as luaLogoImg } from "./images/lua_logo.svg";

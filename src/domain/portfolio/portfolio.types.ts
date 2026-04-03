@@ -55,7 +55,7 @@ interface IProjectGallery {
 
 interface IProjectIframe {
   id: string;
-  label?: string;
+  label: string;
   src: string;
   contentType?: "pico-8-embed";
   type: "iframe";

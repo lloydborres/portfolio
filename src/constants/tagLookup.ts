@@ -27,7 +27,9 @@ import {
   dockerLogoImg,
   linuxLogoImg,
   terminalLogoImg,
-  windowsLogoImg
+  windowsLogoImg,
+  pico8LogoImg,
+  luaLogoImg,
 } from "@assets";
 
 const TAG_LOOKUP = {
@@ -152,6 +154,14 @@ const TAG_LOOKUP = {
   ["windows"]: {
     imgSrc: windowsLogoImg,
     label: "Windows",
+  },
+  ["pico-8"]: {
+    imgSrc: pico8LogoImg,
+    label: "PICO-8",
+  },
+  ["lua"]: {
+    imgSrc: luaLogoImg,
+    label: "Lua",
   },
 };
 
