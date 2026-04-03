@@ -53,6 +53,15 @@ interface IProjectGallery {
   order: number;
 }
 
+interface IProjectIframe {
+  id: string;
+  label?: string;
+  src: string;
+  contentType?: "pico-8-embed";
+  type: "iframe";
+  order: number;
+}
+
 interface IProject {
   id: string;
   title: string;
@@ -66,7 +75,7 @@ interface IProject {
     isExternal?: boolean;
   }[];
   isFeatured?: boolean;
-  projectDetails?: (IProjectDetail | IProjectGallery)[];
+  projectDetails?: (IProjectDetail | IProjectGallery | IProjectIframe)[];
 }
 
 interface IPortfolioFeaturedItems {

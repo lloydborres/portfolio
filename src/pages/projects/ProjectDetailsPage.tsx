@@ -8,6 +8,8 @@ import {
 import useGetProjectDetailsById from "./api/useGetProjectDetailsById";
 import { tagNameToTagPillProps } from "@utils";
 
+const ALLOWED_FULLSCREEN_TYPES = ["pico-8-embed"];
+
 const ProjectDetailsPage = () => {
   const { projectId } = useParams();
 
@@ -57,6 +59,19 @@ const ProjectDetailsPage = () => {
                   header={projectDetail.label}
                   children={projectDetail.content}
                 />
+              );
+            }
+            case "iframe": {
+              return (
+                <Section key={idx} header={projectDetail.label}>
+                  <iframe
+                    className={projectDetail.contentType}
+                    src={projectDetail.src}
+                    allowFullScreen={ALLOWED_FULLSCREEN_TYPES.includes(
+                      projectDetail.contentType ?? "",
+                    )}
+                  ></iframe>
+                </Section>
               );
             }
           }

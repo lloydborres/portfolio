@@ -15,6 +15,15 @@ const Container = styled(Box)(({ theme }) => ({
   "li:not(:last-of-type)": {
     marginBottom: 10,
   },
+
+  iframe: {
+    alignSelf: "center",
+  },
+
+  "iframe.pico-8-embed": {
+    width: 621,
+    height: 610,
+  },
 }));
 
 export { Container };
