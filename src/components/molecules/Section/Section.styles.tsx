@@ -21,8 +21,15 @@ const Container = styled(Box)(({ theme }) => ({
   },
 
   "iframe.pico-8-embed": {
-    width: 621,
-    height: 610,
+    width: "100%",
+    height: "85vw",
+  },
+
+  [theme.breakpoints.up("lg")]: {
+    "iframe.pico-8-embed": {
+      width: 621,
+      height: 610,
+    },
   },
 }));
 
