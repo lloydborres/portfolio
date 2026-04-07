@@ -1,13 +1,15 @@
 services:
-  portfolio:
-    image: portfolio
-    container_name: portfolio
-    restart: unless-stopped
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    ports:
-      - 5173:5173
+  portfolio-node:
+    image: node:24-slim
+    container_name: portfolio_node
+    restart: "no"
+    entrypoint: sh
+    stdin_open: true
+    tty: true
+    user: 1000:1000
     volumes:
       - .:/app
-      - /app/node_modules
+    ports:
+      # - 9005:9005
+      - 5173:5173
+    working_dir: /app
