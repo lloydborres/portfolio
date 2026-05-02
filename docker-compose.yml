@@ -10,6 +10,7 @@ services:
     volumes:
       - .:/app
     ports:
-      # - 9005:9005
-      - 5173:5173
+      # - 9005:9005 # Firebase CLI
+      - 5173:5173 # React App
+      - 6006:6006 # Storybook
     working_dir: /app
