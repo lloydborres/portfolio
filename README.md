@@ -43,7 +43,7 @@ Welcome to the souce code of my simple portfolio website!
 6. Data are stored in [Firebase Firestore](#setup-firebase-firestore).
 7. More [index.html](./index.html) customization can now be modified through `.env` file.
 
-## Deployment
+## Manual Deployment
 
 1. Setup a [Firebase Project](console.firebase.google.com).
 2. Setup hosting in that project.
@@ -65,6 +65,14 @@ Welcome to the souce code of my simple portfolio website!
 10. Run `npm run deploy-dev-portfolio` to deploy the React App to a dev channel for testing (optional).
 11. Run `npm run deploy-dev-storybook` to deploy the Storybook to a dev channel for testing (optional).
 12. `npm run deploy-all` will deploy both React App and Storybook to their respective site.
+
+## Automated Deployments
+
+1. Create a copy of the following and put it inside [.github/workflows](./.github/workflows):
+   - [firebase-hosting-merge.example.yml](./docs/examples/firebase-hosting-merge.example.yml) - Deploy on Merge
+   - [firebase-hosting-pull-request.example.yml](./docs/examples/firebase-hosting-pull-request.example.yml) - Deploy a preview on pull request creation
+2. Update necessary values in the file and also add necessary secrets in the **Repository Settings** > **Secrets and variables** > **Actions**.
+3. Changes will be automatically deployed as configured.
 
 ## Setup Firebase Firestore (TODO v3)
 
