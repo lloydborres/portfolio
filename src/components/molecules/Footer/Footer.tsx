@@ -15,7 +15,7 @@ const Component = ({ name }: Props) => {
         <Typography className="footer-copyright" variant="body2">
           {`Developed by ${name}, built with React TS + Vite + Material UI - `}
           <Link
-            href="https://github.com/lloydborres/portfolio"
+            href="https://github.com/lloy-dev/portfolio"
             target="_blank"
             rel="noopener noreferrer"
           >

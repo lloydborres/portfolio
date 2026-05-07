@@ -15,8 +15,6 @@ Welcome to the souce code of my simple portfolio website!
   </tr>
 </table>
 
-**Portfolio:** https://portfolio.lloydborres.com \
-**Storybook:** https://portfolio-sb.lloydborres.com \
 **Figma:** https://www.figma.com/design/RQCYf7U8FfqjJGFWUtd2IS/Portfolio?node-id=9656-2380&t=q6iQTBMSb4Hzh8wf-4
 
 ## Version Notes
@@ -73,56 +71,3 @@ Welcome to the souce code of my simple portfolio website!
    - [firebase-hosting-pull-request.example.yml](./docs/examples/firebase-hosting-pull-request.example.yml) - Deploy a preview on pull request creation
 2. Update necessary values in the file and also add necessary secrets in the **Repository Settings** > **Secrets and variables** > **Actions**.
 3. Changes will be automatically deployed as configured.
-
-## Setup Firebase Firestore (TODO v3)
-
-1. Setup a [Firebase Project](console.firebase.google.com) if you haven't yet.
-2. Create a Firestore database under 'All products'.
-3. Get you Firebase config and update your `.env` file with their respective values.
-4. In your Firestore rules, at least allow read for everyone `allow read: if true;`.
-5. Create a new collection named `users` and auto-fill ID with the following fields and type.
-   ```
-   {
-      name: string;
-      title: string;
-      description: string;
-      profilePicSrc?: string;
-      email?: string;
-      github?: string;
-      linkedin?: string;
-   }
-   ```
-6. Create a sub-collection named `skillSets` under `users` collection and auto-fill ID with the following fields and type. Add more documents if necessary.
-   ```
-   {
-      title: string;
-      skills: string[]; // Array of strings e.g. ['html', 'css']
-   }
-   ```
-7. Create a sub-collection named `experiences` under `users` collection and auto-fill ID with the following fields and type. Add more documents if necessary.
-   ```
-   {
-      companyName: string;
-      positions: {
-        title: string;
-        description: string;
-        location: string;
-        startDate: Timestamp;
-        endDate?: Timestamp;
-      }[]; // Array of positions
-   }
-   ```
-8. Create a sub-collection named `projects` under `users` collection and auto-fill ID with the following fields and type. Add more documents if necessary.
-   ```
-   {
-      title: string;
-      description: string;
-      coverImg?: string;
-      actions: {
-        label: string;
-        href: string;
-        isExternal: string;
-      }[]; // Array of actions
-   }
-   ```
-9. Updated data will now be fetched from the Firestore database without having to redeploy.
