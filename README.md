@@ -1,16 +1,12 @@
 # Portfolio React App
 
-Welcome to the souce code of my simple portfolio website!
+Welcome to the souce code of my portfolio website!
 
 <table align="center">
   <tr>
     <td align="center">
-      <img src="./docs/images/portfolio_thumbnail.png" width="100%"/><br>
-      <sub><em>Figure 1: React App</em></sub>
-    </td>
-    <td align="center">
-      <img src="./docs/images/storybook_thumbnail.png" width="100%"/><br>
-      <sub><em>Figure 2: Storybook</em></sub>
+      <img src="./docs/images/figma_design_preview.png" width="100%"/><br>
+      <sub><em>Figure 1: Figma Design Preview</em></sub>
     </td>
   </tr>
 </table>
@@ -19,9 +15,9 @@ Welcome to the souce code of my simple portfolio website!
 
 ## Version Notes
 
-- `releases/v3.0` and above uses a slightly different database structure
-- `releases/v2.0` and above uses Firebase Firestore to display data
-- `releases/v1.2` and below uses `data.tsx` file to display data
+- `v3.x.x` and above uses a slightly different database structure
+- `v2.x.x` and above uses Firebase Firestore to display data
+- `v1.x.x` and below uses `data.tsx` file to display data
 
 ## Tech Stack/Libraries
 
@@ -41,7 +37,7 @@ Welcome to the souce code of my simple portfolio website!
 6. Data are stored in [Firebase Firestore](#setup-firebase-firestore).
 7. More [index.html](./index.html) customization can now be modified through `.env` file.
 
-## Manual Deployment
+## Manual Deployment With Firebase Hosting
 
 1. Setup a [Firebase Project](console.firebase.google.com).
 2. Setup hosting in that project.
@@ -64,10 +60,17 @@ Welcome to the souce code of my simple portfolio website!
 11. Run `npm run deploy-dev-storybook` to deploy the Storybook to a dev channel for testing (optional).
 12. `npm run deploy-all` will deploy both React App and Storybook to their respective site.
 
-## Automated Deployments
+## Automated Deployments With Firebase Hosting
 
-1. Create a copy of the following and put it inside [.github/workflows](./.github/workflows):
+1. Setup a [Firebase Project](console.firebase.google.com).
+2. Setup hosting in that project.
+3. Add another site if you want to deploy storybook as well (optional).
+4. Create a `.firebaserc` based from [.firebaserc.example](.firebaserc.example).
+5. Update the names in `.firebaserc` to match your Project IDs created in Firebase.
+   - `nickname-portfolio` should be replaced with the default id as you created the project.
+   - `nickname-portfolio-storybook` should be replaced with the additional site you created within the project.
+6. Create a copy of the following and put it inside [.github/workflows](./.github/workflows):
    - [firebase-hosting-merge.example.yml](./docs/examples/firebase-hosting-merge.example.yml) - Deploy on Merge
    - [firebase-hosting-pull-request.example.yml](./docs/examples/firebase-hosting-pull-request.example.yml) - Deploy a preview on pull request creation
-2. Update necessary values in the file and also add necessary secrets in the **Repository Settings** > **Secrets and variables** > **Actions**.
-3. Changes will be automatically deployed as configured.
+7. Update necessary values in the file and also add necessary secrets in the **Repository Settings** > **Secrets and variables** > **Actions**.
+8. Changes will be automatically deployed as configured.
