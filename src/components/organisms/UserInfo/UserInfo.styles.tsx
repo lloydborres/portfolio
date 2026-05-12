@@ -79,6 +79,10 @@ const LinkIcon = styled(Link)(({ theme }) => ({
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.background.paper,
   },
+
+  "&:hover path.icon-filled": {
+    fill: theme.palette.background.paper,
+  },
 }));
 
 const InfoLink = styled(Link)(({ theme }) => ({

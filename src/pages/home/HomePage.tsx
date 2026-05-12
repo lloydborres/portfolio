@@ -87,9 +87,16 @@ const HomePage = () => {
         name: portfolioDetailsData?.name,
         title: portfolioDetailsData?.title,
         profilePicUrl: portfolioDetailsData?.profilePicSrc,
+        personalSiteUrl: portfolioDetailsData?.personalSite,
         githubUrl: portfolioDetailsData?.github,
+        gitlabUrl: portfolioDetailsData?.gitlab,
         linkedInUrl: portfolioDetailsData?.linkedin,
+        youtubeUrl: portfolioDetailsData?.youtube,
+        twitterUrl: portfolioDetailsData?.twitter,
+        instagramUrl: portfolioDetailsData?.instagram,
+        facebookUrl: portfolioDetailsData?.facebook,
         email: portfolioDetailsData?.email,
+        phone: portfolioDetailsData?.phone,
         location: portfolioDetailsData?.location,
       }}
       menuActiveItem="home"
