@@ -6,9 +6,16 @@ interface IPortfolio {
   title: string;
   description: string;
   profilePicSrc?: string;
-  email?: string;
+  personalSite?: string;
   github?: string;
+  gitlab?: string;
   linkedin?: string;
+  youtube?: string;
+  instagram?: string;
+  twitter?: string;
+  facebook?: string;
+  email?: string;
+  phone?: string;
   location?: string;
 }
 

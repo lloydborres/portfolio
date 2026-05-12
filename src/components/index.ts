@@ -4,6 +4,7 @@ export { default as IconButton } from "./atoms/IconButton/IconButton";
 export { default as ExpandMore } from "./atoms/ExpandMore/ExpandMore";
 export { default as TagPill } from "./atoms/TagPill/TagPill";
 export type { Props as TagPillProps } from "./atoms/TagPill/TagPill";
+export * from "./atoms/Icons";
 
 // Molecules
 export { default as AppBar } from "./molecules/AppBar/AppBar";

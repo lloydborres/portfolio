@@ -6,7 +6,13 @@ import {
   Email as EmailIcon,
   PhoneAndroid as PhoneAndroidIcon,
   Place as PlaceIcon,
+  Web as WebIcon,
+  YouTube as YouTubeIcon,
+  X as XIcon,
+  Instagram as InstagramIcon,
+  Facebook as FacebookIcon,
 } from "@mui/icons-material";
+import { GitLabIcon } from "@components";
 import {
   Container,
   ProfilePicContainer,
@@ -20,8 +26,14 @@ type Props = {
   name?: string;
   title?: string;
   profilePicUrl?: string;
+  personalSiteUrl?: string;
   githubUrl?: string;
+  gitlabUrl?: string;
   linkedInUrl?: string;
+  youtubeUrl?: string;
+  twitterUrl?: string;
+  instagramUrl?: string;
+  facebookUrl?: string;
   email?: string;
   phone?: string;
   location?: string;
@@ -31,8 +43,14 @@ const Component = ({
   name,
   title,
   profilePicUrl,
+  personalSiteUrl,
   githubUrl,
+  gitlabUrl,
   linkedInUrl,
+  youtubeUrl,
+  twitterUrl,
+  instagramUrl,
+  facebookUrl,
   email,
   phone,
   location,
@@ -63,7 +81,21 @@ const Component = ({
         <Typography className="user-info-title" variant="body1">
           {title ? title : <Skeleton />}
         </Typography>
-        <Stack flexDirection="row" justifyContent="center" gap="20px">
+        <Stack
+          flexDirection="row"
+          justifyContent="center"
+          gap="20px"
+          flexWrap="wrap"
+        >
+          {!!personalSiteUrl && (
+            <LinkIcon
+              href={personalSiteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <WebIcon />
+            </LinkIcon>
+          )}
           {!!githubUrl && (
             <LinkIcon
               href={githubUrl}
@@ -73,6 +105,15 @@ const Component = ({
               <GitHubIcon />
             </LinkIcon>
           )}
+          {!!gitlabUrl && (
+            <LinkIcon
+              href={gitlabUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GitLabIcon />
+            </LinkIcon>
+          )}
           {!!linkedInUrl && (
             <LinkIcon
               href={linkedInUrl}
@@ -80,6 +121,42 @@ const Component = ({
               rel="noopener noreferrer"
             >
               <LinkedInIcon />
+            </LinkIcon>
+          )}
+          {!!youtubeUrl && (
+            <LinkIcon
+              href={youtubeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <YouTubeIcon />
+            </LinkIcon>
+          )}
+          {!!twitterUrl && (
+            <LinkIcon
+              href={twitterUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <XIcon />
+            </LinkIcon>
+          )}
+          {!!instagramUrl && (
+            <LinkIcon
+              href={instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <InstagramIcon />
+            </LinkIcon>
+          )}
+          {!!facebookUrl && (
+            <LinkIcon
+              href={facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FacebookIcon />
             </LinkIcon>
           )}
         </Stack>
