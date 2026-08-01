@@ -1,16 +1,14 @@
 services:
-  portfolio-node:
-    image: node:24-slim
-    container_name: portfolio_node
-    restart: "no"
-    entrypoint: sh
-    stdin_open: true
-    tty: true
-    user: 1000:1000
-    volumes:
-      - .:/app
+  portfolio-dev:
+    container_name: portfolio_dev
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     ports:
-      # - 9005:9005 # Firebase CLI
       - 5173:5173 # React App
-      - 6006:6006 # Storybook
-    working_dir: /app
+      # - 6006:6006 # Storybook
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app

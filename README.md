@@ -15,9 +15,9 @@ Welcome to the souce code of my portfolio website!
 
 ## Version Notes
 
-- `v3.x.x` and above uses a slightly different database structure
-- `v2.x.x` and above uses Firebase Firestore to display data
-- `v1.x.x` and below uses `data.tsx` file to display data
+- `v3.x.x` and above uses a slightly different database structure.
+- `v2.x.x` and above uses Firebase Firestore to display data.
+- `v1.x.x` and below uses `data.tsx` file to display data.
 
 ## Tech Stack/Libraries
 
@@ -26,16 +26,26 @@ Welcome to the souce code of my portfolio website!
 - [Storybook](https://storybook.js.org)
 - [Material UI](https://mui.com/material-ui)
 - [MomentJS](https://momentjs.com)
+- [Docker](https://www.docker.com)
 
 ## Setup
 
-1. Clone the repository
-2. Create an `.env` file based from [.env.example](.env.example) (optional)
-3. Run `npm run dev` to start the dev server.
-4. Run `npm run storybook` to start storybook.
-5. Material themes can be modified in [themes.tsx](src/configs/themes.tsx) and primary/secondary colors can be modified in the `.env` file (optional).
-6. Data are stored in [Firebase Firestore](#setup-firebase-firestore).
-7. More [index.html](./index.html) customization can now be modified through `.env` file.
+1. Setup a Firebase Project. Please see the [Wiki](https://github.com/lloy-dev/portfolio/wiki).
+2. Clone the repository.
+3. Create an `.env` file based from [.env.example](.env.example).
+4. Run `npm install` to install dependencies.
+5. Run `npm run dev` to start the dev server.
+6. Run `npm run storybook` to start storybook.
+7. Material themes can be modified in [themes.tsx](src/configs/themes.tsx) and primary/secondary colors can be modified in the `.env` file (optional).
+8. More [index.html](./index.html) customization can now be modified through `.env` file.
+
+## Running Dockerized
+
+1. Comment out the `.env` in [.dockerignore](.dockerignore).
+2. Run the following:
+   ```sh
+   docker compose watch portfolio-dev
+   ```
 
 ## Manual Deployment With Firebase Hosting
 
@@ -43,11 +53,11 @@ Welcome to the souce code of my portfolio website!
 2. Setup hosting in that project.
 3. Add another site if you want to deploy storybook as well (optional).
 4. Install Firebase CLI if you haven't yet.
-   ```
+   ```sh
    npm install -g firebase-tools
    ```
 5. Login through Firebase CLI if you haven't yet.
-   ```
+   ```sh
    firebase login
    ```
 6. Create a `.firebaserc` based from [.firebaserc.example](.firebaserc.example).
@@ -62,7 +72,7 @@ Welcome to the souce code of my portfolio website!
 
 ## Automated Deployments With Firebase Hosting
 
-1. Setup a [Firebase Project](console.firebase.google.com).
+1. Setup a [Firebase Project](https://console.firebase.google.com) if you haven't yet.
 2. Setup hosting in that project.
 3. Add another site if you want to deploy storybook as well (optional).
 4. Create a `.firebaserc` based from [.firebaserc.example](.firebaserc.example).
