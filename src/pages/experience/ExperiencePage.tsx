@@ -3,9 +3,9 @@ import { skillNameToSkillCardProps } from "@utils";
 import useGetExperience from "./api/useGetExperience";
 
 const ExperiencePage = () => {
-  const { portfolioDetailsQuery, experienceItemsQuery } = useGetExperience();
-  const { data: portfolioDetailsData, isPending: portfolioDetailsPending } =
-    portfolioDetailsQuery;
+  const { portfolioDetailsQuery, experienceItemsQuery, userDetails } =
+    useGetExperience();
+  const { isPending: portfolioDetailsPending } = portfolioDetailsQuery;
   const { data: experienceItemsData, isPending: experienceItemsIsPending } =
     experienceItemsQuery;
 
@@ -14,15 +14,7 @@ const ExperiencePage = () => {
 
   return (
     <HomeLayout
-      userDetails={{
-        name: portfolioDetailsData?.name,
-        title: portfolioDetailsData?.title,
-        profilePicUrl: portfolioDetailsData?.profilePicSrc,
-        githubUrl: portfolioDetailsData?.github,
-        linkedInUrl: portfolioDetailsData?.linkedin,
-        email: portfolioDetailsData?.email,
-        location: portfolioDetailsData?.location,
-      }}
+      userDetails={userDetails}
       appBarTitle="Experience"
       menuActiveItem="experience"
     >
@@ -41,7 +33,7 @@ const ExperiencePage = () => {
           key={index}
           title={skillSetItem.title}
           skillCards={skillSetItem.skills.map((skill) =>
-            skillNameToSkillCardProps(skill)
+            skillNameToSkillCardProps(skill),
           )}
         />
       ))}

@@ -13,6 +13,16 @@ const Container = styled(Box)(({ theme }) => ({
     fontSize: 36,
     width: "100%",
   },
+
+  ".featured-projects-see-more": {
+    borderRadius: "100px",
+    fontWeight: "bold",
+  },
+
+  ".featured-projects-see-more .MuiButton-endIcon": {
+    marginTop: "-2px",
+    marginRight: "-8px",
+  },
 }));
 
 const CardsContainer = styled(Box)(({ theme }) => ({

@@ -1,4 +1,5 @@
 import { Typography } from "@mui/material";
+import { Outbound as OutboundIcon } from "@mui/icons-material";
 import { Button, ProjectCard, type ProjectCardProps } from "@components";
 import { Container, CardsContainer } from "./FeaturedProjects.styles";
 
@@ -17,7 +18,12 @@ const Component = ({ projects, onSeeMoreClick }: Props) => {
         ))}
       </CardsContainer>
       {!!onSeeMoreClick && (
-        <Button variant="contained" onClick={onSeeMoreClick}>
+        <Button
+          variant="contained"
+          className="featured-projects-see-more"
+          onClick={onSeeMoreClick}
+          endIcon={<OutboundIcon />}
+        >
           See More
         </Button>
       )}
