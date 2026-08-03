@@ -5,7 +5,7 @@ import useGetPortfolioDetails from "../../home/api/useGetPortfolioDetails";
 const useGetExperience = () => {
   const { portfolioService } = useServices();
 
-  const portfolioDetailsQuery = useGetPortfolioDetails();
+  const { portfolioDetailsQuery, userDetails } = useGetPortfolioDetails();
 
   const portfolioId = portfolioDetailsQuery.data?.id;
 
@@ -18,7 +18,7 @@ const useGetExperience = () => {
     },
   });
 
-  return { portfolioDetailsQuery, experienceItemsQuery };
+  return { portfolioDetailsQuery, experienceItemsQuery, userDetails };
 };
 
 export default useGetExperience;

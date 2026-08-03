@@ -5,7 +5,7 @@ import useGetPortfolioDetails from "./useGetPortfolioDetails";
 const useGetHome = () => {
   const { portfolioService } = useServices();
 
-  const portfolioDetailsQuery = useGetPortfolioDetails();
+  const { portfolioDetailsQuery, userDetails } = useGetPortfolioDetails();
 
   const portfolioId = portfolioDetailsQuery.data?.id;
 
@@ -18,7 +18,7 @@ const useGetHome = () => {
     },
   });
 
-  return { portfolioDetailsQuery, featuredItemsQuery };
+  return { portfolioDetailsQuery, featuredItemsQuery, userDetails };
 };
 
 export default useGetHome;

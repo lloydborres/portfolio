@@ -18,7 +18,8 @@ const HomePage = () => {
     return [];
   });
 
-  const { portfolioDetailsQuery, featuredItemsQuery } = useGetHome();
+  const { portfolioDetailsQuery, featuredItemsQuery, userDetails } =
+    useGetHome();
   const { data: portfolioDetailsData, isPending: portfolioDetailsPending } =
     portfolioDetailsQuery;
   const {
@@ -82,25 +83,7 @@ const HomePage = () => {
   };
 
   return (
-    <HomeLayout
-      userDetails={{
-        name: portfolioDetailsData?.name,
-        title: portfolioDetailsData?.title,
-        profilePicUrl: portfolioDetailsData?.profilePicSrc,
-        personalSiteUrl: portfolioDetailsData?.personalSite,
-        githubUrl: portfolioDetailsData?.github,
-        gitlabUrl: portfolioDetailsData?.gitlab,
-        linkedInUrl: portfolioDetailsData?.linkedin,
-        youtubeUrl: portfolioDetailsData?.youtube,
-        twitterUrl: portfolioDetailsData?.twitter,
-        instagramUrl: portfolioDetailsData?.instagram,
-        facebookUrl: portfolioDetailsData?.facebook,
-        email: portfolioDetailsData?.email,
-        phone: portfolioDetailsData?.phone,
-        location: portfolioDetailsData?.location,
-      }}
-      menuActiveItem="home"
-    >
+    <HomeLayout userDetails={userDetails} menuActiveItem="home">
       <Section header="About">{portfolioDetailsData?.description}</Section>
       <FeaturedProjects
         projects={

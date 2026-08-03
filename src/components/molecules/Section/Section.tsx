@@ -8,12 +8,18 @@ type Props = {
 };
 
 const Component = ({ header, children }: Props) => {
+  const isMarkdown = typeof children === "string";
+
   return (
-    <Container>
-      <Typography variant="h3" sx={{ fontSize: 36 }}>
+    <Container className={`${isMarkdown ? "section-markdown-container" : ""}`}>
+      <Typography
+        variant="h3"
+        className="section-header-container"
+        sx={{ fontSize: 36 }}
+      >
         {header ? header : <Skeleton />}
       </Typography>
-      {typeof children === "string" ? (
+      {isMarkdown ? (
         children ? (
           <Markdown
             components={{

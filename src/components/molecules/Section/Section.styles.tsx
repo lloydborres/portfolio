@@ -3,10 +3,22 @@ import { styled, Box } from "@mui/material";
 const Container = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  gap: "20px",
   padding: "30px",
   backgroundColor: theme.palette.common.white,
   borderRadius: "20px",
+
+  "&:not(.section-markdown-container)": {
+    gap: "20px",
+  },
+
+  "&.section-markdown-container .section-header-container": {
+    marginBottom: "20px",
+  },
+
+  ".section-header-container": {
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+  },
 
   "h4, ul": {
     margin: 0,
@@ -14,6 +26,10 @@ const Container = styled(Box)(({ theme }) => ({
 
   "li:not(:last-of-type)": {
     marginBottom: 10,
+  },
+
+  a: {
+    overflowWrap: "anywhere",
   },
 
   iframe: {
