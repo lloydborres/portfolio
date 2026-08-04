@@ -20,6 +20,7 @@ const useGetProjectDetailsById = (projectId?: string) => {
           projectId,
         });
     },
+    enabled: Boolean(portfolioId && projectId),
   });
 
   return { portfolioDetailsQuery, projectsDetailsQuery };

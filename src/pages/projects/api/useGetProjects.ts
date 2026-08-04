@@ -17,6 +17,7 @@ const useGetProjects = () => {
       if (portfolioId)
         return portfolioService.getPortfolioProjects(portfolioId);
     },
+    enabled: Boolean(portfolioId),
   });
 
   return { portfolioDetailsQuery, projectsQuery };

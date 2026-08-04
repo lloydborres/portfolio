@@ -16,6 +16,7 @@ const useGetExperience = () => {
         return portfolioService.getPortfolioExperienceItems(portfolioId);
       return null;
     },
+    enabled: Boolean(portfolioId),
   });
 
   return { portfolioDetailsQuery, experienceItemsQuery, userDetails };

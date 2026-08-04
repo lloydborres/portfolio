@@ -7,6 +7,7 @@ import {
 } from "@components";
 import useGetProjectDetailsById from "./api/useGetProjectDetailsById";
 import { tagNameToTagPillProps } from "@utils";
+import moment from "moment";
 
 const ALLOWED_FULLSCREEN_TYPES = ["pico-8-embed"];
 
@@ -27,7 +28,11 @@ const ProjectDetailsPage = () => {
     >
       <ProjectDetailsHeader
         title={projectDetailsData?.title}
-        description={projectDetailsData?.description}
+        description={
+          projectDetailsData
+            ? `${moment(projectDetailsData?.startDate.toDate()).format("MMM YYYY")} • ${projectDetailsData?.description}`
+            : undefined
+        }
         coverImg={projectDetailsData?.coverImg}
         links={projectDetailsData?.links}
         tags={projectDetailsData?.tags?.map((tag) =>
@@ -46,6 +51,7 @@ const ProjectDetailsPage = () => {
             case "gallery": {
               return (
                 <ProjectDetailsGallery
+                  key={idx}
                   projectTitle={projectDetailsData.title}
                   coverImg={projectDetailsData.coverImg}
                   items={projectDetail.items}
