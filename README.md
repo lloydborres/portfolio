@@ -15,9 +15,9 @@ Welcome to the souce code of my portfolio website!
 
 ## Version Notes
 
-- `v3.x.x` and above uses a slightly different database structure.
-- `v2.x.x` and above uses Firebase Firestore to display data.
-- `v1.x.x` and below uses `data.tsx` file to display data.
+- `v2.x.x` uses a slightly different database structure but still uses Firebase Firestore.
+- `v1.x.x` uses Firebase Firestore to display data.
+- `v0.x.x` uses `data.tsx` file to display data.
 
 ## Tech Stack/Libraries
 
