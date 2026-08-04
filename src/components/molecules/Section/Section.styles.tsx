@@ -11,8 +11,18 @@ const Container = styled(Box)(({ theme }) => ({
     gap: "20px",
   },
 
-  "&.section-markdown-container .section-header-container": {
-    marginBottom: "20px",
+  "&.section-markdown-container": {
+    ".section-header-container": {
+      marginBottom: "20px",
+    },
+
+    "p:not(:last-of-type)": {
+      marginBottom: "10px",
+    },
+  },
+
+  "&.section-markdown-container > ul > li:not(:last-of-type)": {
+    marginBottom: 10,
   },
 
   ".section-header-container": {
@@ -20,12 +30,8 @@ const Container = styled(Box)(({ theme }) => ({
     textOverflow: "ellipsis",
   },
 
-  "h4, ul": {
+  "h3, h4, ul": {
     margin: 0,
-  },
-
-  "li:not(:last-of-type)": {
-    marginBottom: 10,
   },
 
   a: {

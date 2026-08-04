@@ -16,6 +16,7 @@ const useGetHome = () => {
         return portfolioService.getPortfolioFeaturedItems(portfolioId);
       return null;
     },
+    enabled: Boolean(portfolioId),
   });
 
   return { portfolioDetailsQuery, featuredItemsQuery, userDetails };

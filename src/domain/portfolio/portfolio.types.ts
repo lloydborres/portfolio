@@ -82,6 +82,7 @@ interface IProject {
     isExternal?: boolean;
   }[];
   isFeatured?: boolean;
+  startDate: Timestamp;
   projectDetails?: (IProjectDetail | IProjectGallery | IProjectIframe)[];
 }
 
